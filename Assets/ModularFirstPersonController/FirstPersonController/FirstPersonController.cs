@@ -14,9 +14,10 @@ using UnityEngine.UI;
     using System.Net;
 #endif
 
+
 public class FirstPersonController : MonoBehaviour
 {
-    private Rigidbody rb;
+        private Rigidbody rb;
 
     #region Camera Movement Variables
 
@@ -131,6 +132,7 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
 
+   
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -147,6 +149,7 @@ public class FirstPersonController : MonoBehaviour
             sprintRemaining = sprintDuration;
             sprintCooldownReset = sprintCooldown;
         }
+
     }
 
     void Start()
@@ -529,7 +532,7 @@ public class FirstPersonController : MonoBehaviour
 }
 
 
-
+/*
 // Custom Editor
 #if UNITY_EDITOR
     [CustomEditor(typeof(FirstPersonController)), InitializeOnLoadAttribute]
@@ -560,6 +563,7 @@ public class FirstPersonController : MonoBehaviour
         GUILayout.Label("Camera Setup", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 13 }, GUILayout.ExpandWidth(true));
         EditorGUILayout.Space();
 
+        fpc.uiInventory = (C#Script)EditorGUILayout.ObjectField(new GUIContent("UI Inventory", "Camera attached to the controller."), fpc.uiInventory, typeof(C#Script), true);
         fpc.playerCamera = (Camera)EditorGUILayout.ObjectField(new GUIContent("Camera", "Camera attached to the controller."), fpc.playerCamera, typeof(Camera), true);
         fpc.fov = EditorGUILayout.Slider(new GUIContent("Field of View", "The camera’s view angle. Changes the player camera directly."), fpc.fov, fpc.zoomFOV, 179f);
         fpc.cameraCanMove = EditorGUILayout.ToggleLeft(new GUIContent("Enable Camera Rotation", "Determines if the camera is allowed to move."), fpc.cameraCanMove);
@@ -740,3 +744,4 @@ public class FirstPersonController : MonoBehaviour
 }
 
 #endif
+*/
