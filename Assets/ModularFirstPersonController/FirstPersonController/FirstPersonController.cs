@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -17,7 +18,9 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
-        private Rigidbody rb;
+
+    public Inventory inventory;
+    private Rigidbody rb;
 
     #region Camera Movement Variables
 
@@ -332,6 +335,7 @@ public class FirstPersonController : MonoBehaviour
         if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
             Jump();
+            Debug.Log("jump");
         }
 
         #endregion

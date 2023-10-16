@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1935201104708167242}
   - component: {fileID: 8670419040426787144}
   - component: {fileID: 5054575432486083597}
-  - component: {fileID: 7062577189743245744}
+  - component: {fileID: 3439913407848411245}
   m_Layer: 0
   m_Name: Beer
   m_TagString: Untagged
@@ -119,7 +119,7 @@ Rigidbody:
   m_GameObject: {fileID: 4837499614100204056}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -134,9 +134,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &5054575432486083597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,8 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4415fd080a679414087849c4baab66a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 740243efae40b8b4f8ec1a4af00885c6, type: 2}
---- !u!114 &7062577189743245744
+  item: {fileID: 11400000, guid: 9d6c666500852d84c8e99517827821fa, type: 2}
+  Pickposition: {x: 0, y: 0, z: 0}
+  PickRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &3439913407848411245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,7 +161,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4837499614100204056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db0cef2295ac5b4d87bbb3348f0f7fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 740243efae40b8b4f8ec1a4af00885c6, type: 2}

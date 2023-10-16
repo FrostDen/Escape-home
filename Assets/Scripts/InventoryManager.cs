@@ -8,38 +8,60 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
 {
-   
+    public event EventHandler<Item> OnItemSelected;
+
     public static InventoryManager Instance;
-    [SerializeField] private List<Item> Items = new List<Item>();
+    [SerializeField] public List<Item> Items = new List<Item>();
 
     public Transform ItemContent;
+    private Dictionary<Item, Transform> itemTransformDic;
     public GameObject InventoryItem;
 
     public Toggle EnableRemove;
 
     public InventoryItemController[] InventoryItems; 
 
-    private bool isInventoryOpen = false; 
+    private bool isInventoryOpen = false;
 
     private void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            isInventoryOpen = !isInventoryOpen; 
+            isInventoryOpen = !isInventoryOpen;
 
             ItemContent.gameObject.SetActive(isInventoryOpen);
+            EnableRemove.gameObject.SetActive(isInventoryOpen);
+            //Item3DViewer.gameObject.SetActive(isInventoryOpen);
 
             Cursor.visible = isInventoryOpen;
             Cursor.lockState = isInventoryOpen ? CursorLockMode.None : CursorLockMode.Locked;
 
             LockCameraRotation(isInventoryOpen);
+
             ListItems();
         }
     }
 
     private void Awake()
     {
+        //ItemContent = transform.Find("Content");
+        ItemContent.gameObject.SetActive(false);
+
+        itemTransformDic = new Dictionary<Item, Transform>();
+
+        foreach (Item item in Items)
+        {
+            Transform itemTransform = Instantiate(ItemContent, transform);
+            itemTransform.gameObject.SetActive(true);
+            ItemContent.Find("Image").GetComponent<Image>().sprite = item.icon;
+
+            itemTransformDic[item] = itemTransform;
+
+            itemTransform.GetComponent<Button>().onClick.AddListener(() =>
+            { });
+        }
+
         Instance = this;
     }
 
@@ -47,28 +69,32 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
     {
         Items.Add(item);
     }
-    
+
     public void Remove(Item item)
     {
         Items.Remove(item);
     }
 
-    public void ListItems()
+    public void RemoveItem()
     {
         foreach (Transform item in ItemContent)
         {
             Destroy(item.gameObject);
         }
+    }
 
+    public void ListItems()
+    {
+        RemoveItem();
         foreach (Item item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
             TextMeshProUGUI itemName = obj.transform.Find("itemName")?.GetComponent<TextMeshProUGUI>();
-            //var itemName = obj.transform.Find("itemName").GetComponent<Text>(); //TextMeshProUGUI //TMP_text
+
             var itemIcon = obj.transform.Find("itemIcon").GetComponent<Image>();
 
             var removeItemButton = obj.transform.Find("RemoveItemBtn").GetComponent<Button>();
-
+            
             if (itemName != null)
             {
                 itemName.text = item.itemName;
@@ -79,11 +105,12 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
             }
             if (EnableRemove.isOn)
                 removeItemButton.gameObject.SetActive(true);
-
+                
             SetInventoryItems();
-
         }
     }
+
+
     public void EnableItemsRemove()
     {
         if (EnableRemove.isOn)
@@ -119,15 +146,33 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
         }
     }
 
+    private void SelectItem(Item selectedItem)
+    {
+        foreach (Item item in itemTransformDic.Keys)
+        {
+            itemTransformDic[item].Find("Selected").gameObject.SetActive(false);
+        }
 
-    public Camera mainCamera;
+        itemTransformDic[selectedItem].Find("Selected").gameObject.SetActive(true);
+
+        OnItemSelected?.Invoke(this, selectedItem);
+    }
+
+    public GameObject playerObject; // Make sure to assign this in the Inspector
 
     private void LockCameraRotation(bool isLocked)
     {
-       
-        if (mainCamera != null)
+        if (playerObject != null)
         {
-            mainCamera.GetComponent<FirstPersonController>().enabled = !isLocked;
+            MonoBehaviour[] scripts = playerObject.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour script in scripts)
+            {
+                if (script.GetType().Name.Equals("FirstPersonController"))
+                {
+                    script.enabled = !isLocked;
+                    break;
+                }
+            }
         }
     }
 }
