@@ -2,48 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryItemController : MonoBehaviour
 {
+    public TMP_Text itemQuantityText; // Reference to the UI text displaying item quantity
+    public Item item;
+    public Transform ObjectGrabPoint; // Reference to the ObjectGrabPoint GameObject
 
-    [SerializeField] private List<Item> Items = new List<Item>();
+    private int itemQuantity = 0; // Keep track of the item quantity
 
-    Item Item;
-
-    public Button RemoveItemBtn;
-
-    //public void RemoveItem()
-    //{
-    //    InventoryManager.Instance.Remove(item);
-    //    Destroy(gameObject);
-    //}
+    public bool RedKey = false, BlueKey = false;
 
     public void RemoveItem()
     {
-        InventoryManager.Instance.Remove(Item);
+        InventoryManager.Instance.Remove(item);
         SpawnDroppedItem();
         Destroy(gameObject);
-        Debug.Log("Removed! Means its working.");
     }
 
     private void SpawnDroppedItem()
     {
-        if (Item != null)
+        if (item != null)
         {
-            // Spawn the dropped item in front of the player
-            if (Item.prefab != null)
+            // Spawn the dropped item at the ObjectGrabPoint position
+            if (item.prefab != null)
             {
-                GameObject itemPrefabObject = Item.prefab.gameObject;
-                if (itemPrefabObject != null)
-                {
-                    Debug.Log("Prefab found. Spawning...");
-                    GameObject spawnedItem = Instantiate(itemPrefabObject, GetSpawnPosition(), Quaternion.identity);
-                    Debug.Log("Spawned item at " + spawnedItem.transform.position);
-                }
-                else
-                {
-                    Debug.LogError("Prefab object is null. Make sure the prefab is assigned.");
-                }
+                Debug.Log("Prefab found. Spawning...");
+                GameObject spawnedItem = Instantiate(item.prefab.gameObject, GetSpawnPosition(), Quaternion.identity);
+                Debug.Log("Spawned item at " + spawnedItem.transform.position);
             }
             else
             {
@@ -54,17 +41,58 @@ public class InventoryItemController : MonoBehaviour
 
     private Vector3 GetSpawnPosition()
     {
-        // Adjust the spawn position to be in front of the player
-        Vector3 spawnPosition = transform.position + transform.forward * 2f; // 2 units in front of the player
-        return spawnPosition;
+        if (ObjectGrabPoint != null)
+        {
+            return ObjectGrabPoint.position; // Use ObjectGrabPoint position as spawn position
+        }
+        else
+        {
+            Debug.LogError("ObjectGrabPoint is not assigned. Make sure to assign the ObjectGrabPoint GameObject.");
+            return transform.position; // Fallback to the current position if ObjectGrabPoint is not assigned
+        }
     }
-
-
-
 
     public void AddItem(Item newItem)
     {
-        Item = newItem;
+                if (item != null && item.IsStackable && item.itemName == newItem.itemName)
+            {
+                itemQuantity++;
+                UpdateItemQuantityText();
+            }
+            else
+            {
+                item = newItem;
+                itemQuantity = 1;
+                itemQuantityText.gameObject.SetActive(false);
+                UpdateItemQuantityText();
+                if (item != null && item.itemName == "Key" && item.itemType == ItemType.Key) 
+                {
+                RedKey = true;
+                }
+            }
     }
 
+    public float timeToAdd = 30f;
+
+    public void DrinkBeer()
+    {
+        HUD hud = FindObjectOfType<HUD>();
+        if (item != null && item.itemName == "Beer" && item.itemType == ItemType.Consumable)
+        {
+            if (hud != null)
+            {
+                hud.AddTimeToTimer(timeToAdd);
+                InventoryManager.Instance.Remove(item);
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void UpdateItemQuantityText()
+    {
+        if (itemQuantityText != null)
+        {
+            itemQuantityText.text = itemQuantity.ToString();
+        }
+    }
 }

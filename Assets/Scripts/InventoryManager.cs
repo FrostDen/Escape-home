@@ -9,19 +9,16 @@ using TMPro;
 public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
 {
     public event EventHandler<Item> OnItemSelected;
-
     public static InventoryManager Instance;
     [SerializeField] public List<Item> Items = new List<Item>();
-
     public Transform ItemContent;
     private Dictionary<Item, Transform> itemTransformDic;
     public GameObject InventoryItem;
 
-    public Toggle EnableRemove;
-
     public InventoryItemController[] InventoryItems; 
 
     private bool isInventoryOpen = false;
+
 
     private void Update()
     {
@@ -31,7 +28,6 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
             isInventoryOpen = !isInventoryOpen;
 
             ItemContent.gameObject.SetActive(isInventoryOpen);
-            EnableRemove.gameObject.SetActive(isInventoryOpen);
             //Item3DViewer.gameObject.SetActive(isInventoryOpen);
 
             Cursor.visible = isInventoryOpen;
@@ -89,11 +85,12 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
         foreach (Item item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
+            InventoryItemController itemController = obj.GetComponent<InventoryItemController>();
+            itemController.AddItem(item);
             TextMeshProUGUI itemName = obj.transform.Find("itemName")?.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI itemQuantity = obj.transform.Find("itemQuantityText")?.GetComponent<TextMeshProUGUI>();
 
             var itemIcon = obj.transform.Find("itemIcon").GetComponent<Image>();
-
-            var removeItemButton = obj.transform.Find("RemoveItemBtn").GetComponent<Button>();
             
             if (itemName != null)
             {
@@ -103,29 +100,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
             {
                 itemIcon.sprite = item.icon;
             }
-            if (EnableRemove.isOn)
-                removeItemButton.gameObject.SetActive(true);
-                
-            SetInventoryItems();
-        }
-    }
-
-
-    public void EnableItemsRemove()
-    {
-        if (EnableRemove.isOn)
-        {
-            foreach (Transform item in ItemContent)
-            {
-                item.Find("RemoveItemBtn").gameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            foreach (Transform item in ItemContent)
-            {
-                item.Find("RemoveItemBtn").gameObject.SetActive(false);
-            }
+            //SetInventoryItems();
         }
     }
 
@@ -146,6 +121,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
         }
     }
 
+    #region Inspect item in inventory
     private void SelectItem(Item selectedItem)
     {
         foreach (Item item in itemTransformDic.Keys)
@@ -157,6 +133,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
 
         OnItemSelected?.Invoke(this, selectedItem);
     }
+    #endregion
 
     public GameObject playerObject; // Make sure to assign this in the Inspector
 

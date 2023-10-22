@@ -19,6 +19,7 @@ public class Item : ScriptableObject
 public enum ItemType
 {
     Consumable,
-    Object
+    Object,
+    Key
 }
  

@@ -7,6 +7,7 @@ public class Item3DViewer : MonoBehaviour
 {
     [SerializeField] private InventoryManager inventoryManager;
     private Transform itemPrefab;
+
     private void Start()
     {
         inventoryManager = InventoryManager.Instance;

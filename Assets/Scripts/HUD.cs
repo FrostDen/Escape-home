@@ -72,6 +72,15 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
+    public void AddTimeToTimer(float timeToAdd)
+    {
+        remainingTime += timeToAdd;
+        if (remainingTime > maxTime)
+        {
+            remainingTime = maxTime;
+        }
+    }
+
     public void OpenMessagePanel(string text)
     {
         MessagePanel.SetActive(true);
