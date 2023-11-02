@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9ec81b4a198bb846bbeb304e11d087d, type: 3}
-  m_Name: Key
+  m_Name: Beercan
   m_EditorClassIdentifier: 
-  id: 5
-  itemName: Key
+  id: 3
+  itemName: Can of beer
   amount: 1
-  value: 69
-  icon: {fileID: 21300000, guid: 204c0db5255829d4582ae6b7dcdb5c3c, type: 3}
-  prefab: {fileID: 4369284684949874575, guid: 5a0caff11c96db8469970558dafc963a, type: 3}
-  itemType: 2
-  IsStackable: 0
+  value: 1
+  icon: {fileID: 21300000, guid: ce3b7c9ee13164240836c8ba635b5c5f, type: 3}
+  prefab: {fileID: 308916015643766178, guid: a957fc9230f1f4b44982489491a2010f, type: 3}
+  itemType: 0
+  IsStackable: 1

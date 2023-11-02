@@ -77,7 +77,8 @@ public class InventoryItemController : MonoBehaviour
     public void DrinkBeer()
     {
         HUD hud = FindObjectOfType<HUD>();
-        if (item != null && item.itemName == "Beer" && item.itemType == ItemType.Consumable)
+        
+        if (item != null && item.itemName == "Beer" || item.itemName == "Can of beer" && item.itemType == ItemType.Consumable)
         {
             if (hud != null)
             {
