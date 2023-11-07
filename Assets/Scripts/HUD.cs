@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+   
     public GameObject GameOverText;
     public Image sanityBar;
     public float maxTime = 5f;
