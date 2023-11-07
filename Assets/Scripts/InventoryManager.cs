@@ -137,7 +137,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
 
     public GameObject playerObject; // Make sure to assign this in the Inspector
 
-    private void LockCameraRotation(bool isLocked)
+    public void LockCameraRotation(bool isLocked)
     {
         if (playerObject != null)
         {

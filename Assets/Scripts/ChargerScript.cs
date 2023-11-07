@@ -14,14 +14,20 @@ public class ChargerScript : MonoBehaviour
 
     private Collider connectedSocket;
 
-    public float pickUpDistance = 2f;
+    public GameObject Plug;
+
+    public GameObject Adapter;
+
+    public Collider adapterSocket;
+
+   
 
     // NearView()
     float distance;
     float angleView;
     Vector3 direction;
 
-    bool follow = false, isConnected = false, followFlag = false, youCan = true;
+    bool follow = false, isConnected = false, isConnectedAdapter = false, followFlag = false, youCan = true;
     Rigidbody rb;
 
     void Start()
@@ -33,18 +39,26 @@ public class ChargerScript : MonoBehaviour
     {
         //if (youCan) Interaction();
 
-        // frozen if it is connected to PowerOut
-        if (isConnected && connectedSocket != null) // Check if there are any sockets
+
+        if (isConnectedAdapter)
+        {
+            Adapter.transform.position = adapterSocket.transform.position;
+            Adapter.transform.rotation = adapterSocket.transform.rotation;
+        }
+
+            // frozen if it is connected to PowerOut
+            if (isConnected && connectedSocket != null) // Check if there are any sockets
         {
             foreach (Collider socket in Sockets)
             {
-                gameObject.transform.position = connectedSocket.transform.position; // Position based on each socket
-                gameObject.transform.rotation = connectedSocket.transform.rotation;
+                Plug.transform.position = connectedSocket.transform.position; // Position based on each socket
+                Plug.transform.rotation = connectedSocket.transform.rotation;
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(transform.position, Camera.main.transform.position) <= pickUpDistance)
+            if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
             {
                 isConnected = false;
+                isConnectedAdapter = false;
                 connectedSocket = null;
             }
             //else
@@ -54,22 +68,28 @@ public class ChargerScript : MonoBehaviour
         }
     }
 
-   
 
-    bool NearView() // it is true if you near interactive object
+
+    float NearView() // it is true if you are near an interactive object
     {
         distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
-        if (distance < 3f && angleView < 35f)
-            return true;
+        float maxDistance = 2f; // Define the maximum distance for the ray
+        if (angleView < 20f && distance < maxDistance)
+            return maxDistance; // Returning the maximum distance for the ray
         else
-            return false;
+            return 0f; // Return 0 if the conditions are not met
     }
 
     // OnTriggerEnter method outside of Update
     private void OnTriggerEnter(Collider other)
     {
+        if (other == adapterSocket)
+        {
+            isConnectedAdapter = true;
+        }
+
         foreach (Collider socket in Sockets)
         {
             if (other == socket)
@@ -82,4 +102,5 @@ public class ChargerScript : MonoBehaviour
         if (OneTime)
             youCan = false;
     }
+    
 }

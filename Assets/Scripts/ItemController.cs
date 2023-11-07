@@ -15,7 +15,10 @@ public class ItemController : MonoBehaviour
     [SerializeField] private Transform objectGrabPointTransform;
     [SerializeField] private LayerMask pickUpLayerMask;
 
-    public float pickUpDistance = 2f; // Adjust the pick up distance as needed
+    // NearView()
+    float distance;
+    float angleView;
+    Vector3 direction;
 
     private void Start()
     {
@@ -33,7 +36,7 @@ public class ItemController : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, Camera.main.transform.position) <= pickUpDistance)
+        if (Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
         {
             if ((Input.GetMouseButtonDown(0)))
             {
@@ -49,5 +52,16 @@ public class ItemController : MonoBehaviour
     {
         transform.localPosition = Pickposition;
         transform.localEulerAngles = PickRotation;
+    }
+    float NearView() // it is true if you are near an interactive object
+    {
+        distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+        direction = transform.position - Camera.main.transform.position;
+        angleView = Vector3.Angle(Camera.main.transform.forward, direction);
+        float maxDistance = 2f; // Define the maximum distance for the ray
+        if (angleView < 10f && distance < maxDistance)
+            return maxDistance; // Returning the maximum distance for the ray
+        else
+            return 0f; // Return 0 if the conditions are not met
     }
 }
