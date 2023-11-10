@@ -10,15 +10,10 @@ public class ChargerScript : MonoBehaviour
     public Transform objectGrabPointTransform;
     [Tooltip("SocketObject with collider(shpere, box etc.) (is trigger = true)")]
     public Collider[] Sockets;
-    //public AN_DoorScript DoorObject;
 
     private Collider connectedSocket;
 
     public GameObject Plug;
-
-    public GameObject Adapter;
-
-    public Collider adapterSocket;
 
    
 
@@ -27,7 +22,7 @@ public class ChargerScript : MonoBehaviour
     float angleView;
     Vector3 direction;
 
-    bool follow = false, isConnected = false, isConnectedAdapter = false, followFlag = false, youCan = true;
+    bool isConnected = false, youCan = true;
     Rigidbody rb;
 
     void Start()
@@ -38,13 +33,6 @@ public class ChargerScript : MonoBehaviour
     void Update()
     {
         //if (youCan) Interaction();
-
-
-        if (isConnectedAdapter)
-        {
-            Adapter.transform.position = adapterSocket.transform.position;
-            Adapter.transform.rotation = adapterSocket.transform.rotation;
-        }
 
             // frozen if it is connected to PowerOut
             if (isConnected && connectedSocket != null) // Check if there are any sockets
@@ -58,13 +46,8 @@ public class ChargerScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
             {
                 isConnected = false;
-                isConnectedAdapter = false;
                 connectedSocket = null;
             }
-            //else
-            //{
-            //    DoorObject.isOpened = false;
-            //}
         }
     }
 
@@ -76,7 +59,7 @@ public class ChargerScript : MonoBehaviour
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
         float maxDistance = 2f; // Define the maximum distance for the ray
-        if (angleView < 20f && distance < maxDistance)
+        if (angleView < 5f && distance < maxDistance)
             return maxDistance; // Returning the maximum distance for the ray
         else
             return 0f; // Return 0 if the conditions are not met
@@ -85,17 +68,11 @@ public class ChargerScript : MonoBehaviour
     // OnTriggerEnter method outside of Update
     private void OnTriggerEnter(Collider other)
     {
-        if (other == adapterSocket)
-        {
-            isConnectedAdapter = true;
-        }
-
         foreach (Collider socket in Sockets)
         {
             if (other == socket)
             {
                 isConnected = true;
-                follow = false;
                 connectedSocket = other;
             }
         }
