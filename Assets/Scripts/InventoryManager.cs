@@ -54,8 +54,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
 
             itemTransformDic[item] = itemTransform;
 
-            itemTransform.GetComponent<Button>().onClick.AddListener(() =>
-            { });
+            itemTransform.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => SelectItem(item));
         }
 
         Instance = this;
@@ -129,9 +128,10 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
             itemTransformDic[item].Find("Selected").gameObject.SetActive(false);
         }
 
-        itemTransformDic[selectedItem].Find("Selected").gameObject.SetActive(true);
-
-        OnItemSelected?.Invoke(this, selectedItem);
+        if (OnItemSelected != null)  // Add this null check
+        {
+            OnItemSelected.Invoke(this, selectedItem);
+        }
     }
     #endregion
 

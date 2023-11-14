@@ -7,13 +7,13 @@ public class PlayerGrabDrop : MonoBehaviour
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private Transform objectGrabPointTransform;
     [SerializeField] private LayerMask pickUpLayerMask;
+    private Vector3 specificRotation;
 
     private ObjectGrabbable objectGrabbable;
 
     float distance;
     float angleView;
     Vector3 direction;
-
 
     private void Update()
     {
@@ -25,7 +25,10 @@ public class PlayerGrabDrop : MonoBehaviour
                 {
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
-                        objectGrabbable.Grab(objectGrabPointTransform);
+                        //CalculateGrabbedObjectRotation();
+
+                        // Pass the player transform and rotation to the Grab method
+                        objectGrabbable.Grab(objectGrabPointTransform, playerCameraTransform);
                     }
                 }
             }
@@ -38,16 +41,22 @@ public class PlayerGrabDrop : MonoBehaviour
         }
     }
 
-    float NearView() // it is true if you are near an interactive object
+    float NearView()
     {
         distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
-        float maxDistance = 2f; // Define the maximum distance for the ray
+        float maxDistance = 2f;
         if (angleView < 90f && distance < maxDistance)
-            return maxDistance; // Returning the maximum distance for the ray
+            return maxDistance;
         else
-            return 0f; // Return 0 if the conditions are not met
+            return 0f;
     }
 
+    // Calculate the rotation based on the camera direction
+    //private void CalculateGrabbedObjectRotation()
+    //{
+    //    Vector3 cameraForward = playerCameraTransform.forward;
+    //    specificRotation = new Vector3(0f, Mathf.Atan2(cameraForward.x, cameraForward.z) * Mathf.Rad2Deg, 0f);
+    //}
 }

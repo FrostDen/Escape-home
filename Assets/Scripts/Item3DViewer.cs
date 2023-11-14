@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Item3DViewer : MonoBehaviour
@@ -8,27 +6,34 @@ public class Item3DViewer : MonoBehaviour
     [SerializeField] private InventoryManager inventoryManager;
     private Transform itemPrefab;
 
-    private void Start()
+    private void OnEnable()
     {
-        inventoryManager = InventoryManager.Instance;
-        inventoryManager.OnItemSelected += InventoryManager_OnItemSelected;
+        if (inventoryManager == null)
+        {
+            inventoryManager = InventoryManager.Instance;
+        }
+
+        if (inventoryManager != null)
+        {
+            inventoryManager.OnItemSelected += InventoryManager_OnItemSelected;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (inventoryManager != null)
+        {
+            inventoryManager.OnItemSelected -= InventoryManager_OnItemSelected;
+        }
     }
 
     private void InventoryManager_OnItemSelected(object sender, Item item)
     {
-        if (itemPrefab != null) 
+        if (itemPrefab != null)
         {
             Destroy(itemPrefab.gameObject);
         }
         itemPrefab = Instantiate(item.prefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
         Debug.Log("Selected item: " + item.itemName);
     }
-
-    //private void OnDestroy()
-    //{
-    //    if (inventoryManager != null)
-    //    {
-    //        inventoryManager.OnItemSelected -= InventoryManager_OnItemSelected;
-    //    }
-    //}
 }
