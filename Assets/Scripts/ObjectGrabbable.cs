@@ -32,7 +32,11 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = null;
         this.playerCameraTransform = null;
         objectRigidbody.useGravity = true;
-        objectRigidbody.freezeRotation = false;
+        if (CompareTag("Object"))
+        {
+            this.playerCameraTransform = playerCameraTransform;
+            objectRigidbody.freezeRotation = false;
+        }
     }
 
     private void FixedUpdate()

@@ -38,7 +38,7 @@ public class ItemController : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
         {
-            if ((Input.GetMouseButtonDown(0)))
+            if (Input.GetMouseButtonDown(0))
             {
                 Pickup();
             }

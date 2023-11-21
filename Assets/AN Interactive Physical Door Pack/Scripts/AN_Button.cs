@@ -11,7 +11,7 @@ public class AN_Button : MonoBehaviour
     [Tooltip("If it is false door can't be used")]
     public bool Locked = false;
     [Tooltip("The door for remote control")]
-    public AN_DoorScript DoorObject;
+    public AN_DoorScript doorScript;
     [Space]
     [Tooltip("Any object for ramp/elevator baheviour")]
     public Transform RampObject;
@@ -50,12 +50,12 @@ public class AN_Button : MonoBehaviour
     {
         if (!Locked)
         {
-            if (Input.GetKeyDown(KeyCode.E) && !isValve && DoorObject != null && DoorObject.Remote && NearView()) // 1.lever and 2.button
+            if (Input.GetKeyDown(KeyCode.E) && !isValve && doorScript != null && doorScript.Remote && NearView()) // 1.lever and 2.button
             {
-                DoorObject.Action(); // void in door script to open/close
+                doorScript.Action(); // void in door script to open/close
                 if (isLever) // animations
                 {
-                    if (DoorObject.isOpened) anim.SetBool("LeverUp", true);
+                    if (doorScript.isOpened) anim.SetBool("LeverUp", true);
                     else anim.SetBool("LeverUp", false);
                 }
                 else anim.SetTrigger("ButtonPress");
