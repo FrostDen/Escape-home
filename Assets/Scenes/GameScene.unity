@@ -14120,8 +14120,40 @@ PrefabInstance:
       value: fridge 1
       objectReference: {fileID: 0}
     - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Axis.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 3.5749278
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 6.8336253
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 11.943816
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
       propertyPath: m_LinearLimit.limit
-      value: 100
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConfiguredInWorldSpace
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3617399429099379193, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
       propertyPath: m_LinearLimitSpring.damper
@@ -14132,8 +14164,40 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Axis.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 3.5749278
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 6.495395
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 11.943816
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
       propertyPath: m_LinearLimit.limit
-      value: 100
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConfiguredInWorldSpace
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5453012222682958244, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
       propertyPath: m_LinearLimitSpring.damper
@@ -14144,8 +14208,40 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Axis.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_Anchor.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 3.5749278
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.40560532
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 11.943816
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
       propertyPath: m_LinearLimit.limit
-      value: 100
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
+      propertyPath: m_ConfiguredInWorldSpace
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6691619878923351748, guid: 47b5c8cf038ebe448bbafb496a930804, type: 3}
       propertyPath: m_LinearLimitSpring.damper
