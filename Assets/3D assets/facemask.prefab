@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3715061
+      value: 1.371506
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalScale.z
@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.793347
+      value: -2.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.028
+      value: -0.008000016
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.123
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -161,7 +161,6 @@ MonoBehaviour:
   pickUpLayerMask:
     serializedVersion: 2
     m_Bits: 51
-  pickUpDistance: 2
   Pickposition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &4104856638987379732
@@ -176,3 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specificRotation: {x: 0, y: 0, z: 0}

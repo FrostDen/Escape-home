@@ -8,8 +8,11 @@ public class AdapterScript : MonoBehaviour
     public Transform objectGrabPointTransform;
 
     public GameObject Adapter;
+    public GameObject Plug;
 
     public Collider adapterSocket;
+
+    public ChargerScript chargerScript;
 
     // NearView()
     float distance;
@@ -23,24 +26,40 @@ public class AdapterScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    public void Update()
     {
         if (isConnected)
         {
             Adapter.transform.position = adapterSocket.transform.position;
             Adapter.transform.rotation = adapterSocket.transform.rotation;
+
+            // Calculate distance between Adapter and this object (plug)
+            float distance = Vector3.Distance(Adapter.transform.position, Plug.transform.position);
+
+            // If distance exceeds 2 units, disconnect both
+            if (distance > 3f)
+            {
+                Disconnect();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
         {
-            
-            isConnected = false;
+            Disconnect();
         }
-
     }
-    
 
-private void OnTriggerEnter(Collider other)
+    void Disconnect()
+    {
+        isConnected = false;
+        // Additional logic to disconnect both the plug and adapter from the sockets as needed
+        // For example:
+        // transform.position = someNewPosition; // Move the plug to a new position
+        // Adapter.transform.position = someNewPosition; // Move the adapter to a new position
+    }
+
+
+    public void OnTriggerEnter(Collider other)
     {
         if (other == adapterSocket)
         {

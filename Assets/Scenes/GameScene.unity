@@ -278,6 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: -90, y: 90, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!65 &2717946
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -944,7 +946,7 @@ GameObject:
   - component: {fileID: 83335573}
   - component: {fileID: 83335575}
   m_Layer: 5
-  m_Name: MenuPanel
+  m_Name: menuPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,14 +987,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7529412}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1984,6 +1986,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!1 &320643378
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,6 +3248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!4 &535097500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1386534894247353022, guid: 9b756dfe3aa874b40802249b567cfd72, type: 3}
@@ -3789,6 +3795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!54 &571246337
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4008,6 +4016,10 @@ MonoBehaviour:
   - {fileID: 2144129280}
   - {fileID: 1693516734}
   Plug: {fileID: 571246333}
+  Adapter: {fileID: 0}
+  adapterScript: {fileID: 0}
+  isConnected: 0
+  youCan: 1
 --- !u!1 &572045759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2840213267700235249, guid: ba270cca4f92b214199eb9153b2aeb15, type: 3}
@@ -5544,6 +5556,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!1001 &847720407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6136,6 +6150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!114 &928987206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6153,7 +6169,9 @@ MonoBehaviour:
   isConnected: 0
   objectGrabPointTransform: {fileID: 1810561117}
   Adapter: {fileID: 928987195}
+  Plug: {fileID: 0}
   adapterSocket: {fileID: 253131466}
+  chargerScript: {fileID: 0}
 --- !u!1 &930763783 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ba270cca4f92b214199eb9153b2aeb15, type: 3}
@@ -6645,6 +6663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d0a85033b4aea4a8c3fa14bfde1e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  batteryScript: {fileID: 0}
+  objectGrabbable: {fileID: 0}
   flashlight: {fileID: 1558933164}
 --- !u!114 &1173196854
 MonoBehaviour:
@@ -6659,6 +6679,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: -90, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!136 &1173196855
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7178,6 +7200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!1001 &1220532718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7416,6 +7440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!1001 &1232736184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7830,6 +7856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!1001 &1276135691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9564,7 +9592,7 @@ MonoBehaviour:
   resumeBtn: {fileID: 195216807}
   restartBtn: {fileID: 79615130}
   menuBtn: {fileID: 248218633}
-  menuPanel: {fileID: 83335571}
+  menuPanel: {fileID: 83335572}
 --- !u!1001 &1568771159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12768,7 +12796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverText: {fileID: 832968003}
   sanityBar: {fileID: 1618782346}
-  maxTime: 120
+  maxTime: 5
   transition: {fileID: 779221520}
   transitionTime: 3
   MessagePanel: {fileID: 1194177899}
@@ -12779,6 +12807,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 114
   messageText: {fileID: 1527381187}
+  isDead: 0
+  playerObject: {fileID: 0}
 --- !u!1 &2144033317 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7239809445319675307, guid: 5e0702cf7b293a8458aace4eebf1271f, type: 3}
@@ -22059,6 +22089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!4 &7684090633449713496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
@@ -22932,6 +22964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!65 &8334465234125944463
 BoxCollider:
   m_ObjectHideFlags: 0

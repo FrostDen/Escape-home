@@ -25,7 +25,7 @@ public class PlayerGrabDrop : MonoBehaviour
                 {
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
-                        //CalculateGrabbedObjectRotation();
+                        CalculateGrabbedObjectRotation();
 
                         // Pass the player transform and rotation to the Grab method
                         objectGrabbable.Grab(objectGrabPointTransform, playerCameraTransform);
@@ -53,10 +53,10 @@ public class PlayerGrabDrop : MonoBehaviour
             return 0f;
     }
 
-    // Calculate the rotation based on the camera direction
-    //private void CalculateGrabbedObjectRotation()
-    //{
-    //    Vector3 cameraForward = playerCameraTransform.forward;
-    //    specificRotation = new Vector3(0f, Mathf.Atan2(cameraForward.x, cameraForward.z) * Mathf.Rad2Deg, 0f);
-    //}
+    
+    private void CalculateGrabbedObjectRotation()
+    {
+        Vector3 cameraForward = playerCameraTransform.forward;
+        specificRotation = new Vector3(0f, Mathf.Atan2(cameraForward.x, cameraForward.z) * Mathf.Rad2Deg, 0f);
+    }
 }

@@ -233,6 +233,7 @@ public class FirstPersonController : MonoBehaviour
 
         #region Camera Zoom
 
+
         if (enableZoom)
         {
             // Changes isZoomed when key is pressed
@@ -242,10 +243,12 @@ public class FirstPersonController : MonoBehaviour
                 if (!isZoomed)
                 {
                     isZoomed = true;
+                    Cursor.visible = true; // Set cursor visible when zoomed in
                 }
                 else
                 {
                     isZoomed = false;
+                    Cursor.visible = false; // Set cursor invisible when zoomed out
                 }
             }
 
@@ -256,10 +259,14 @@ public class FirstPersonController : MonoBehaviour
                 if(Input.GetKeyDown(zoomKey))
                 {
                     isZoomed = true;
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
                 }
                 else if(Input.GetKeyUp(zoomKey))
                 {
                     isZoomed = false;
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
                 }
             }
 

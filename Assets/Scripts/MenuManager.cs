@@ -6,30 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-
     public InventoryManager inventoryManager;
 
     public Button resumeBtn;
     public Button restartBtn;
     public Button menuBtn;
-    public GameObject menuPanel;
+    public RectTransform menuPanel; // Reference to your UI menu panel
 
+    private Vector3 hiddenPosition; // Off-screen position
     private bool isVisible;
 
     public void Start()
     {
-        menuPanel.SetActive(false);
+        if (menuPanel != null)
+        {
+            // Get the off-screen position
+            hiddenPosition = new Vector3(Screen.width * 2, 0, 0);
+            // Move the menu off-screen initially
+            menuPanel.localPosition = hiddenPosition;
+        }
     }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isVisible = !isVisible;
-            menuPanel.SetActive(isVisible);
-            inventoryManager.LockCameraRotation(isVisible);
-            Cursor.visible = isVisible;
-            Cursor.lockState = isVisible ? CursorLockMode.None : CursorLockMode.Locked;
+            ToggleMenu();
         }
     }
 
@@ -40,16 +42,19 @@ public class MenuManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        if (!isVisible)
+        ToggleMenu();
+    }
+
+    public void ToggleMenu()
+    {
+        if (menuPanel != null)
         {
-        menuPanel.SetActive(true);
-        }
-        else
-        {
-            menuPanel.SetActive(false);
-            inventoryManager.LockCameraRotation(!isVisible);
-            Cursor.visible = !isVisible;
-            Cursor.lockState = !isVisible ? CursorLockMode.None : CursorLockMode.Locked;
+            // Toggle the menu's position
+            isVisible = !isVisible;
+            menuPanel.localPosition = isVisible ? Vector3.zero : hiddenPosition;
+            inventoryManager.LockCameraRotation(isVisible);
+            Cursor.visible = isVisible;
+            Cursor.lockState = isVisible ? CursorLockMode.None : CursorLockMode.Locked;
         }
     }
 

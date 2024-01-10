@@ -14,6 +14,9 @@ public class ChargerScript : MonoBehaviour
     private Collider connectedSocket;
 
     public GameObject Plug;
+    public GameObject Adapter;
+
+    public AdapterScript adapterScript;
 
    
 
@@ -22,7 +25,7 @@ public class ChargerScript : MonoBehaviour
     float angleView;
     Vector3 direction;
 
-    bool isConnected = false, youCan = true;
+    public bool isConnected = false, youCan = true;
     Rigidbody rb;
 
     void Start()
@@ -30,17 +33,23 @@ public class ChargerScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    public void Update()
     {
-        //if (youCan) Interaction();
-
-            // frozen if it is connected to PowerOut
-            if (isConnected && connectedSocket != null) // Check if there are any sockets
+        if (isConnected && connectedSocket != null) // Check if there are any sockets
         {
             foreach (Collider socket in Sockets)
             {
                 Plug.transform.position = connectedSocket.transform.position; // Position based on each socket
                 Plug.transform.rotation = connectedSocket.transform.rotation;
+            }
+
+            // Calculate distance between Plug and Adapter
+            float distance = Vector3.Distance(Plug.transform.position, Adapter.transform.position);
+
+            // If distance exceeds 2 units, disconnect both
+            if (distance > 3.5f)
+            {
+                Disconnect();
             }
 
             if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
@@ -51,7 +60,14 @@ public class ChargerScript : MonoBehaviour
         }
     }
 
-
+    void Disconnect()
+    {
+        isConnected = false;
+        // Additional logic to disconnect both the plug and adapter from the sockets as needed
+        // For example:
+        // transform.position = someNewPosition; // Move the plug to a new position
+        // Adapter.transform.position = someNewPosition; // Move the adapter to a new position
+    }
 
     float NearView() // it is true if you are near an interactive object
     {

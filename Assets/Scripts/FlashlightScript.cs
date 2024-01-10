@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FlashlightScript : MonoBehaviour
 {
-
+    public BatteryScript batteryScript;
+    public ObjectGrabbable objectGrabbable;
     float distance;
     float angleView;
     Vector3 direction;
@@ -17,19 +18,20 @@ public class FlashlightScript : MonoBehaviour
         if (flashlight != null)
         {
             flashlight.enabled = false;
+
         }
     }
 
     void Update()
     {
         // Toggle flashlight on/off when the 'F' key is pressed
-        if (Input.GetKeyDown(KeyCode.F) && NearView() > 0f)
+        if (Input.GetKeyDown(KeyCode.F) && NearView() > 0f && objectGrabbable.isGrabbed)
         {
             ToggleFlashlight();
         }
     }
 
-    void ToggleFlashlight()
+    public void ToggleFlashlight()
     {
         if (flashlight != null)
         {

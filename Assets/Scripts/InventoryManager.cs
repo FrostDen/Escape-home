@@ -15,22 +15,43 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
     private Dictionary<Item, Transform> itemTransformDic;
     public GameObject InventoryItem;
 
+
     public InventoryItemController[] InventoryItems; 
 
     private bool isInventoryOpen = false;
 
+    private Vector3 hiddenPosition;
+    private bool hasInitialized = false; // Flag to track initialization
+
+
+    private void Start()
+    {
+        if (!hasInitialized)
+        {
+            InitializeInventory();
+            hasInitialized = true;
+        }
+    }
+
+    private void InitializeInventory()
+    {
+        hiddenPosition = new Vector3(Screen.width * 2, 0, 0); // Calculate off-screen position
+        ItemContent.localPosition = hiddenPosition; // Initialize inventory panel off-screen
+
+        // Other initialization logic
+        // ...
+    }
+
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.I))
         {
             isInventoryOpen = !isInventoryOpen;
+            ToggleInventoryPanel();
+        //Item3DViewer.gameObject.SetActive(isInventoryOpen);
 
-            ItemContent.gameObject.SetActive(isInventoryOpen);
-            //Item3DViewer.gameObject.SetActive(isInventoryOpen);
-
-            Cursor.visible = isInventoryOpen;
+        Cursor.visible = isInventoryOpen;
             Cursor.lockState = isInventoryOpen ? CursorLockMode.None : CursorLockMode.Locked;
 
             LockCameraRotation(isInventoryOpen);
@@ -39,10 +60,16 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
         }
     }
 
+    private void ToggleInventoryPanel()
+    {
+        ItemContent.localPosition = isInventoryOpen ? Vector3.zero : hiddenPosition;
+    }
+
     private void Awake()
     {
-        //ItemContent = transform.Find("Content");
-        ItemContent.gameObject.SetActive(false);
+        hiddenPosition = new Vector3(Screen.width * 2, 0, 0); // Calculate off-screen position
+
+        ItemContent.localPosition = hiddenPosition; // Initialize inventory panel off-screen
 
         itemTransformDic = new Dictionary<Item, Transform>();
 

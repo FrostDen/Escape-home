@@ -21,7 +21,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
 
-    [SerializeField] private Transform playerCameraTransform;
+    [SerializeField] public Transform playerCameraTransform;
     [SerializeField] private LayerMask pickUpLayerMask;
 
     private string currentHitItemName;
@@ -29,6 +29,8 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private float showUpDistance = 2f;
     private RaycastHit currentHit;
+
+    public bool isDead;
 
     //void Awake()
     //{
@@ -39,6 +41,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         remainingTime = maxTime;
         messageText = MessagePanel.GetComponentInChildren<TextMeshProUGUI>();
+        LockCameraRotation(!isDead);
     }
 
     void Update()
@@ -98,7 +101,10 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void GameOver()
     {
+        LockCameraRotation(isDead);
+
         StartCoroutine(RestartLevel());
+
     }
 
     IEnumerator RestartLevel()
@@ -115,6 +121,25 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             currentHitItemName = currentHit.transform.name;
             OpenMessagePanel("[LMB] to pick up/[E] to grab " + currentHitItemName);
             Debug.Log(currentHitItemName);
+        }
+    }
+
+    public GameObject playerObject; // Make sure to assign this in the Inspector
+
+    public void LockCameraRotation(bool isDead)
+    {
+        playerCameraTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        if (playerObject != null)
+        {
+            MonoBehaviour[] scripts = playerObject.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour script in scripts)
+            {
+                if (script.GetType().Name.Equals("FirstPersonController"))
+                {
+                    script.enabled = !isDead;
+                    break;
+                }
+            }
         }
     }
 
