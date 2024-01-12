@@ -7,6 +7,12 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.cyanilux.urp-blitrenderfeature": {
+      "version": "file:C:/Users/denod/Downloads/URP_BlitRenderFeature-master",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ec81b4a198bb846bbeb304e11d087d, type: 3}
   m_Name: Facemask
   m_EditorClassIdentifier: 
-  id: 4
+  id: 3
   itemName: Facemask
   amount: 1
   value: 99
   icon: {fileID: 21300000, guid: fe2a03552b778d2439caed654ad5087b, type: 3}
-  prefab: {fileID: 3648715301822712982, guid: 9c026297096174640b918b5b4a69ac39, type: 3}
+  prefab: {fileID: 7712997158890885824, guid: d725fed17969da643b4785003a51d508, type: 3}
   itemType: 1
   IsStackable: 0

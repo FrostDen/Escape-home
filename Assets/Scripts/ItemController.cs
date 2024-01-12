@@ -11,9 +11,9 @@ public class ItemController : MonoBehaviour
 
     InventoryItemController inventoryItemController;
 
-    [SerializeField] private Transform playerCameraTransform;
-    [SerializeField] private Transform objectGrabPointTransform;
-    [SerializeField] private LayerMask pickUpLayerMask;
+    [SerializeField] public Transform playerCameraTransform;
+    [SerializeField] public Transform objectGrabPointTransform;
+    [SerializeField] public LayerMask pickUpLayerMask;
 
     // NearView()
     float distance;

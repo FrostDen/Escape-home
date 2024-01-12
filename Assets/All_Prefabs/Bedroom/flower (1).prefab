@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1d9dcb31913317c4c80af847db69cfc7, type: 3}
+      propertyPath: m_TagString
+      value: Inspect
+      objectReference: {fileID: 0}
     - target: {fileID: 8009987137999418058, guid: 1d9dcb31913317c4c80af847db69cfc7, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -176,6 +180,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: 1d9dcb31913317c4c80af847db69cfc7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8230597573847563384}
+    - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: 1d9dcb31913317c4c80af847db69cfc7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7830884372346438698}
   m_SourcePrefab: {fileID: 100100000, guid: 1d9dcb31913317c4c80af847db69cfc7, type: 3}
 --- !u!1 &200857613160350285 stripped
 GameObject:
@@ -385,6 +392,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.030557685, y: 0.030557679, z: 0.024622317}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.0020117983}
+--- !u!136 &7830884372346438698
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578366717982126046}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.012
+  m_Height: 0.030557679
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.0009}
 --- !u!1 &6769631276109736250 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6763858364670572316, guid: 1d9dcb31913317c4c80af847db69cfc7, type: 3}
@@ -534,6 +564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!1 &8385455030343734202 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 1d9dcb31913317c4c80af847db69cfc7, type: 3}

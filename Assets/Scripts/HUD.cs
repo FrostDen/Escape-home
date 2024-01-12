@@ -14,7 +14,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public float maxTime = 5f;
 
     public Animator transition;
-    public float transitionTime = 3f;
+    public float transitionTime = 5f;
 
     public GameObject MessagePanel; // should be static but it can't find on Awake() method so doesn't work...
 
@@ -42,6 +42,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         remainingTime = maxTime;
         messageText = MessagePanel.GetComponentInChildren<TextMeshProUGUI>();
         LockCameraRotation(!isDead);
+        originalTimeScale = Time.timeScale; // Store the original time scale
     }
 
     void Update()
@@ -76,6 +77,22 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
+    private float originalTimeScale;
+    public float timeScaleFactor = 1.2f;
+    public float timeControllerDuration = 10f; // Duration for TimeController method
+
+    public void TimeController()
+    {
+        Time.timeScale = timeScaleFactor;
+        StartCoroutine(ResetTimeScaleAfterDelay());
+    }
+
+    public IEnumerator ResetTimeScaleAfterDelay()
+    {
+        yield return new WaitForSeconds(timeControllerDuration);
+        Time.timeScale = originalTimeScale; // Reset time scale to its original value
+    }
+
     public void AddTimeToTimer(float timeToAdd)
     {
         remainingTime += timeToAdd;
@@ -101,10 +118,12 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void GameOver()
     {
+        // Unlock Z-axis constraint
+        Rigidbody playerRigidbody = playerObject.GetComponent<Rigidbody>();
+        playerRigidbody.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
+
         LockCameraRotation(isDead);
-
         StartCoroutine(RestartLevel());
-
     }
 
     IEnumerator RestartLevel()
@@ -128,7 +147,6 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void LockCameraRotation(bool isDead)
     {
-        playerCameraTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
         if (playerObject != null)
         {
             MonoBehaviour[] scripts = playerObject.GetComponents<MonoBehaviour>();
@@ -136,7 +154,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 if (script.GetType().Name.Equals("FirstPersonController"))
                 {
-                    script.enabled = !isDead;
+                    script.enabled = isDead;
                     break;
                 }
             }

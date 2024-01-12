@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: container
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fc36f005fd3785b45bf8f670d24c5563, type: 3}
+      propertyPath: m_TagString
+      value: Inspect
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71,6 +75,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc36f005fd3785b45bf8f670d24c5563, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4651897921311288364}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc36f005fd3785b45bf8f670d24c5563, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2176296849740560576}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc36f005fd3785b45bf8f670d24c5563, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3631226964344687456}
   m_SourcePrefab: {fileID: 100100000, guid: fc36f005fd3785b45bf8f670d24c5563, type: 3}
 --- !u!1 &5932198973818195517 stripped
 GameObject:
@@ -104,3 +114,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!65 &2176296849740560576
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932198973818195517}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02646853, y: 0.038537636, z: 0.02240842}
+  m_Center: {x: 0, y: 0, z: 0.004779428}
+--- !u!114 &3631226964344687456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932198973818195517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}

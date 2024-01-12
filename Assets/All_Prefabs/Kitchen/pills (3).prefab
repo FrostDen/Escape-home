@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: pills (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 62b47e33fa6b9e5408ee85389eb6ed5d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 62b47e33fa6b9e5408ee85389eb6ed5d, type: 3}
+      propertyPath: m_TagString
+      value: Inspect
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -80,6 +88,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62b47e33fa6b9e5408ee85389eb6ed5d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7292988283990615576}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 62b47e33fa6b9e5408ee85389eb6ed5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4852391630117144868}
   m_SourcePrefab: {fileID: 100100000, guid: 62b47e33fa6b9e5408ee85389eb6ed5d, type: 3}
 --- !u!1 &8205834349609718431 stripped
 GameObject:
@@ -170,3 +181,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
+--- !u!114 &4852391630117144868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8205834349609718431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4415fd080a679414087849c4baab66a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 4152d21f10a8dca4989b436d4937693d, type: 2}
+  isRedKey: 0
+  playerCameraTransform: {fileID: 0}
+  objectGrabPointTransform: {fileID: 0}
+  pickUpLayerMask:
+    serializedVersion: 2
+    m_Bits: 51
+  Pickposition: {x: 0, y: 0, z: 0}
+  PickRotation: {x: 0, y: 0, z: 0}

@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tv_remote
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
+      propertyPath: m_TagString
+      value: Inspect
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -139,6 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
 --- !u!1 &5305762514696317921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -466329591000292508, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}

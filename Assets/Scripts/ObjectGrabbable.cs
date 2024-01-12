@@ -24,7 +24,7 @@ public class ObjectGrabbable : MonoBehaviour
         isGrabbed = true;
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
-        if (CompareTag("Object"))
+        if (CompareTag("Object") || CompareTag("Flashlight"))
         {
             this.playerCameraTransform = playerCameraTransform;
             objectRigidbody.freezeRotation = true;
@@ -104,6 +104,7 @@ public class ObjectGrabbable : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked; // Lock cursor when not inspecting
             }
         }
+
     }
 
     private void FixedUpdate()
@@ -120,7 +121,7 @@ public class ObjectGrabbable : MonoBehaviour
                 Vector3 lookAtPosition = new Vector3(playerCameraTransform.position.x, transform.position.y, playerCameraTransform.position.z);
                 transform.LookAt(lookAtPosition);
 
-                if (CompareTag("Object") && isGrabbed)
+                if (CompareTag("Object") || CompareTag("Flashlight") && isGrabbed)
                 {
                     lerpSpeed = 30f;
                     newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed); // Reuse the existing newPosition variable
@@ -155,3 +156,4 @@ public class ObjectGrabbable : MonoBehaviour
 // for mobile x= -100; y= 0; z= 90;
 // for flashlight x= -90; y= -90; z= 0;
 // for key x= 0; y= 90; z= 90;
+// for plug x= 200; y= 0; z= 0;

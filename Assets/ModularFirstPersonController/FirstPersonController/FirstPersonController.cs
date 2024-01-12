@@ -18,6 +18,8 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
+    private Animator animator;
+    private bool hasPlayedGetUpAnimation = false;
 
     private Rigidbody rb;
 
@@ -156,7 +158,15 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        if(lockCursor)
+        animator = GetComponent<Animator>();
+
+        // Trigger the Get Up animation only if it hasn't played yet
+        if (!hasPlayedGetUpAnimation)
+        {
+            animator.SetBool("IsGettingUp", true);
+        }
+
+        if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -207,10 +217,16 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        if (hasPlayedGetUpAnimation)
+        {
+            // Transition to free movement state when the get-up animation is complete
+            animator.SetBool("IsGetUpComplete", true);
+        }
+
         #region Camera
 
         // Control camera movement
-        if(cameraCanMove)
+        if (cameraCanMove)
         {
             yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
 
@@ -377,12 +393,43 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    public void OnGetUpAnimationComplete()
+    {
+        // Set the flag to indicate that the animation has played
+        hasPlayedGetUpAnimation = true;
+        GetComponent<Animator>().enabled = false;
+    }
+
+    #region Player increased speed inactive
+    //public IEnumerator ChangePlayerSpeedOverTime(float newSpeed, float duration)
+    //{
+    //    float originalSpeed = walkSpeed;
+    //    float elapsedTime = 1f;
+
+    //    while (elapsedTime < duration)
+    //    {
+    //        // Interpolate between the original speed and the new speed over time
+    //        walkSpeed = Mathf.Lerp(originalSpeed, newSpeed, elapsedTime / duration);
+
+    //        // Update the elapsed time
+    //        elapsedTime += Time.deltaTime;
+
+    //        yield return null;
+    //    }
+
+    //    // Ensure the final speed is set to the exact new speed
+    //    walkSpeed = newSpeed;
+    //}
+    #endregion
+
     void FixedUpdate()
     {
         #region Movement
 
         if (playerCanMove)
         {
+
+            Debug.Log("Moving player");
             // Calculate how fast we should be moving
             Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 

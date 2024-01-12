@@ -51,7 +51,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
             ToggleInventoryPanel();
         //Item3DViewer.gameObject.SetActive(isInventoryOpen);
 
-        Cursor.visible = isInventoryOpen;
+            Cursor.visible = isInventoryOpen;
             Cursor.lockState = isInventoryOpen ? CursorLockMode.None : CursorLockMode.Locked;
 
             LockCameraRotation(isInventoryOpen);

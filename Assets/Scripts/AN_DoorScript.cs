@@ -42,6 +42,12 @@ public class AN_DoorScript : MonoBehaviour
         rbDoor = GetComponent<Rigidbody>();
         hinge = GetComponent<HingeJoint>();
         inventoryItemController = FindObjectOfType<InventoryItemController>();
+
+        if (CompareTag("OpenedDoor"))
+        {
+            isOpened = true;
+            rbDoor.AddRelativeTorque(new Vector3(0, 0, 20f));
+        }
     }
 
     void Update()
@@ -79,7 +85,7 @@ public class AN_DoorScript : MonoBehaviour
                 isOpened = true;
                 rbDoor.AddRelativeTorque(new Vector3(0, 0, 20f)); 
             }
-        
+
         }
     }
 
@@ -88,7 +94,7 @@ public class AN_DoorScript : MonoBehaviour
         distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
-        if (distance < 3f) return true; // angleView < 35f && 
+        if (angleView < 90f && distance < 2f) return true; // angleView < 35f && 
         else return false;
     }
 

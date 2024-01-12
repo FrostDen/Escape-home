@@ -60,7 +60,7 @@ public class PincodeScript : MonoBehaviour
 
     private IEnumerator ClearPinAfterDelay()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         enteredPin = "";
     }
 

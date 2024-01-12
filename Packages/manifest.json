@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cyanilux.urp-blitrenderfeature": "file:C:/Users/denod/Downloads/URP_BlitRenderFeature-master",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "2.0.7",
     "com.unity.feature.development": "1.0.1",
