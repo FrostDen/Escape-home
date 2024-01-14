@@ -15655,6 +15655,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!23 &1652277307 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1142993351059122372, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+  m_PrefabInstance: {fileID: 8851085875834589792}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1661660456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6991758056595981174, guid: 92c25d0664ce94c45a709d578dbf89c7, type: 3}
@@ -34941,6 +34946,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 758075235}
     m_Modifications:
+    - target: {fileID: 2006939633241137485, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: m_Name
+      value: EmissionRadio
+      objectReference: {fileID: 0}
+    - target: {fileID: 5755517080082394133, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: emissionRenderer
+      value: 
+      objectReference: {fileID: 1652277307}
     - target: {fileID: 5755517080082394133, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
       propertyPath: playerCameraTransform
       value: 
