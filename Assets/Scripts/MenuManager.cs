@@ -7,14 +7,15 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public InventoryManager inventoryManager;
-
+    public HUD hud;
     public Button resumeBtn;
     public Button restartBtn;
     public Button menuBtn;
     public RectTransform menuPanel; // Reference to your UI menu panel
-
     private Vector3 hiddenPosition; // Off-screen position
     private bool isVisible;
+
+    private bool canPressEscape = true; // Flag to allow pressing Escape
 
     public void Start()
     {
@@ -29,7 +30,7 @@ public class MenuManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canPressEscape)
         {
             ToggleMenu();
         }
@@ -67,5 +68,17 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Quit game!");
         Application.Quit();
+    }
+
+    // Call this method when the player dies to disable Escape button
+    public void DisableEscapeButton()
+    {
+        canPressEscape = false;
+    }
+
+    // Call this method when the player respawns or restarts to enable Escape button
+    public void EnableEscapeButton()
+    {
+        canPressEscape = true;
     }
 }

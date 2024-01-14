@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using FMODUnity;
 
 public class InventoryItemController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class InventoryItemController : MonoBehaviour
 
     private Bloom bloomComponent; // Reference to the Bloom effect
     private float originalBloomIntensity; // Store the original Bloom intensity
+
+
 
     void Start()
     {
@@ -104,6 +107,7 @@ public class InventoryItemController : MonoBehaviour
             {
                 hud.AddTimeToTimer(timeToAdd);
                 InventoryManager.Instance.Remove(item);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.UseSound, ObjectGrabPoint.transform.position);
                 Destroy(gameObject);
             }
         }
@@ -129,7 +133,7 @@ public class InventoryItemController : MonoBehaviour
 
                 StartCoroutine(ChangeBloomIntensity(originalBloomIntensity, targetIntensity, bloomEffectDuration));
             }
-
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.UseSound, ObjectGrabPoint.transform.position);
             InventoryManager.Instance.Remove(item);
             Destroy(gameObject);
             Debug.Log("Bloom intensity increased gradually");

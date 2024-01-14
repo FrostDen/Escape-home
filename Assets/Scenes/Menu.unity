@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1850474881}
-  m_IndirectSpecularColor: {r: 0.38443908, g: 0.4717797, b: 0.6176202, a: 1}
+  m_IndirectSpecularColor: {r: 0.38515937, g: 0.4724939, b: 0.61858577, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -418,7 +418,7 @@ MonoBehaviour:
   resumeBtn: {fileID: 1649402618}
   restartBtn: {fileID: 990962414}
   menuBtn: {fileID: 841399693}
-  menuPanel: {fileID: 620520453}
+  menuPanel: {fileID: 0}
 --- !u!114 &620520455
 MonoBehaviour:
   m_ObjectHideFlags: 0

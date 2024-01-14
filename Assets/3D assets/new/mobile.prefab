@@ -1635,8 +1635,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7119116608471755041}
   - component: {fileID: 4522842387167773044}
-  - component: {fileID: 2706137784798152587}
   - component: {fileID: 6672645124704139557}
+  - component: {fileID: 2642555118942225265}
   m_Layer: 6
   m_Name: MobileCamera
   m_TagString: Untagged
@@ -1710,14 +1710,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2706137784798152587
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388217203109576892}
-  m_Enabled: 1
 --- !u!114 &6672645124704139557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,6 +1754,19 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &2642555118942225265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388217203109576892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &1496241617550514279
 GameObject:
   m_ObjectHideFlags: 0

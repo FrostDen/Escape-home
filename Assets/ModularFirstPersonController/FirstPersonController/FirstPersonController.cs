@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using FMOD.Studio;
 
 #if UNITY_EDITOR
     using UnityEditor;
@@ -22,6 +23,10 @@ public class FirstPersonController : MonoBehaviour
     private bool hasPlayedGetUpAnimation = false;
 
     private Rigidbody rb;
+
+    //audio
+    private EventInstance playerFootsteps;
+
 
     #region Camera Movement Variables
 
@@ -159,6 +164,8 @@ public class FirstPersonController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
 
         // Trigger the Get Up animation only if it hasn't played yet
         if (!hasPlayedGetUpAnimation)
@@ -499,6 +506,8 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #endregion
+
+        UpdateSound();
     }
 
     // Sets isGrounded based on a raycast sent straigth down from the player object
@@ -584,6 +593,23 @@ public class FirstPersonController : MonoBehaviour
             // Resets when play stops moving
             timer = 0;
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
+        }
+    }
+
+    private void UpdateSound()
+    {
+        if (rb.velocity.x != 0 && rb.velocity.z != 0 && isGrounded)
+        {
+            PLAYBACK_STATE playbackState;
+            playerFootsteps.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                playerFootsteps.start();
+            }
+        }
+        else
+        {
+            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
 }

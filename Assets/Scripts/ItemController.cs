@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class ItemController : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class ItemController : MonoBehaviour
         if (isRedKey) inventoryItemController.RedKey = true;
         else inventoryItemController.BlueKey = true;
         Destroy(gameObject);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.PickupSound, playerCameraTransform.transform.position);
     }
 
     private void Update()
@@ -53,6 +55,7 @@ public class ItemController : MonoBehaviour
         transform.localPosition = Pickposition;
         transform.localEulerAngles = PickRotation;
     }
+
     float NearView() // it is true if you are near an interactive object
     {
         distance = Vector3.Distance(transform.position, Camera.main.transform.position);

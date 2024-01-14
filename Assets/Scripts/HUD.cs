@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-   
+    public MenuManager menuManager;
     public GameObject GameOverText;
     public Image sanityBar;
     public float maxTime = 5f;
@@ -124,6 +124,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         LockCameraRotation(isDead);
         StartCoroutine(RestartLevel());
+        menuManager.DisableEscapeButton();
     }
 
     IEnumerator RestartLevel()
