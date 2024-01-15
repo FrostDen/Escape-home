@@ -11,6 +11,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference playerFootsteps { get; private set; }
     [field: SerializeField] public EventReference Radio { get; private set; }
     [field: SerializeField] public EventReference traffic { get; private set; }
+    [field: SerializeField] public EventReference playerVoice { get; private set; }
+
 
     public static FMODEvents instance {  get; private set; }
 

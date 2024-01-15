@@ -27,6 +27,8 @@ public class FirstPersonController : MonoBehaviour
     //audio
     private EventInstance playerFootsteps;
 
+    [SerializeField] public Transform playerCameraTransform;
+
 
     #region Camera Movement Variables
 
@@ -171,6 +173,7 @@ public class FirstPersonController : MonoBehaviour
         if (!hasPlayedGetUpAnimation)
         {
             animator.SetBool("IsGettingUp", true);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerVoice, playerCameraTransform.transform.position);
         }
 
         if (lockCursor)

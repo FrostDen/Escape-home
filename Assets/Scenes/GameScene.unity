@@ -14220,6 +14220,13 @@ MonoBehaviour:
       Data3: 1173140910
       Data4: 1717006677
     Path: event:/Traffic
+  <playerVoice>k__BackingField:
+    Guid:
+      Data1: 1697242486
+      Data2: 1259817724
+      Data3: -1200782178
+      Data4: 2060902449
+    Path: event:/Player/PlayerVoice
 --- !u!1 &1588930579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3985199651262425096, guid: 5fb1b52fb7c96ee4e96f9f6bbd5fed5a, type: 3}
@@ -18076,6 +18083,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: playerCameraTransform
+      value: 
+      objectReference: {fileID: 1884101693}
     - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_Name
       value: FirstPersonController
@@ -34946,6 +34957,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 758075235}
     m_Modifications:
+    - target: {fileID: 802200892457162508, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/Radio
+      objectReference: {fileID: 0}
+    - target: {fileID: 802200892457162508, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: OverrideAttenuation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 802200892457162508, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 802200892457162508, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 802200892457162508, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1701754695
+      objectReference: {fileID: 0}
+    - target: {fileID: 802200892457162508, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1292766189
+      objectReference: {fileID: 0}
+    - target: {fileID: 802200892457162508, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 601385624
+      objectReference: {fileID: 0}
+    - target: {fileID: 802200892457162508, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: 1446932813
+      objectReference: {fileID: 0}
     - target: {fileID: 2006939633241137485, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
       propertyPath: m_Name
       value: EmissionRadio
