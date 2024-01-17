@@ -12,6 +12,7 @@ TagManager:
   - Inspect retrievable
   - Radio
   - Charger
+  - Phone
   layers:
   - Default
   - TransparentFX

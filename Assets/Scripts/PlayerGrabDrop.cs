@@ -10,6 +10,7 @@ public class PlayerGrabDrop : MonoBehaviour
     private Vector3 specificRotation;
 
     private ObjectGrabbable objectGrabbable;
+    public bool isGrabbed = false;
 
     float distance;
     float angleView;
@@ -36,6 +37,7 @@ public class PlayerGrabDrop : MonoBehaviour
             {
                 //Currently carrying something, drop
                 objectGrabbable.Drop();
+                objectGrabbable.LockCameraRotation(isGrabbed);
                 objectGrabbable = null;
             }
         }
@@ -53,7 +55,7 @@ public class PlayerGrabDrop : MonoBehaviour
             return 0f;
     }
 
-    
+
     private void CalculateGrabbedObjectRotation()
     {
         Vector3 cameraForward = playerCameraTransform.forward;

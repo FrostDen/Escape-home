@@ -12,8 +12,8 @@ public class RadioScript : MonoBehaviour
     [SerializeField] private Renderer emissionRenderer; // Reference to the renderer with the emission texture
 
     [Header("Parameter Change")]
-    [SerializeField] private string parameterName;
-    [SerializeField] private float parameterValue;
+    private string parameterName = "toggle_Radio";
+    private float parameterValue;
 
     float distance;
     float angleView;
@@ -37,10 +37,10 @@ public class RadioScript : MonoBehaviour
         originalEmissionColor = GetOriginalEmissionColor();
 
         // Set the initial playback position to a random time
-        SetRandomStartTime();
+        //SetRandomStartTime();
 
         // Start playing the radio
-        emitter.Play();
+        //emitter.Play();
 
         // Enable emission with the original color
         SetEmission(originalEmissionColor, true);
@@ -78,17 +78,17 @@ public class RadioScript : MonoBehaviour
     }
 
     // Function to set the initial playback position to a random time
-    void SetRandomStartTime()
-    {
-        FMOD.Studio.EventDescription eventDescription;
-        emitter.EventInstance.getDescription(out eventDescription);
+    //void SetRandomStartTime()
+    //{
+    //    FMOD.Studio.EventDescription eventDescription;
+    //    emitter.EventInstance.getDescription(out eventDescription);
 
-        int length;
-        eventDescription.getLength(out length);
+    //    int length;
+    //    eventDescription.getLength(out length);
 
-        int randomStartTime = Mathf.FloorToInt(Random.Range(1f, length / 1000f));
-        emitter.EventInstance.setTimelinePosition(randomStartTime * 1000); // Convert seconds to milliseconds
-    }
+    //    int randomStartTime = Mathf.FloorToInt(Random.Range(1f, length / 1000f));
+    //    emitter.EventInstance.setTimelinePosition(randomStartTime * 1000); // Convert seconds to milliseconds
+    //}
 
     // Update is called once per frame
     void Update()
@@ -115,13 +115,16 @@ public class RadioScript : MonoBehaviour
             else
             {
                 Debug.Log("Toggling radio ON");
-                SetRandomStartTime(); // Set a new random playback position
                 AudioManager.instance.SetRadioParameter(parameterName, 1);
                 SetEmission(originalEmissionColor, true); // Enable emission with the original color
             }
 
             // Update the radio state
             isRadioPlaying = !isRadioPlaying;
+        }
+        else
+        {
+            Debug.Log("Player is not near the radio.");
         }
     }
 
