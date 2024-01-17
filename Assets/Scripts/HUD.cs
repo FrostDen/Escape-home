@@ -8,9 +8,11 @@ using UnityEngine.EventSystems;
 
 public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public Winscreen winscreen;
     public List<ObjectGrabbable> objectGrabbables;
     public MenuManager menuManager;
     public GameObject GameOverText;
+    public GameObject WinText;
     public Image sanityBar;
     public float maxTime = 5f;
 
@@ -18,6 +20,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public float transitionTime = 5f;
 
     public GameObject MessagePanel; // should be static but it can't find on Awake() method so doesn't work...
+    public TextMeshProUGUI messageText;
 
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
@@ -26,7 +29,6 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private LayerMask pickUpLayerMask;
 
     private string currentHitItemName;
-    public TextMeshProUGUI messageText;
 
     private float showUpDistance = 2f;
     private RaycastHit currentHit;
@@ -38,7 +40,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     //    MessagePanel = GameObject.Find("MessagePanel");
     //}
 
-    void Start()
+    public void Start()
     {
         remainingTime = maxTime;
         messageText = MessagePanel.GetComponentInChildren<TextMeshProUGUI>();
@@ -111,10 +113,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void CloseMessagePanel() //static
     {
-        if (MessagePanel != null)
-        {
-            MessagePanel.SetActive(false);
-        }
+        MessagePanel.SetActive(false);
     }
 
     void GameOver()
@@ -128,11 +127,31 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         menuManager.DisableEscapeButton();
     }
 
+    public void WinGame()
+    {
+        LockCameraRotation(isDead);
+        WinText.SetActive(true);
+        StartCoroutine(BackToMenu());
+        menuManager.DisableEscapeButton();
+    }
+
     IEnumerator RestartLevel()
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(1);
+    }
+
+    private bool isVisible;
+
+    IEnumerator BackToMenu()
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(0);
+        isVisible = !isVisible;
+        Cursor.visible = isVisible;
+        Cursor.lockState = isVisible ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -153,6 +172,19 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
                 }
+
+                if (currentHit.transform.CompareTag("Phone"))
+                {
+                    currentHitItemName = currentHit.transform.name;
+                    OpenMessagePanel("[E] to grab " + currentHitItemName);
+                    Debug.Log(currentHitItemName);
+
+                    if (grabbable.isGrabbed == true)
+                    {
+                        OpenMessagePanel("connect charger to charge it");
+                    }
+                }
+
                 else if (currentHit.transform.CompareTag("Charger"))
                 {
                     currentHitItemName = currentHit.transform.name;
@@ -205,11 +237,16 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
                     if (grabbable.isGrabbed == true)
                     {
-                        OpenMessagePanel("press [F] to turn " + currentHitItemName);
+                        OpenMessagePanel("press [F] to turn on/off" + currentHitItemName);
                     }
                 }
             }
         }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        CloseMessagePanel();
     }
 
     public GameObject playerObject;
@@ -230,9 +267,5 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        CloseMessagePanel();
-    }
 }
 

@@ -8,7 +8,7 @@ public class ItemController : MonoBehaviour
 {
     public Item item;
 
-    public bool isRedKey = true;
+    public bool isRedKey = true, Facemask = false;
 
     InventoryItemController inventoryItemController;
 
@@ -32,6 +32,7 @@ public class ItemController : MonoBehaviour
         InventoryManager.Instance.Add(item);
         InventoryManager.Instance.ListItems();
         if (isRedKey) inventoryItemController.RedKey = true;
+        else if (Facemask) inventoryItemController.Facemask = true;
         else inventoryItemController.BlueKey = true;
         Destroy(gameObject);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.PickupSound, playerCameraTransform.transform.position);

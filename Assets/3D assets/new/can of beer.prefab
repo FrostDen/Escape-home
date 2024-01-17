@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       propertyPath: m_Name
-      value: can of beer 1
+      value: can of beer
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       propertyPath: m_Layer
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       propertyPath: m_TagString
-      value: Inspect
+      value: Inspect retrievable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

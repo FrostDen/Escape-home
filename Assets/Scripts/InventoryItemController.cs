@@ -15,7 +15,7 @@ public class InventoryItemController : MonoBehaviour
 
     private int itemQuantity = 0; // Keep track of the item quantity
 
-    public bool RedKey = false, BlueKey = false;
+    public bool RedKey = false, BlueKey = false, Facemask = false;
 
     public Volume globalVolume;
     public VolumeProfile volumeProfile;
@@ -90,6 +90,10 @@ public class InventoryItemController : MonoBehaviour
             if (item != null && item.itemName == "Key" && item.itemType == ItemType.Key)
             {
                 RedKey = true;
+            }
+            if (item != null && item.itemName == "Facemask")
+            {
+                Facemask = true;
             }
         }
     }
