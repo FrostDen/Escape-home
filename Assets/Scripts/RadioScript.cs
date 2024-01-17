@@ -11,6 +11,10 @@ public class RadioScript : MonoBehaviour
     [SerializeField] private LayerMask pickUpLayerMask;
     [SerializeField] private Renderer emissionRenderer; // Reference to the renderer with the emission texture
 
+    [Header("Parameter Change")]
+    [SerializeField] private string parameterName;
+    [SerializeField] private float parameterValue;
+
     float distance;
     float angleView;
     Vector3 direction;
@@ -40,6 +44,7 @@ public class RadioScript : MonoBehaviour
 
         // Enable emission with the original color
         SetEmission(originalEmissionColor, true);
+        AudioManager.instance.SetRadioParameter(parameterName, 1);
     }
 
     // Function to get the original emission color
@@ -95,7 +100,6 @@ public class RadioScript : MonoBehaviour
         }
     }
 
-    // Function to toggle the radio on and off
     void ToggleRadio()
     {
         // Check if the player is near the radio
@@ -104,13 +108,15 @@ public class RadioScript : MonoBehaviour
             // Toggle the radio state
             if (isRadioPlaying)
             {
-                emitter.Stop(); // Stop playing the radio
+                Debug.Log("Toggling radio OFF");
+                AudioManager.instance.SetRadioParameter(parameterName, 0);
                 SetEmission(originalEmissionColor, false); // Disable emission with the original color
             }
             else
             {
+                Debug.Log("Toggling radio ON");
                 SetRandomStartTime(); // Set a new random playback position
-                emitter.Play(); // Start playing the radio
+                AudioManager.instance.SetRadioParameter(parameterName, 1);
                 SetEmission(originalEmissionColor, true); // Enable emission with the original color
             }
 

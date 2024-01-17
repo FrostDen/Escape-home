@@ -24,7 +24,7 @@ public class ObjectGrabbable : MonoBehaviour
         isGrabbed = true;
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
-        if (CompareTag("Object") || CompareTag("Flashlight"))
+        if (CompareTag("Object") || CompareTag("Flashlight") || CompareTag("Charger"))
         {
             this.playerCameraTransform = playerCameraTransform;
             objectRigidbody.freezeRotation = true;
@@ -58,21 +58,51 @@ public class ObjectGrabbable : MonoBehaviour
 
     private void Update()
     {
-        if (isGrabbed && CompareTag("Inspect"))
+        if (isGrabbed)
         {
-            if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
+            if (CompareTag("Inspect"))
             {
-                StartInspecting();
-                LockCameraRotation(isGrabbed);
+                if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
+                {
+                    StartInspecting();
+                    LockCameraRotation(isGrabbed);
+                }
+
+                if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
+                {
+                    StopInspecting();
+                    LockCameraRotation(!isGrabbed);
+                }
+            }
+            if (CompareTag("Inspect retrievable"))
+            {
+                if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
+                {
+                    StartInspecting();
+                    LockCameraRotation(isGrabbed);
+                }
+
+                if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
+                {
+                    StopInspecting();
+                    LockCameraRotation(!isGrabbed);
+                }
             }
 
-            if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
+            if (CompareTag("Radio"))
             {
-                StopInspecting();
-                LockCameraRotation(!isGrabbed);
+                if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
+                {
+                    StartInspecting();
+                    LockCameraRotation(isGrabbed);
+                }
+
+                if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
+                {
+                    StopInspecting();
+                    LockCameraRotation(!isGrabbed);
+                }
             }
-
-
 
             if (isInspecting)
             {
@@ -85,26 +115,47 @@ public class ObjectGrabbable : MonoBehaviour
             }
         }
 
-        if (isGrabbed && CompareTag("Object"))
+        if (isGrabbed)
         {
-
-            if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
+            if (CompareTag("Object"))
             {
-                StartInspecting();
-                LockCameraRotation(isGrabbed);
-                Cursor.visible = true; // Cursor is visible while inspecting
-                Cursor.lockState = CursorLockMode.None; // Unlock cursor while inspecting
+                if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
+                {
+                    StartInspecting();
+                    LockCameraRotation(isGrabbed);
+                    Cursor.visible = true; // Cursor is visible while inspecting
+                    Cursor.lockState = CursorLockMode.None; // Unlock cursor while inspecting
+                }
+
+                if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
+                {
+                    StopInspecting();
+                    LockCameraRotation(!isGrabbed);
+                    Cursor.visible = false; // Cursor is hidden when not inspecting
+                    Cursor.lockState = CursorLockMode.Locked; // Lock cursor when not inspecting
+                }
             }
 
-            if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
+            if (CompareTag("Charger"))
             {
-                StopInspecting();
-                LockCameraRotation(!isGrabbed);
-                Cursor.visible = false; // Cursor is hidden when not inspecting
-                Cursor.lockState = CursorLockMode.Locked; // Lock cursor when not inspecting
+                if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
+                {
+                    StartInspecting();
+                    LockCameraRotation(isGrabbed);
+                    Cursor.visible = true; // Cursor is visible while inspecting
+                    Cursor.lockState = CursorLockMode.None; // Unlock cursor while inspecting
+                }
+
+                if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
+                {
+                    StopInspecting();
+                    LockCameraRotation(!isGrabbed);
+                    Cursor.visible = false; // Cursor is hidden when not inspecting
+                    Cursor.lockState = CursorLockMode.Locked; // Lock cursor when not inspecting
+                }
             }
+
         }
-
     }
 
     private void FixedUpdate()
@@ -121,7 +172,23 @@ public class ObjectGrabbable : MonoBehaviour
                 Vector3 lookAtPosition = new Vector3(playerCameraTransform.position.x, transform.position.y, playerCameraTransform.position.z);
                 transform.LookAt(lookAtPosition);
 
-                if (CompareTag("Object") || CompareTag("Flashlight") && isGrabbed)
+                if (CompareTag("Object"))
+                {
+                    lerpSpeed = 30f;
+                    newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed); // Reuse the existing newPosition variable
+                    objectRigidbody.MovePosition(newPosition);
+                    transform.Rotate(specificRotation);
+                }
+
+                if (CompareTag("Flashlight"))
+                {
+                    lerpSpeed = 30f;
+                    newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed); // Reuse the existing newPosition variable
+                    objectRigidbody.MovePosition(newPosition);
+                    transform.Rotate(specificRotation);
+                }
+
+                if (CompareTag("Charger"))
                 {
                     lerpSpeed = 30f;
                     newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed); // Reuse the existing newPosition variable

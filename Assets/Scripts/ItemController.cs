@@ -24,6 +24,7 @@ public class ItemController : MonoBehaviour
     private void Start()
     {
         inventoryItemController = FindObjectOfType<InventoryItemController>(); // key will get up and it will saved in "inventary"
+        playerCameraTransform = Camera.main.transform;
     }
 
     void Pickup()

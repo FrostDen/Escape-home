@@ -6,10 +6,33 @@ using FMOD.Studio;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Volume")]
+    [Range(0,1)]
+
+    public float masterVolume = 1.0f;
+    [Range(0,1)]
+
+    public float musicVolume = 1.0f;
+    [Range(0, 1)]
+
+    public float ambienceVolume = 1.0f;
+    [Range(0, 1)]
+
+    public float SFXVolume = 1.0f;
+    [Range(0, 1)]
+
+    private Bus masterBus;
+    private Bus musicBus;
+    private Bus ambienceBus;
+    private Bus sfxBus;
+
     private List<EventInstance> eventInstances;
     private List<StudioEventEmitter> eventEmitters; 
 
     public static AudioManager instance {  get; private set; }
+
+    private EventInstance ambienceEventInstance;
+    private EventInstance radioEventInstance;
 
     private void Awake()
     {
@@ -22,6 +45,24 @@ public class AudioManager : MonoBehaviour
 
         eventInstances = new List<EventInstance>();
         eventEmitters = new List<StudioEventEmitter>();
+
+        masterBus = RuntimeManager.GetBus("bus:/");
+        musicBus = RuntimeManager.GetBus("bus:/Music");
+        ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
+        sfxBus = RuntimeManager.GetBus("bus:/SFX");
+    }
+
+    private void Start()
+    {
+        InitializeAmbience(FMODEvents.instance.ambience);
+    }
+
+    private void Update()
+    {
+        masterBus.setVolume(masterVolume);
+        musicBus.setVolume(musicVolume);
+        ambienceBus.setVolume(ambienceVolume);
+        sfxBus.setVolume(SFXVolume);
     }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
@@ -36,12 +77,23 @@ public class AudioManager : MonoBehaviour
         return eventInstance;
     }
 
+    public void SetRadioParameter(string parameterName, float parameterValue) 
+    {
+        radioEventInstance.setParameterByName(parameterName, parameterValue);
+    }
+
     public StudioEventEmitter InitializeEventEmitter(EventReference eventReference, GameObject emitterGameObject)
     {
         StudioEventEmitter emitter = emitterGameObject.GetComponent<StudioEventEmitter>();
         emitter.EventReference = eventReference;
         eventEmitters.Add(emitter);
         return emitter;
+    }
+
+    public void InitializeAmbience(EventReference ambienceEventReference)
+    {
+        ambienceEventInstance = CreateEventInstance(ambienceEventReference);
+        ambienceEventInstance.start();
     }
 
     private void CleanUp()
@@ -61,5 +113,10 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanUp();
+    }
+
+    public void SetAmbienceArea(AmbienceArea area)
+    {
+        ambienceEventInstance.setParameterByName("area", (float) area);
     }
 }

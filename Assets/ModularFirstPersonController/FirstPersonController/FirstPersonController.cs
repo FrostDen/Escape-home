@@ -166,6 +166,7 @@ public class FirstPersonController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        enabled = false;
 
         playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
 
@@ -227,6 +228,16 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        ////Checking current velocity 
+        //if (rb != null)
+        //{
+        //    // Access the current velocity of the Rigidbody
+        //    Vector3 currentVelocity = rb.velocity;
+
+        //    // Print the velocity to the console
+        //    Debug.Log("Current Velocity: " + currentVelocity.magnitude);
+        //}
+
         if (hasPlayedGetUpAnimation)
         {
             // Transition to free movement state when the get-up animation is complete
@@ -408,6 +419,7 @@ public class FirstPersonController : MonoBehaviour
         // Set the flag to indicate that the animation has played
         hasPlayedGetUpAnimation = true;
         GetComponent<Animator>().enabled = false;
+        enabled = true;
     }
 
     #region Player increased speed inactive
@@ -599,20 +611,34 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    public float velocityThreshold = 1f; // Adjust this threshold as needed
+
     private void UpdateSound()
     {
-        if (rb.velocity.x != 0 && rb.velocity.z != 0 && isGrounded)
+        // Check if the magnitude of velocity is greater than the threshold and the player is grounded
+        if (Mathf.Abs(rb.velocity.x) > velocityThreshold || Mathf.Abs(rb.velocity.z) > velocityThreshold && isGrounded)
         {
             PLAYBACK_STATE playbackState;
             playerFootsteps.getPlaybackState(out playbackState);
+
+            // Check if the playback state is stopped before starting the sound
             if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
             {
                 playerFootsteps.start();
+                Debug.Log("Footsteps started to play.");
             }
         }
         else
         {
-            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+            PLAYBACK_STATE playbackState;
+            playerFootsteps.getPlaybackState(out playbackState);
+
+            // Check if the playback state is playing before stopping the sound
+            if (playbackState.Equals(PLAYBACK_STATE.PLAYING))
+            {
+                playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+                Debug.Log("Footsteps stopped playing.");
+            }
         }
     }
 }
