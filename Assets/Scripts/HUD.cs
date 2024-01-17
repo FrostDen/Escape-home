@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public List<ObjectGrabbable> objectGrabbables;
     public MenuManager menuManager;
     public GameObject GameOverText;
     public Image sanityBar;
@@ -136,15 +137,82 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (currentHit.transform != null)
+        foreach (ObjectGrabbable grabbable in objectGrabbables)
         {
-            currentHitItemName = currentHit.transform.name;
-            OpenMessagePanel("[LMB] to pick up/[E] to grab " + currentHitItemName);
-            Debug.Log(currentHitItemName);
+            //if (grabbable == null)
+            //{
+            //    Debug.LogError("A grabbable object in the list is not assigned.");
+            //    continue;
+            //}
+
+            if (currentHit.transform != null)
+            {
+                if (currentHit.transform.CompareTag("Object"))
+                {
+                    currentHitItemName = currentHit.transform.name;
+                    OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
+                    Debug.Log(currentHitItemName);
+                }
+                else if (currentHit.transform.CompareTag("Charger"))
+                {
+                    currentHitItemName = currentHit.transform.name;
+                    OpenMessagePanel("[E] to grab " + currentHitItemName);
+                    Debug.Log(currentHitItemName);
+
+                    if (grabbable.isGrabbed == true)
+                    {
+                        OpenMessagePanel("connect phone to charge it");
+                    }
+                }
+                else if (currentHit.transform.CompareTag("Inspect"))
+                {
+                    currentHitItemName = currentHit.transform.name;
+                    OpenMessagePanel("press [E] to grab " + currentHitItemName);
+                    Debug.Log(currentHitItemName);
+
+                    if (grabbable.isGrabbed == true)
+                    {
+                        OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                    }
+                }
+                else if (currentHit.transform.CompareTag("Radio"))
+                {
+                    currentHitItemName = currentHit.transform.name;
+                    OpenMessagePanel("press [E] to grab / [F] to turn on/off " + currentHitItemName);
+                    Debug.Log(currentHitItemName);
+
+                    if (grabbable.isGrabbed == true)
+                    {
+                        OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                    }
+                }
+                else if (currentHit.transform.CompareTag("Inspect retrievable"))
+                {
+                    currentHitItemName = currentHit.transform.name;
+                    OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
+                    Debug.Log(currentHitItemName);
+
+                    if (grabbable.isGrabbed == true)
+                    {
+                        OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                    }
+                }
+                else if (currentHit.transform.CompareTag("Flashlight"))
+                {
+                    currentHitItemName = currentHit.transform.name;
+                    OpenMessagePanel("press [E] to grab " + currentHitItemName);
+                    Debug.Log(currentHitItemName);
+
+                    if (grabbable.isGrabbed == true)
+                    {
+                        OpenMessagePanel("press [F] to turn " + currentHitItemName);
+                    }
+                }
+            }
         }
     }
 
-    public GameObject playerObject; // Make sure to assign this in the Inspector
+    public GameObject playerObject;
 
     public void LockCameraRotation(bool isDead)
     {

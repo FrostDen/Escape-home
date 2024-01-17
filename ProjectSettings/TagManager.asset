@@ -8,6 +8,10 @@ TagManager:
   - Inspect
   - Flashlight
   - OpenedDoor
+  - Pantry Door
+  - Inspect retrievable
+  - Radio
+  - Charger
   layers:
   - Default
   - TransparentFX

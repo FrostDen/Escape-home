@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class AN_DoorScript : MonoBehaviour
 {
@@ -79,11 +80,23 @@ public class AN_DoorScript : MonoBehaviour
             if (isOpened && CanClose && !RedLocked && !BlueLocked)
             {
                 isOpened = false;
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.DoorClose, transform.position);
+
+                if (CompareTag("Pantry Door")) 
+                {
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.DoorPantryClose, transform.position);
+                }
             }
             else if (!isOpened && CanOpen && !RedLocked && !BlueLocked)
             {
                 isOpened = true;
-                rbDoor.AddRelativeTorque(new Vector3(0, 0, 20f)); 
+                rbDoor.AddRelativeTorque(new Vector3(0, 0, 20f));
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.DoorOpen, transform.position);
+
+                if (CompareTag("Pantry Door"))
+                {
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.DoorPantryOpen, transform.position);
+                }
             }
 
         }
@@ -94,7 +107,7 @@ public class AN_DoorScript : MonoBehaviour
         distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
-        if (angleView < 90f && distance < 2f) return true; // angleView < 35f && 
+        if (angleView < 30f && distance < 2f) return true; // angleView < 35f && 
         else return false;
     }
 
