@@ -122,6 +122,10 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Rigidbody playerRigidbody = playerObject.GetComponent<Rigidbody>();
         playerRigidbody.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
 
+        float forceMagnitude = 1f; // You can adjust the force magnitude as needed
+        playerRigidbody.AddForce(Vector3.left * forceMagnitude, ForceMode.Impulse);
+
+
         LockCameraRotation(isDead);
         StartCoroutine(RestartLevel());
         menuManager.DisableEscapeButton();

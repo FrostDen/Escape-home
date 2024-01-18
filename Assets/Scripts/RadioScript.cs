@@ -12,8 +12,8 @@ public class RadioScript : MonoBehaviour
     [SerializeField] private Renderer emissionRenderer; // Reference to the renderer with the emission texture
 
     [Header("Parameter Change")]
-    private string parameterName = "toggle_Radio";
-    private float parameterValue;
+    [SerializeField] private string parameterName = "toggle_Radio";
+    [SerializeField] [Range(0, 1)] private float parameterValue;
 
     float distance;
     float angleView;
@@ -39,8 +39,8 @@ public class RadioScript : MonoBehaviour
         // Set the initial playback position to a random time
         //SetRandomStartTime();
 
-        // Start playing the radio
-        //emitter.Play();
+        //Start playing the radio
+        emitter.Play();
 
         // Enable emission with the original color
         SetEmission(originalEmissionColor, true);
