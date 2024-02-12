@@ -108,25 +108,55 @@ public class RadioScript : MonoBehaviour
             // Toggle the radio state
             if (isRadioPlaying)
             {
-                Debug.Log("Toggling radio OFF");
-                AudioManager.instance.SetRadioParameter(parameterName, 0);
+                emitter.Stop(); // Stop playing the radio
                 SetEmission(originalEmissionColor, false); // Disable emission with the original color
             }
             else
             {
-                Debug.Log("Toggling radio ON");
-                AudioManager.instance.SetRadioParameter(parameterName, 1);
+                FMOD.Studio.EventDescription eventDescription;
+                emitter.EventInstance.getDescription(out eventDescription);
+
+                int length;
+                eventDescription.getLength(out length);
+
+                //emitter.SetParameter("time", Random.Range(0f, length - 1f)); // Set a new random playback position
+                emitter.Play(); // Start playing the radio
                 SetEmission(originalEmissionColor, true); // Enable emission with the original color
             }
 
             // Update the radio state
             isRadioPlaying = !isRadioPlaying;
         }
-        else
-        {
-            Debug.Log("Player is not near the radio.");
-        }
     }
+
+    //void ToggleRadio()
+    //{
+    //    // Check if the player is near the radio
+    //    if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, NearView(), pickUpLayerMask, QueryTriggerInteraction.Ignore))
+    //    {
+    //        // Toggle the radio state
+    //        if (isRadioPlaying)
+    //        {
+    //            Debug.Log("Toggling radio OFF");
+    //            AudioManager.instance.SetRadioParameter(parameterName, 0);
+    //            SetEmission(originalEmissionColor, false); // Disable emission with the original color
+    //            emitter.start();
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Toggling radio ON");
+    //            AudioManager.instance.SetRadioParameter(parameterName, 1);
+    //            SetEmission(originalEmissionColor, true); // Enable emission with the original color
+    //        }
+
+    //        // Update the radio state
+    //        isRadioPlaying = !isRadioPlaying;
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Player is not near the radio.");
+    //    }
+    //}
 
     float NearView()
     {
