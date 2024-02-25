@@ -18,7 +18,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
 
     public InventoryItemController[] InventoryItems; 
 
-    private bool isInventoryOpen = false;
+    public bool isInventoryOpen = false;
 
     private Vector3 hiddenPosition;
     private bool hasInitialized = false; // Flag to track initialization
@@ -45,7 +45,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) && isInventoryOpen)
         {
             isInventoryOpen = !isInventoryOpen;
             ToggleInventoryPanel();
@@ -60,7 +60,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
         }
     }
 
-    private void ToggleInventoryPanel()
+    public void ToggleInventoryPanel()
     {
         ItemContent.localPosition = isInventoryOpen ? Vector3.zero : hiddenPosition;
     }

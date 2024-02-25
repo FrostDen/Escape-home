@@ -96,7 +96,10 @@ PrefabInstance:
       propertyPath: attenuationObject
       value: 
       objectReference: {fileID: 7111137244552097265}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5385038174887350176, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+    - {fileID: 4459864850019384736, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+    - {fileID: 4459864850019384739, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

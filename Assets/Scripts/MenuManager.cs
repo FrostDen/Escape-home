@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
     private Vector3 hiddenPosition; // Off-screen position
     private bool isVisible;
 
-    private bool canPressEscape = true; // Flag to allow pressing Escape
+    public bool canPressEscape = true; // Flag to allow pressing Escape
 
     public void Start()
     {
@@ -34,6 +34,12 @@ public class MenuManager : MonoBehaviour
         {
             ToggleMenu();
         }
+
+        // Check if menu is open and disable inventory key if applicable
+        if (isVisible && Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryManager.ToggleInventoryPanel(); // Set parameter to false to prevent actual opening
+        }
     }
 
     public void PlayGame()
@@ -48,14 +54,21 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleMenu()
     {
-        if (menuPanel != null)
+        if (inventoryManager.isInventoryOpen == false) // Ensure inventory isn't already open
         {
             // Toggle the menu's position
             isVisible = !isVisible;
             menuPanel.localPosition = isVisible ? Vector3.zero : hiddenPosition;
-            inventoryManager.LockCameraRotation(isVisible);
+
+            // Use Cursor.lockState and Input.GetAxis for smoother locking
+            float lockValue = Mathf.Clamp01(Input.GetAxis("Mouse X") + Input.GetAxis("Mouse Y"));
+
+            // Set Cursor.lockState based on lockValue
+            Cursor.lockState = lockValue >= 0.5f ? CursorLockMode.Locked : CursorLockMode.None;
+
+            // Set Cursor.visible based on isVisible
             Cursor.visible = isVisible;
-            Cursor.lockState = isVisible ? CursorLockMode.None : CursorLockMode.Locked;
+            inventoryManager.LockCameraRotation(isVisible);
         }
     }
 

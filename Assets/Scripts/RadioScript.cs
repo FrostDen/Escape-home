@@ -110,6 +110,7 @@ public class RadioScript : MonoBehaviour
             {
                 emitter.Stop(); // Stop playing the radio
                 SetEmission(originalEmissionColor, false); // Disable emission with the original color
+                AudioManager.instance.SetRadioParameter(parameterName, 0);
             }
             else
             {
@@ -122,6 +123,7 @@ public class RadioScript : MonoBehaviour
                 //emitter.SetParameter("time", Random.Range(0f, length - 1f)); // Set a new random playback position
                 emitter.Play(); // Start playing the radio
                 SetEmission(originalEmissionColor, true); // Enable emission with the original color
+                AudioManager.instance.SetRadioParameter(parameterName, 1);
             }
 
             // Update the radio state
