@@ -297,6 +297,7 @@ Transform:
   - {fileID: 6073864193234620169}
   - {fileID: 383380473666508995}
   - {fileID: 3727487857470934109}
+  - {fileID: 5769942322021897587}
   m_Father: {fileID: 4363216159434613882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8675024478243111024
@@ -410,6 +411,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1
 --- !u!153 &5978031890969599297
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -665,6 +672,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1
 --- !u!153 &5106683902010597713
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -1025,6 +1038,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1
 --- !u!153 &2873026539872103697
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -2855,6 +2874,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1
 --- !u!153 &692728896872871117
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -3929,12 +3954,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6569342663853747326}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000004214685, y: 0.000000011238228, z: -0.70710665, w: 0.7071069}
-  m_LocalPosition: {x: 0.57841825, y: 20.530695, z: 38.53489}
-  m_LocalScale: {x: 21.590004, y: 7.428063, z: 8.484016}
+  m_LocalRotation: {x: -0.00000004214685, y: 0.000000011238225, z: -0.70710665, w: 0.7071069}
+  m_LocalPosition: {x: 0.578419, y: 20.53067, z: -0.39540702}
+  m_LocalScale: {x: 21.590004, y: 7.428063, z: 8.484017}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8265830633907773434}
+  m_Father: {fileID: 6586531205821570880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2508336520157531965
 MeshFilter:
@@ -4464,7 +4489,6 @@ Transform:
   m_Children:
   - {fileID: 5411837086189772425}
   - {fileID: 8994783062473178458}
-  - {fileID: 5769942322021897587}
   - {fileID: 6886636039227481703}
   - {fileID: 8866148389091461212}
   - {fileID: 8334621137805866187}
@@ -4581,6 +4605,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1
 --- !u!153 &978945027017976673
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -5151,6 +5181,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
+  playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1
 --- !u!153 &7010906640001588275
 ConfigurableJoint:
   m_ObjectHideFlags: 0

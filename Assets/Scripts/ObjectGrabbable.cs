@@ -258,9 +258,76 @@ public class ObjectGrabbable : MonoBehaviour
             }
         }
     }
-}
 
 // for mobile x= -100; y= 0; z= 90;
 // for flashlight x= -90; y= -90; z= 0;
 // for key x= 0; y= 90; z= 90;
 // for plug x= 200; y= 0; z= 0;
+
+
+    [Tooltip("Feature for one using only")]
+    public bool OneTime = false;
+    [Tooltip("SocketObject with collider(shpere, box etc.) (is trigger = true)")]
+    public Collider[] Places;
+
+    private Collider place;
+
+
+    // NearView()
+    float distance;
+    float angleView;
+    Vector3 direction;
+
+    public bool isConnected = false, youCan = true;
+
+    public void Update()
+    {
+        if (isConnected && place != null) // Check if there are any sockets
+        {
+            foreach (Collider socket in Places)
+            {
+                this.transform.position = place.transform.position; // Position based on each socket
+                this.transform.rotation = place.transform.rotation;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
+            {
+                isConnected = false;
+                place = null;
+            }
+        }
+    }
+
+    float NearView() // it is true if you are near an interactive object
+    {
+        distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+        direction = transform.position - Camera.main.transform.position;
+        angleView = Vector3.Angle(Camera.main.transform.forward, direction);
+        float maxDistance = 2f; // Define the maximum distance for the ray
+        if (angleView < 1f && distance < maxDistance)
+            return maxDistance; // Returning the maximum distance for the ray
+        else
+            return 0f; // Return 0 if the conditions are not met
+    }
+
+    // OnTriggerEnter method outside of Update
+    private void OnTriggerEnter(Collider other)
+    {
+        foreach (Collider socket in Places)
+        {
+            if (other == socket)
+            {
+                isConnected = true;
+                place = other;
+            }
+        }
+        if (OneTime)
+            youCan = false;
+    }
+
+
+
+
+
+
+}

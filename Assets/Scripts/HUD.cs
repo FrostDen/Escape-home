@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using FMOD.Studio;
 
 public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -35,6 +36,12 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public bool isDead;
 
+    public float maxCoughFrequency = 9000000000000000000000000000000000f; // Adjust this value to decrease the maximum cough frequency
+    public float minCoughFrequency = 1f; // Adjust this value to increase the minimum cough frequency
+    private float coughFrequency;
+    private float timeSinceLastCough = 1f;
+    public float coughCooldown = 1f; // Adjust this value to set the minimum time between coughs
+
     //void Awake()
     //{
     //    MessagePanel = GameObject.Find("MessagePanel");
@@ -51,10 +58,30 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     void Update()
     {
         #region Timer
+
         if (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
             sanityBar.fillAmount = remainingTime / maxTime;
+
+            timeSinceLastCough += Time.deltaTime;
+
+            // Check if enough time has passed since the last cough
+            if (timeSinceLastCough >= coughCooldown)
+            {
+                // Reset the time since last cough
+                timeSinceLastCough = 0f;
+
+                // Calculate cough frequency
+                coughFrequency = Mathf.Lerp(minCoughFrequency, maxCoughFrequency, 1 - (remainingTime / maxTime));
+
+                // Check if a cough should occur based on the cough frequency
+                if (Random.value < coughFrequency)
+                {
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.playerCough, playerCameraTransform.transform.position);
+                }
+            }
+
         }
         else if (remainingTime < 0)
         {
@@ -78,6 +105,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             OnPointerExit(new PointerEventData(EventSystem.current)); // Pass a new PointerEventData
         }
+
     }
 
     private float originalTimeScale;
@@ -173,75 +201,88 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (currentHit.transform.CompareTag("Object"))
                 {
                     currentHitItemName = currentHit.transform.name;
-                    OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
+                    OpenMessagePanel("stlaè [LMB] vzia / [E] chyti " + currentHitItemName);
+                    //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
                 }
 
                 if (currentHit.transform.CompareTag("Phone"))
                 {
                     currentHitItemName = currentHit.transform.name;
-                    OpenMessagePanel("[E] to grab " + currentHitItemName);
+                    OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
+                    //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
                     if (grabbable.isGrabbed == true)
                     {
-                        OpenMessagePanel("connect charger to charge it");
+                        OpenMessagePanel("pripoj nabíjaèku k nabitiu mobilu");
+                        //OpenMessagePanel("connect charger to charge the phone");
                     }
                 }
 
                 else if (currentHit.transform.CompareTag("Charger"))
                 {
                     currentHitItemName = currentHit.transform.name;
-                    OpenMessagePanel("[E] to grab " + currentHitItemName);
+                    OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
+                    //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
                     if (grabbable.isGrabbed == true)
                     {
-                        OpenMessagePanel("connect phone to charge it");
+                        OpenMessagePanel("pripoj k telefónu na nabitie");
+                        //OpenMessagePanel("connect phone to charge it");
                     }
                 }
                 else if (currentHit.transform.CompareTag("Inspect"))
                 {
                     currentHitItemName = currentHit.transform.name;
-                    OpenMessagePanel("press [E] to grab " + currentHitItemName);
+                    OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
+                    //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
                     if (grabbable.isGrabbed == true)
                     {
-                        OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                        OpenMessagePanel("podrž [RMB] prezrie si " + currentHitItemName);
+                        //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
                     }
                 }
                 else if (currentHit.transform.CompareTag("Radio"))
                 {
                     currentHitItemName = currentHit.transform.name;
-                    OpenMessagePanel("press [E] to grab / [F] to turn on/off " + currentHitItemName);
+                    OpenMessagePanel("stlaè [E] chyti / [F] zapnú/vypnú " + currentHitItemName);
+                    ///OpenMessagePanel("press [E] to grab / [F] to turn on/off " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
                     if (grabbable.isGrabbed == true)
                     {
-                        OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                        OpenMessagePanel("podrž [RMB] prezrie si " + currentHitItemName);
+                        //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
                     }
                 }
                 else if (currentHit.transform.CompareTag("Inspect retrievable"))
                 {
                     currentHitItemName = currentHit.transform.name;
-                    OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
+                    OpenMessagePanel("stlaè [LMB] vzia / [E] chyti " + currentHitItemName);
+                    //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
                     if (grabbable.isGrabbed == true)
                     {
-                        OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                        OpenMessagePanel("podrž [RMB] prezrie si " + currentHitItemName);
+                        //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
                     }
                 }
                 else if (currentHit.transform.CompareTag("Flashlight"))
                 {
                     currentHitItemName = currentHit.transform.name;
-                    OpenMessagePanel("press [E] to grab " + currentHitItemName);
+                    OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
+                    //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
                     if (grabbable.isGrabbed == true)
                     {
-                        OpenMessagePanel("press [F] to turn on/off" + currentHitItemName);
+                        OpenMessagePanel("stlaè [F] zapnú/vypnú " + currentHitItemName);
+                        //OpenMessagePanel("press [F] to turn on/off " + currentHitItemName);
                     }
                 }
             }
@@ -270,6 +311,4 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
         }
     }
-
 }
-

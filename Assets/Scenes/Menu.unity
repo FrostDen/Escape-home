@@ -283,7 +283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLAY
+  m_text: "HRA\u0164"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35f9697d1c8b6a24a9cf41ae7ce19337, type: 2}
   m_sharedMaterial: {fileID: -2400373207461898495, guid: 35f9697d1c8b6a24a9cf41ae7ce19337, type: 2}
@@ -420,6 +420,7 @@ MonoBehaviour:
   restartBtn: {fileID: 990962414}
   menuBtn: {fileID: 841399693}
   menuPanel: {fileID: 0}
+  canPressEscape: 1
 --- !u!114 &620520455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: "UKON\u010CI\u0164"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35f9697d1c8b6a24a9cf41ae7ce19337, type: 2}
   m_sharedMaterial: {fileID: -2400373207461898495, guid: 35f9697d1c8b6a24a9cf41ae7ce19337, type: 2}
@@ -1669,7 +1670,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: NASTAVENIA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35f9697d1c8b6a24a9cf41ae7ce19337, type: 2}
   m_sharedMaterial: {fileID: -2400373207461898495, guid: 35f9697d1c8b6a24a9cf41ae7ce19337, type: 2}

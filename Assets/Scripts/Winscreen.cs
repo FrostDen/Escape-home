@@ -24,14 +24,25 @@ public class Winscreen : MonoBehaviour
         {
             HintPanel.SetActive(true);
             Debug.Log("No facemask!");
-            hintText.text = "Where do you think you're going? You need to wear a facemask first.";
+            hintText.text = "Kam si myslíš, e ideš? Najprv si nasaï rúško na tvár.";
+            //hintText.text = "Where do you think you're going? You need to wear a facemask first.";
         }
 
         if (inventoryItemController.Facemask == true)
         {
+            hintText.text = "You have to have a test with negative result in order to go outside.";
+            hintText.text = "Na to aby si mohol ís von, musíš ma test s negatívnym vısledkom.";
             Debug.Log("Facemask is present");
-            hud.WinGame();
+            //hud.WinGame();
         }
+
+        //if (inventoryItemController.Test == true)
+        //{
+        //    hintText.text = "Prepáè, kamarát... ale nemôem a pusti von s pozitívnym testom. Vylieè sa a príï o dva tıdne s negatívnym testom.";
+        //    //hintText.text = "Sorry buddy... but i can't let you go outside with positive test. Get cured and come back in two weeks with a negative test.";
+        //    Debug.Log("Facemask is present");
+        //    //hud.WinGame();
+        //}
     }
 
     private void OnTriggerExit(Collider collider)

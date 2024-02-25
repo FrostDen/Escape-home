@@ -87,11 +87,11 @@ public class InventoryItemController : MonoBehaviour
             itemQuantity = 1;
             itemQuantityText.gameObject.SetActive(false);
             UpdateItemQuantityText();
-            if (item != null && item.itemName == "Key" && item.itemType == ItemType.Key)
+            if (item != null && item.itemName == "k¾úè" && item.itemType == ItemType.Key)
             {
                 RedKey = true;
             }
-            if (item != null && item.itemName == "Facemask")
+            if (item != null && item.itemName == "rúško")
             {
                 Facemask = true;
             }
@@ -105,7 +105,7 @@ public class InventoryItemController : MonoBehaviour
         HUD hud = FindObjectOfType<HUD>();
         float timeToAdd = 30f;
 
-        if (item != null && (item.itemName == "Beer" || item.itemName == "Can of beer") && item.itemType == ItemType.Consumable)
+        if (item != null && (item.itemName == "pivo" || item.itemName == "plechovica piva") && item.itemType == ItemType.Consumable)
         {
             if (hud != null)
             {
@@ -124,7 +124,7 @@ public class InventoryItemController : MonoBehaviour
         float bloomIntensityIncrease = 1.5f;
         float bloomEffectDuration = 20f;
 
-        if (item != null && item.itemName == "Pills" && item.itemType == ItemType.Consumable)
+        if (item != null && item.itemName == "tabletky" && item.itemType == ItemType.Consumable)
         {
             hud.AddTimeToTimer(timeToAdd);
             hud.TimeController();
