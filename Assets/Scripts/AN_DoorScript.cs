@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
+
 public class AN_DoorScript : MonoBehaviour
 {
     [Tooltip("If it is false door can't be used")]

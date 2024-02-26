@@ -421,6 +421,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b80700e82dac2e45b3f2d61e7ca2d66, type: 3}
+--- !u!1 &204282655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7567304699021042323, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+  m_PrefabInstance: {fileID: 317255004}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &214328991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5485773523210213682, guid: fe3573edf1969b0428d504a7f4f9c571, type: 3}
@@ -3559,11 +3564,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!1 &786417738 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7567304698269140997, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
-  m_PrefabInstance: {fileID: 317255004}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &786417739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7567304698269140992, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
@@ -7755,10 +7755,11 @@ MonoBehaviour:
   isDead: 0
   maxCoughFrequency: 9e+33
   minCoughFrequency: 1
+  coughFrequency: 0
   coughCooldown: 1
   timeScaleFactor: 1.2
   timeControllerDuration: 10
-  playerObject: {fileID: 786417738}
+  playerObject: {fileID: 204282655}
 --- !u!114 &1731685590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9578,6 +9579,27 @@ MonoBehaviour:
       Data3: 787730599
       Data4: -1572928953
     Path: event:/SFX/DoorPantryClose
+  <KeypadCorrect>k__BackingField:
+    Guid:
+      Data1: 1447393784
+      Data2: 1241049437
+      Data3: -65277778
+      Data4: -640414919
+    Path: event:/SFX/KeypadCorrect
+  <KeypadWrong>k__BackingField:
+    Guid:
+      Data1: -819857217
+      Data2: 1302729556
+      Data3: 783708809
+      Data4: -1705252348
+    Path: event:/SFX/KeypadWrong
+  <KeypadBtn>k__BackingField:
+    Guid:
+      Data1: 1276036760
+      Data2: 1341349173
+      Data3: 480129674
+      Data4: -724877884
+    Path: event:/SFX/KeypadBtn
   <playerFootsteps>k__BackingField:
     Guid:
       Data1: 1429929980

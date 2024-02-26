@@ -15,6 +15,9 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference DoorClose { get; private set; }
     [field: SerializeField] public EventReference DoorPantryOpen { get; private set; }
     [field: SerializeField] public EventReference DoorPantryClose { get; private set; }
+    [field: SerializeField] public EventReference KeypadCorrect { get; private set; }
+    [field: SerializeField] public EventReference KeypadWrong { get; private set; }
+    [field: SerializeField] public EventReference KeypadBtn { get; private set; }
     [field: Header("Player SFX")]
     [field: SerializeField] public EventReference playerFootsteps { get; private set; }
     [field: SerializeField] public EventReference playerVoice { get; private set; }

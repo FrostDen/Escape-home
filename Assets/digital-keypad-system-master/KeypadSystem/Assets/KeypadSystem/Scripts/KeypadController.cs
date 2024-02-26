@@ -2,18 +2,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using FMODUnity;
 
 public class KeypadController : MonoBehaviour
 {
     public AN_DoorScript doorScript;
     public string password;
-    public int passwordLimit = 7;
+    public int passwordLimit = 4;
     public TMP_Text displayText;
-
-    [Header("Audio")]
-    public AudioSource audioSource;
-    public AudioClip correctSound;
-    public AudioClip wrongSound;
+    public Transform keypadTransform;
 
     private void Start()
     {
@@ -52,8 +49,7 @@ public class KeypadController : MonoBehaviour
     {
         if (displayText.text == password)
         {
-            if (audioSource != null)
-                audioSource.PlayOneShot(correctSound);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.KeypadCorrect, keypadTransform.position);
             displayText.text = "Access granted";
             displayText.color = Color.green;
 
@@ -67,8 +63,7 @@ public class KeypadController : MonoBehaviour
         }
         else
         {
-            if (audioSource != null)
-                audioSource.PlayOneShot(wrongSound);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.KeypadWrong, keypadTransform.position);
             displayText.text = "Access denied";
             displayText.color = Color.red;
             StartCoroutine(waitAndClear());

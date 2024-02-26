@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using FMOD.Studio;
 
+
 public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Winscreen winscreen;
@@ -36,9 +37,9 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public bool isDead;
 
-    public float maxCoughFrequency = 9000000000000000000000000000000000f; // Adjust this value to decrease the maximum cough frequency
+    public float maxCoughFrequency = 60f; // Adjust this value to decrease the maximum cough frequency
     public float minCoughFrequency = 1f; // Adjust this value to increase the minimum cough frequency
-    private float coughFrequency;
+    public float coughFrequency;
     private float timeSinceLastCough = 1f;
     public float coughCooldown = 1f; // Adjust this value to set the minimum time between coughs
 
@@ -55,6 +56,11 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         originalTimeScale = Time.timeScale; // Store the original time scale
     }
 
+    private void PlayCough()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.playerCough, playerCameraTransform.position);
+    }
+
     void Update()
     {
         #region Timer
@@ -64,6 +70,24 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             remainingTime -= Time.deltaTime;
             sanityBar.fillAmount = remainingTime / maxTime;
 
+            // Adjust cough frequency based on remaining time
+            if (remainingTime > 60) // More than 1 minute left
+            {
+                coughFrequency = 1f / 20f; // Cough every 20 seconds
+            }
+            else if (remainingTime > 30) // Less than 1 minute but more than 30 seconds left
+            {
+                coughFrequency = 1f / 10f; // Cough every 10 seconds
+            }
+            else if (remainingTime > 5) // Less than 30 seconds but more than 5 seconds left
+            {
+                coughFrequency = 1f / 7f; // Cough every 7 seconds
+            }
+            else // Less than 5 seconds left
+            {
+                coughFrequency = 1f; // Cough every 1 second
+            }
+
             timeSinceLastCough += Time.deltaTime;
 
             // Check if enough time has passed since the last cough
@@ -72,17 +96,14 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 // Reset the time since last cough
                 timeSinceLastCough = 0f;
 
-                // Calculate cough frequency
-                coughFrequency = Mathf.Lerp(minCoughFrequency, maxCoughFrequency, 1 - (remainingTime / maxTime));
-
                 // Check if a cough should occur based on the cough frequency
                 if (Random.value < coughFrequency)
                 {
-                    AudioManager.instance.PlayOneShot(FMODEvents.instance.playerCough, playerCameraTransform.transform.position);
+                    PlayCough();
                 }
             }
-
         }
+
         else if (remainingTime < 0)
         {
             remainingTime = 0;

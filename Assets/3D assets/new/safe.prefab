@@ -522,6 +522,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7851293021086016388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 0
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &755688271455891722
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +682,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5245342006303899066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,6 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Clear
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &917251048427104668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1140,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7346260754676039846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,6 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 7
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &1210747230457076312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,6 +1710,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3145918087874051078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,6 +1735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 4
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &2669777879853915067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,6 +2019,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2938104355767719070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1980,6 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 6
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &2890106764992300034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,12 +2312,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorScript: {fileID: 2157948288151110090}
-  password: 1234567
-  passwordLimit: 7
+  password: 0138
+  passwordLimit: 4
   displayText: {fileID: 3964966160914012831}
-  audioSource: {fileID: 0}
-  correctSound: {fileID: 8300000, guid: df8192caa86428d45b137483bfb4c468, type: 3}
-  wrongSound: {fileID: 8300000, guid: ef86d1476812b9b459b31db8e268cc07, type: 3}
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &3137558028212086116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,6 +2823,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4348634707625660799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2773,6 +2848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 5
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &3777904642604493860
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,6 +3088,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1032886582007058658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3025,6 +3113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 9
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &4197422547598771013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3591,6 +3680,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2073880786337467426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3604,6 +3705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 8
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &4611446414780148161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4238,6 +4340,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4420407174716265548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4251,6 +4365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 3
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &4791674867857167541
 GameObject:
   m_ObjectHideFlags: 0
@@ -5966,6 +6081,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &868203988256705162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5979,6 +6106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Enter
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &8108970279519654126
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,6 +6241,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5373868071171914406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6126,6 +6266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 2
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &8212523962063754298
 GameObject:
   m_ObjectHideFlags: 0
@@ -6260,6 +6401,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 868203988256705162}
+        m_TargetAssemblyTypeName: KeypadKey, Assembly-CSharp
+        m_MethodName: PlayKeypodBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &267943536071876461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6273,6 +6426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 1
+  keypadTransform: {fileID: 5486527325143001311}
 --- !u!1 &8586731414733194201
 GameObject:
   m_ObjectHideFlags: 0
@@ -6655,6 +6809,10 @@ MonoBehaviour:
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
   playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1
 --- !u!54 &7025818304450120157
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6679,9 +6837,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!59 &528184413554622908
 HingeJoint:
   m_ObjectHideFlags: 0
