@@ -81,7 +81,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
             else if (remainingTime > 5) // Less than 30 seconds but more than 5 seconds left
             {
-                coughFrequency = 1f / 7f; // Cough every 7 seconds
+                coughFrequency = 1f / 5f; // Cough every 7 seconds
             }
             else // Less than 5 seconds left
             {

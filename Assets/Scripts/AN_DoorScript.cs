@@ -98,6 +98,11 @@ public class AN_DoorScript : MonoBehaviour
                 {
                     AudioManager.instance.PlayOneShot(FMODEvents.instance.DoorPantryOpen, transform.position);
                 }
+
+                if (CompareTag("Safe Door"))
+                {
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.KeypadCorrect, transform.position);
+                }
             }
 
         }
