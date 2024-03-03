@@ -11,7 +11,7 @@ using FMOD.Studio;
 public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Winscreen winscreen;
-    public List<ObjectGrabbable> objectGrabbables;
+    public List<PhysicsObject> physicsObjects;
     public MenuManager menuManager;
     public GameObject GameOverText;
     public GameObject WinText;
@@ -209,7 +209,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        foreach (ObjectGrabbable grabbable in objectGrabbables)
+        foreach (PhysicsObject grabbable in physicsObjects)
         {
             //if (grabbable == null)
             //{

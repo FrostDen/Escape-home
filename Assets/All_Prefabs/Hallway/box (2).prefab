@@ -60,13 +60,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.575
       objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_Name
       value: box (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_TagString
       value: Inspect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -80,7 +92,7 @@ PrefabInstance:
       addedObject: {fileID: 969954486458517966}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9010926594273349839}
+      addedObject: {fileID: 1406359579417965558}
     - targetCorrespondingSourceObject: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2612917013159685310}
@@ -92,7 +104,7 @@ PrefabInstance:
       addedObject: {fileID: 6730035509686482029}
     - targetCorrespondingSourceObject: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6463907709854699061}
+      addedObject: {fileID: 7244659775436167006}
     - targetCorrespondingSourceObject: {fileID: -7146521406498821007, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6032062831621821721}
@@ -104,7 +116,7 @@ PrefabInstance:
       addedObject: {fileID: 548997834235079784}
     - targetCorrespondingSourceObject: {fileID: -7146521406498821007, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2979183003772934094}
+      addedObject: {fileID: 2449801181132625339}
   m_SourcePrefab: {fileID: 100100000, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
 --- !u!1 &3214242536120999233 stripped
 GameObject:
@@ -156,10 +168,10 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &9010926594273349839
+--- !u!114 &1406359579417965558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,12 +180,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3214242536120999233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 08f10bbed04581242a54da6623143651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specificRotation: {x: 0, y: 0, z: 0}
-  isGrabbed: 0
-  playerObject: {fileID: 0}
+  force: 600
+  damping: 6
+  distance: 2
+  lineRenderLocation: {fileID: 0}
 --- !u!1 &4361830773059603553 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7146521406498821007, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
@@ -266,7 +279,7 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &2979183003772934094
+--- !u!114 &2449801181132625339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,12 +288,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4361830773059603553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 08f10bbed04581242a54da6623143651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specificRotation: {x: 0, y: 0, z: 0}
-  isGrabbed: 0
-  playerObject: {fileID: 0}
+  force: 600
+  damping: 6
+  distance: 2
+  lineRenderLocation: {fileID: 0}
 --- !u!1 &6095265388586508789 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
@@ -373,7 +387,7 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &6463907709854699061
+--- !u!114 &7244659775436167006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,9 +396,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6095265388586508789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 08f10bbed04581242a54da6623143651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specificRotation: {x: 0, y: 0, z: 0}
-  isGrabbed: 0
-  playerObject: {fileID: 0}
+  force: 600
+  damping: 6
+  distance: 2
+  lineRenderLocation: {fileID: 0}

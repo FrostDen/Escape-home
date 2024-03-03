@@ -68,6 +68,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -7447011786779755003, guid: 6054c63025201b04abe8a60acabba944, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7447011786779755003, guid: 6054c63025201b04abe8a60acabba944, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7447011786779755003, guid: 6054c63025201b04abe8a60acabba944, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -7447011786779755003, guid: 6054c63025201b04abe8a60acabba944, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -7447011786779755003, guid: 6054c63025201b04abe8a60acabba944, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7447011786779755003, guid: 6054c63025201b04abe8a60acabba944, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 797147297504876537, guid: 6054c63025201b04abe8a60acabba944, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -92,6 +116,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 74e8447419460af4ebcf3214c93c5562, type: 2}
+    - target: {fileID: 3674361442250110677, guid: 6054c63025201b04abe8a60acabba944, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674361442250110677, guid: 6054c63025201b04abe8a60acabba944, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -226,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 9d6c666500852d84c8e99517827821fa, type: 2}
   isRedKey: 0
+  Facemask: 0
   playerCameraTransform: {fileID: 0}
   objectGrabPointTransform: {fileID: 0}
   pickUpLayerMask:
@@ -248,3 +281,7 @@ MonoBehaviour:
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
   playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1

@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26984b582e21e6546b97340dbdbb4d4f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26984b582e21e6546b97340dbdbb4d4f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26984b582e21e6546b97340dbdbb4d4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26984b582e21e6546b97340dbdbb4d4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26984b582e21e6546b97340dbdbb4d4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26984b582e21e6546b97340dbdbb4d4f, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7aba260b80a06ef4184e95d405a8a4a2, type: 2}
   isRedKey: 1
+  Facemask: 0
   playerCameraTransform: {fileID: 0}
   objectGrabPointTransform: {fileID: 0}
   pickUpLayerMask:
@@ -182,3 +183,7 @@ MonoBehaviour:
   specificRotation: {x: 0, y: 90, z: 90}
   isGrabbed: 0
   playerObject: {fileID: 0}
+  OneTime: 0
+  Places: []
+  isConnected: 0
+  youCan: 1

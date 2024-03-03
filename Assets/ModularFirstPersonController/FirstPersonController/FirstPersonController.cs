@@ -22,6 +22,9 @@ public class FirstPersonController : MonoBehaviour
     private Animator animator;
     private bool hasPlayedGetUpAnimation = false;
 
+
+    private PlayerInteractions playerInteractions;
+
     private Rigidbody rb;
 
     //audio

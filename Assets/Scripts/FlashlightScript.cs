@@ -6,7 +6,7 @@ using FMODUnity;
 public class FlashlightScript : MonoBehaviour
 {
     public BatteryScript batteryScript;
-    public ObjectGrabbable objectGrabbable;
+    public PhysicsObject physicsObject;
     float distance;
     float angleView;
     Vector3 direction;
@@ -26,12 +26,17 @@ public class FlashlightScript : MonoBehaviour
             originalEmissionColor = GetOriginalEmissionColor();
             SetEmission(originalEmissionColor, false);
         }
+
+        if (physicsObject == null)
+        {
+            physicsObject = GetComponent<PhysicsObject>();
+        }
     }
 
     void Update()
     {
         // Toggle flashlight on/off when the 'F' key is pressed
-        if (Input.GetKeyDown(KeyCode.F) && NearView() > 0f && objectGrabbable.isGrabbed)
+        if (Input.GetKeyDown(KeyCode.F) && physicsObject.isGrabbed)
         {
             ToggleFlashlight();
         }
@@ -89,16 +94,16 @@ public class FlashlightScript : MonoBehaviour
         }
     }
 
-    float NearView()
-    {
-        distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-        direction = transform.position - Camera.main.transform.position;
-        angleView = Vector3.Angle(Camera.main.transform.forward, direction);
-        float maxDistance = 2f;
-        if (angleView < 10f && distance < maxDistance)
-            return maxDistance;
-        else
-            return 0f;
-    }
+    //float NearView()
+    //{
+    //    distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+    //    direction = transform.position - Camera.main.transform.position;
+    //    angleView = Vector3.Angle(Camera.main.transform.forward, direction);
+    //    float maxDistance = 2f;
+    //    if (angleView < 30f && distance < maxDistance)
+    //        return maxDistance;
+    //    else
+    //        return 0f;
+    //}
 }
 

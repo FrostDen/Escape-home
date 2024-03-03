@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.999344
+      value: -5.626869
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3909999
+      value: 0.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.083079
+      value: 8.507697
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       propertyPath: m_LocalRotation.w
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       propertyPath: m_TagString
-      value: Inspect
+      value: Radio
       objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -99,6 +99,10 @@ PrefabInstance:
     - target: {fileID: 8416272007918961125, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
+      propertyPath: m_Name
+      value: EmissionRadio
       objectReference: {fileID: 0}
     - target: {fileID: 8513859187771203891, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       propertyPath: m_Layer
@@ -113,13 +117,13 @@ PrefabInstance:
       addedObject: {fileID: 8470177961812940531}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7205286763702807663}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 802200892457162508}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5755517080082394133}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 745325232212076223}
     - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8328531348269248033}
@@ -151,6 +155,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8316198413416384609}
   m_SourcePrefab: {fileID: 100100000, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
+--- !u!23 &1142993351059122372 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7071182760956848314, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
+  m_PrefabInstance: {fileID: 7925588931439083646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1525359777451245678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
@@ -336,24 +345,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &7205286763702807663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7006528952768199983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  specificRotation: {x: 0, y: 0, z: 0}
-  isGrabbed: 0
-  playerObject: {fileID: 0}
 --- !u!114 &802200892457162508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,15 +367,17 @@ MonoBehaviour:
       Data2: 1292766189
       Data3: 601385624
       Data4: 1446932813
-    Path: event:/Radio
+    Path: event:/Ambience/Radio
   Event: 
-  PlayEvent: 1
+  PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   AllowNonRigidbodyDoppler: 0
-  Params: []
+  Params:
+  - Name: toggle_Radio
+    Value: 1
   OverrideAttenuation: 1
   OverrideMinDistance: 2
   OverrideMaxDistance: 10
@@ -401,6 +397,26 @@ MonoBehaviour:
   pickUpLayerMask:
     serializedVersion: 2
     m_Bits: 51
+  emissionRenderer: {fileID: 1142993351059122372}
+  parameterName: toggle_Radio
+  parameterValue: 1
+--- !u!114 &745325232212076223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7006528952768199983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 5
+  playerInteractions: {fileID: 0}
+  specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
 --- !u!1 &7381745758467519002 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: b04a79da5a3cf1b479f096c71bbc4eab, type: 3}
