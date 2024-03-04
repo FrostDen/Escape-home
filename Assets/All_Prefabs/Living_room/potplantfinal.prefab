@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5044093
+      value: -4.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.0355
+      value: 1.0355
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4580002
+      value: 18.358
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3623647299942157393, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 823334100980793467, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -73,8 +77,16 @@ PrefabInstance:
       value: potplantfinal
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
       propertyPath: m_TagString
       value: Inspect
+      objectReference: {fileID: 0}
+    - target: {fileID: 9103962308120395736, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -90,7 +102,7 @@ PrefabInstance:
       addedObject: {fileID: 1009209158356779698}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4493900609933497542}
+      addedObject: {fileID: 2749836742738982615}
     - targetCorrespondingSourceObject: {fileID: -3623647299942157393, guid: dd06cbd0d6c94d54aae50538693d308f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 778510807787535426}
@@ -202,10 +214,10 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &4493900609933497542
+--- !u!114 &2749836742738982615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,9 +226,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5068958900373987293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
-  playerObject: {fileID: 0}

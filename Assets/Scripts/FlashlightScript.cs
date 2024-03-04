@@ -5,7 +5,6 @@ using FMODUnity;
 
 public class FlashlightScript : MonoBehaviour
 {
-    public BatteryScript batteryScript;
     public PhysicsObject physicsObject;
     float distance;
     float angleView;
@@ -15,7 +14,6 @@ public class FlashlightScript : MonoBehaviour
 
     private Color originalEmissionColor;
     [SerializeField] private Renderer emissionRenderer; // Reference to the renderer with the emission texture
-
 
     void Start()
     {
@@ -63,7 +61,6 @@ public class FlashlightScript : MonoBehaviour
             }
         }
 
-        // You can add additional logic here, such as playing a sound or animating the flashlight model.
     }
 
     Color GetOriginalEmissionColor()
@@ -71,13 +68,14 @@ public class FlashlightScript : MonoBehaviour
         if (emissionRenderer != null)
         {
             Material material = emissionRenderer.material;
-
-            // Assuming "_EmissionColor" is the emission property, modify it based on your material
-            Color originalColor = material.GetColor("_EmissionColor");
-            return originalColor;
+            Color originalColor1 = material.GetColor("_EmissionColor");
+            return originalColor1;
         }
-
-        return Color.black; // Default color if no emissionRenderer is set
+        else
+        {
+            Debug.LogError("emissionRenderer is not assigned.");
+            return Color.black;
+        }
     }
 
     void SetEmission(Color emissionColor, bool enableEmission)
@@ -86,24 +84,9 @@ public class FlashlightScript : MonoBehaviour
         {
             Material material = emissionRenderer.material;
 
-            // Assuming "_EmissionColor" is the emission property, modify it based on your material
             material.SetColor("_EmissionColor", enableEmission ? emissionColor : Color.black);
 
-            // Enable or disable emission
             material.EnableKeyword("_EMISSION");
         }
     }
-
-    //float NearView()
-    //{
-    //    distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-    //    direction = transform.position - Camera.main.transform.position;
-    //    angleView = Vector3.Angle(Camera.main.transform.forward, direction);
-    //    float maxDistance = 2f;
-    //    if (angleView < 30f && distance < maxDistance)
-    //        return maxDistance;
-    //    else
-    //        return 0f;
-    //}
 }
-

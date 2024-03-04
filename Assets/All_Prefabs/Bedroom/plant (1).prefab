@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.86994
+      value: 0.8699402
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       propertyPath: m_LocalScale.y
@@ -18,19 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.86994
+      value: 0.8699402
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.43923426
+      value: -7.56
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5120001
+      value: -0.18000007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.8391604
+      value: 0.86000013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -81,8 +81,12 @@ PrefabInstance:
       value: plant (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       propertyPath: m_TagString
-      value: Inspect
+      value: Box
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -96,7 +100,7 @@ PrefabInstance:
       addedObject: {fileID: 7856324493865681049}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4745418725268506928}
+      addedObject: {fileID: 2735756264256515500}
   m_SourcePrefab: {fileID: 100100000, guid: 3574245918d53bf4e95d442dbf42490c, type: 3}
 --- !u!1 &7899534643695045786 stripped
 GameObject:
@@ -127,7 +131,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!136 &7856324493865681049
@@ -153,7 +157,7 @@ CapsuleCollider:
   m_Height: 1.16
   m_Direction: 1
   m_Center: {x: 0, y: 0.57, z: 0}
---- !u!114 &4745418725268506928
+--- !u!114 &2735756264256515500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,9 +166,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7899534643695045786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
-  playerObject: {fileID: 0}

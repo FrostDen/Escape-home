@@ -5,8 +5,7 @@ using UnityEngine;
 public class PhysicsObject : MonoBehaviour
 {
     public float waitOnPickup = 0.2f;
-    public float breakForce = 5f;
-    //[HideInInspector] public bool isGrabbed = false;
+    public float breakForce = 20f;
     [HideInInspector] public PlayerInteractions playerInteractions;
     [SerializeField] public Vector3 specificRotation;
     public bool isGrabbed = false;

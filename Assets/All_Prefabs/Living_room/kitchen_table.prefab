@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 31.219059
+      value: 31.21906
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 31.219059
+      value: 31.219057
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       propertyPath: m_LocalScale.z
@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.8044095
+      value: -1.0999999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.509
+      value: 0.5089998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.8999996
+      value: 16.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: kitchen_table
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
+      propertyPath: m_TagString
+      value: Heavy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -73,10 +81,10 @@ PrefabInstance:
       addedObject: {fileID: 3859825772578401869}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5250832504357675086}
+      addedObject: {fileID: 480580660260882318}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 480580660260882318}
+      addedObject: {fileID: 3494369943260282304}
   m_SourcePrefab: {fileID: 100100000, guid: c46d0057d68b7f840b9b6e0d7871432c, type: 3}
 --- !u!1 &5027653927922687842 stripped
 GameObject:
@@ -107,22 +115,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &5250832504357675086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5027653927922687842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  specificRotation: {x: 0, y: 0, z: 0}
+  m_CollisionDetection: 1
 --- !u!65 &480580660260882318
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -144,3 +139,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04388762, y: 0.04408924, z: 0.19917792}
   m_Center: {x: -0.00023582487, y: -0.00013428369, z: -0.02048594}
+--- !u!114 &3494369943260282304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5027653927922687842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
+  specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0

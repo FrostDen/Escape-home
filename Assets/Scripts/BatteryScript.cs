@@ -7,7 +7,7 @@ using TMPro;
 public class BatteryScript : MonoBehaviour
 {
     public MobileScript mobileScript;
-    public FlashlightScript flashlightScript;
+    public FlashlightMobileScript flashlightMobileScript;
     public AdapterScript adapterScript;
     public ChargerScript chargerScript;
     public Image batteryIndicator;
@@ -57,7 +57,9 @@ public class BatteryScript : MonoBehaviour
 
         if (currentCapacity == 0)
         {
-            flashlightScript.flashlight.enabled = false;
+            flashlightMobileScript.flashlightMobile.enabled = false;
+            flashlightMobileScript.isFlashlightOn = false;
+            flashlightMobileScript.SetEmission(flashlightMobileScript.originalEmissionColorMobile, false);
         }
         BatteryTextNumber.text = currentCapacity.ToString("F0") + "%";
         BatteryPINTextNumber.text = currentCapacity.ToString("F0") + "%";

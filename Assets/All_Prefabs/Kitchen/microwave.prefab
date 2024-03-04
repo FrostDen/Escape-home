@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6a5d53bde7d9954996aeefc1569bf06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3340001
+      value: 2.307
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6a5d53bde7d9954996aeefc1569bf06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.752
+      value: 1.3479999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6a5d53bde7d9954996aeefc1569bf06, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8760004
+      value: 17.686
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6a5d53bde7d9954996aeefc1569bf06, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,8 +65,12 @@ PrefabInstance:
       value: microwave
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b6a5d53bde7d9954996aeefc1569bf06, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6a5d53bde7d9954996aeefc1569bf06, type: 3}
       propertyPath: m_TagString
-      value: Inspect
+      value: Heavy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -80,7 +84,7 @@ PrefabInstance:
       addedObject: {fileID: 6570315932889250609}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b6a5d53bde7d9954996aeefc1569bf06, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8864186719558499843}
+      addedObject: {fileID: 3282098906424347096}
   m_SourcePrefab: {fileID: 100100000, guid: b6a5d53bde7d9954996aeefc1569bf06, type: 3}
 --- !u!1 &5070879863868450511 stripped
 GameObject:
@@ -111,7 +115,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!65 &6570315932889250609
@@ -135,7 +139,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.023396049, y: 0.033944555, z: 0.02}
   m_Center: {x: -0.00021973066, y: -0.000000007450581, z: 0.0000000037252903}
---- !u!114 &8864186719558499843
+--- !u!114 &3282098906424347096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,9 +148,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5070879863868450511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
-  playerObject: {fileID: 0}

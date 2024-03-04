@@ -71,19 +71,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_LocalScale.z
-      value: 33.60328
+      value: 33.603275
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.179
+      value: -1.93
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.3270001
+      value: 7.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_LocalRotation.w
@@ -117,6 +117,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
+      propertyPath: m_TagString
+      value: Box
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_Name
       value: box (5)
@@ -127,11 +131,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_TagString
-      value: Inspect
+      value: Box
       objectReference: {fileID: 0}
     - target: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
+      propertyPath: m_TagString
+      value: Box
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -148,7 +156,7 @@ PrefabInstance:
       addedObject: {fileID: 1496814568595457799}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1353394125923592504}
+      addedObject: {fileID: 1192536366141941898}
     - targetCorrespondingSourceObject: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3309908175088316871}
@@ -160,7 +168,7 @@ PrefabInstance:
       addedObject: {fileID: 6576809245930915151}
     - targetCorrespondingSourceObject: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6800174673692005640}
+      addedObject: {fileID: 2972921765197104436}
     - targetCorrespondingSourceObject: {fileID: -7146521406498821007, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2467270279124858075}
@@ -172,7 +180,7 @@ PrefabInstance:
       addedObject: {fileID: 8785436472775998310}
     - targetCorrespondingSourceObject: {fileID: -7146521406498821007, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8059310493809416091}
+      addedObject: {fileID: 7677533402896826960}
   m_SourcePrefab: {fileID: 100100000, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
 --- !u!1 &761456185164985580 stripped
 GameObject:
@@ -266,7 +274,7 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &8059310493809416091
+--- !u!114 &7677533402896826960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,13 +283,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 761456185164985580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f10bbed04581242a54da6623143651, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 600
-  damping: 6
-  distance: 2
-  lineRenderLocation: {fileID: 0}
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
+  specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
 --- !u!4 &1281821125778390902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
@@ -340,7 +349,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1353394125923592504
+--- !u!114 &1192536366141941898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,13 +358,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1910125653432001996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f10bbed04581242a54da6623143651, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 600
-  damping: 6
-  distance: 2
-  lineRenderLocation: {fileID: 0}
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
+  specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
 --- !u!1 &7102126260183308664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: e9a07837b2a36e34fb8abf343deae467, type: 3}
@@ -448,7 +458,7 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &6800174673692005640
+--- !u!114 &2972921765197104436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -457,10 +467,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7102126260183308664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f10bbed04581242a54da6623143651, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 600
-  damping: 6
-  distance: 2
-  lineRenderLocation: {fileID: 0}
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
+  specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0

@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.3154092
+      value: -5.589
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.454
+      value: 0.454
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.014
+      value: 13.886
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
       propertyPath: m_LocalRotation.w
@@ -69,6 +69,10 @@ PrefabInstance:
       value: tv_remote
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
       propertyPath: m_TagString
       value: Inspect
       objectReference: {fileID: 0}
@@ -81,7 +85,7 @@ PrefabInstance:
       addedObject: {fileID: 405911098019461099}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7661892745178757774}
+      addedObject: {fileID: 4006579998140756744}
     - targetCorrespondingSourceObject: {fileID: -466329591000292508, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7704295252178448520}
@@ -127,10 +131,10 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &7661892745178757774
+--- !u!114 &4006579998140756744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,12 +143,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4388740801273738708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
-  playerObject: {fileID: 0}
 --- !u!1 &5305762514696317921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -466329591000292508, guid: ca40870f5a232ed4483be95ec2badf16, type: 3}

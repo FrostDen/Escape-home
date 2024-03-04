@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14599991
+      value: 3.787
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.0029998
+      value: 1.0970001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.822
+      value: 16.632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -69,6 +69,10 @@ PrefabInstance:
       value: kettle
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}
       propertyPath: m_TagString
       value: Inspect
       objectReference: {fileID: 0}
@@ -81,7 +85,7 @@ PrefabInstance:
       addedObject: {fileID: 6763874669146464015}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 149263089179979695}
+      addedObject: {fileID: 8757143530650095809}
     - targetCorrespondingSourceObject: {fileID: -516098083770646512, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2649192794361257778}
@@ -260,10 +264,10 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &149263089179979695
+--- !u!114 &8757143530650095809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,12 +276,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7317908451700148112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
-  playerObject: {fileID: 0}
 --- !u!1 &8987020192021850787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7640558969779515294, guid: 2d24fa0d96608ee4aadf0d9cfc841aa4, type: 3}

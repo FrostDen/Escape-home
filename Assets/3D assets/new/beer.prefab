@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6054c63025201b04abe8a60acabba944, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.013525
+      value: 3.3859997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6054c63025201b04abe8a60acabba944, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.151
+      value: 1.272
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6054c63025201b04abe8a60acabba944, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.452777
+      value: 13.138
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6054c63025201b04abe8a60acabba944, type: 3}
       propertyPath: m_LocalRotation.w
@@ -145,7 +145,7 @@ PrefabInstance:
       addedObject: {fileID: 1007912748217493446}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6054c63025201b04abe8a60acabba944, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6152266043835749264}
+      addedObject: {fileID: 3505534723414214768}
   m_SourcePrefab: {fileID: 100100000, guid: 6054c63025201b04abe8a60acabba944, type: 3}
 --- !u!1 &4557988653062089522 stripped
 GameObject:
@@ -266,7 +266,7 @@ MonoBehaviour:
     m_Bits: 51
   Pickposition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 0, y: 0, z: 0}
---- !u!114 &6152266043835749264
+--- !u!114 &3505534723414214768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,13 +275,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4557988653062089522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 20
+  playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
-  playerObject: {fileID: 0}
-  OneTime: 0
-  Places: []
-  isConnected: 0
-  youCan: 1

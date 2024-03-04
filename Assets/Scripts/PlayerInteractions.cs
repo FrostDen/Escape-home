@@ -9,7 +9,7 @@ public class PlayerInteractions : MonoBehaviour
     public int interactableLayerIndex;
     private Vector3 raycastPos;
     public GameObject lookObject;
-    private PhysicsObject physicsObject;
+    public PhysicsObject physicsObject;
     private Camera mainCamera;
 
     [Header("Pickup")]
@@ -19,8 +19,8 @@ public class PlayerInteractions : MonoBehaviour
 
     [Header("ObjectFollow")]
     [SerializeField] private float minSpeed = 1f;
-    [SerializeField] private float maxSpeed = 3000f;
-    [SerializeField] private float maxDistance = 2f;
+    [SerializeField] private float maxSpeed = 2500f;
+    [SerializeField] public float maxDistance = 2f;
     private float currentSpeed = 0f;
     private float currentDist = 0f;
 
@@ -39,11 +39,11 @@ public class PlayerInteractions : MonoBehaviour
     }
 
     //A simple visualization of the point we're following in the scene view
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(pickupParent.position, 0.5f);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawSphere(pickupParent.position, 0.5f);
+    //}
 
     //Interactable Object detections and distance check
     void Update()
@@ -82,7 +82,6 @@ public class PlayerInteractions : MonoBehaviour
             else 
             {
                 BreakConnection();
-                physicsObject.isGrabbed = false;
             }
         }
 
@@ -118,6 +117,27 @@ public class PlayerInteractions : MonoBehaviour
             }
         }
 
+        if (currentlyPickedUpObject != null && currentlyPickedUpObject.CompareTag("CovidTest"))
+        {
+            // Check if the right mouse button is pressed
+            if (Input.GetMouseButtonDown(1))
+            {
+                StartCoroutine(DelayedLockCameraRotation(physicsObject.isGrabbed));
+            }
+
+            // Check if the right mouse button is released
+            if (Input.GetMouseButtonUp(1))
+            {
+                StartCoroutine(DelayedLockCameraRotation(!physicsObject.isGrabbed));
+            }
+        }
+
+        // Check if the distance between the player and grabbed object is greater than 2f
+        if (currentlyPickedUpObject != null && Vector3.Distance(pickupParent.transform.position, currentlyPickedUpObject.transform.position) > maxDistance)
+        {
+            BreakConnection();
+        }
+
     }
 
     //Velocity movement toward pickup parent and rotation
@@ -131,122 +151,103 @@ public class PlayerInteractions : MonoBehaviour
             Vector3 direction = pickupParent.position - pickupRB.position;
             pickupRB.velocity = direction.normalized * currentSpeed;
 
-
-            // Check if inspecting
-            if (isInspecting)
+            if (currentlyPickedUpObject.CompareTag("Cardbob"))
             {
-                // Calculate mouse movement
-                float mouseX = Input.GetAxis("Mouse X") * sensitivity;
-                float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
-
-                // Apply rotation based on mouse movement
-                Quaternion rotationDelta = Quaternion.Euler(-mouseY, mouseX, 0f);
-                pickupRB.MoveRotation(pickupRB.rotation * rotationDelta);
+                maxSpeed = Random.Range(300f, 1500f);
+                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
             }
-            else
-            {
-                //Rotation
-                lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
-                lookRot = Quaternion.Slerp(mainCamera.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
-                pickupRB.MoveRotation(lookRot);
 
-                if (currentlyPickedUpObject.CompareTag("Phone"))
+            if (currentlyPickedUpObject.CompareTag("Hinges"))
+            {
+                // Not final
+                float moveSpeed = 5f;
+                Vector3 targetPosition = pickupParent.position;
+                pickupRB.position = Vector3.Lerp(pickupRB.position, targetPosition, Time.deltaTime * moveSpeed);
+            }
+
+            if (currentlyPickedUpObject.CompareTag("Heavy") && currentlyPickedUpObject.CompareTag("Box"))
+            {
+                maxSpeed = 150f;
+                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
+            }
+
+
+            if (!currentlyPickedUpObject.CompareTag("Heavy"))
+            {
+                // Check if inspecting 
+                if (isInspecting)
                 {
-                    // Apply specific rotation
-                    pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
-                    lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
-                    lookRot = Quaternion.Euler(-100f, lookRot.eulerAngles.y, 90f); // Only face the camera on the y-axis
-                    pickupRB.MoveRotation(lookRot);
+
+                    // Calculate mouse movement
+                    float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+                    float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+
+                    // Apply rotation based on mouse movement
+                    Quaternion rotationDelta = Quaternion.Euler(-mouseY, mouseX, 0f);
+                    pickupRB.MoveRotation(pickupRB.rotation * rotationDelta);
                 }
-                if (currentlyPickedUpObject.CompareTag("Radio"))
+                else
                 {
-                    // Apply specific rotation
-                    pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
-                    lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
-                    lookRot = Quaternion.Euler(0f, lookRot.eulerAngles.y - 90f, 0f); // Only face the camera on the y-axis
-                    pickupRB.MoveRotation(lookRot);
-                }
-                if (currentlyPickedUpObject.CompareTag("Object"))
-                {
-                    // Apply specific rotation
-                    pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
-                    lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
-                    lookRot = Quaternion.Euler(0f, lookRot.eulerAngles.y + 90f, 90f); // Only face the camera on the y-axis
-                    pickupRB.MoveRotation(lookRot);
-                }
-                if (currentlyPickedUpObject.CompareTag("Charger"))
-                {
-                    // Apply specific rotation
-                    pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
-                    lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
-                    lookRot = Quaternion.Euler(200f, lookRot.eulerAngles.y, 0f); // Only face the camera on the y-axis
-                    pickupRB.MoveRotation(lookRot);
-                }
-                if (currentlyPickedUpObject.CompareTag("Flashlight"))
-                {
-                    // Apply specific rotation
-                    pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
-                    lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
-                    lookRot = Quaternion.Euler(-90f, lookRot.eulerAngles.y - 90f, 0f); // Only face the camera on the y-axis
-                    pickupRB.MoveRotation(lookRot);
+                    if (!currentlyPickedUpObject.CompareTag("Heavy") && !currentlyPickedUpObject.CompareTag("Box") && !currentlyPickedUpObject.CompareTag("Hinges") && !currentlyPickedUpObject.CompareTag("Inspect"))
+                    {
+                        //Rotation
+                        lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
+                        lookRot = Quaternion.Slerp(mainCamera.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
+                        pickupRB.MoveRotation(lookRot);
+
+                        if (currentlyPickedUpObject.CompareTag("Phone"))
+                        {
+                            // Apply specific rotation
+                            pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
+                            lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
+                            lookRot = Quaternion.Euler(-100f, lookRot.eulerAngles.y, 90f); // Only face the camera on the y-axis
+                            pickupRB.MoveRotation(lookRot);
+                        }
+                        if (currentlyPickedUpObject.CompareTag("Radio"))
+                        {
+                            // Apply specific rotation
+                            pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
+                            lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
+                            lookRot = Quaternion.Euler(0f, lookRot.eulerAngles.y - 90f, 0f); // Only face the camera on the y-axis
+                            pickupRB.MoveRotation(lookRot);
+                        }
+                        if (currentlyPickedUpObject.CompareTag("Object"))
+                        {
+                            // Apply specific rotation
+                            pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
+                            lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
+                            lookRot = Quaternion.Euler(0f, lookRot.eulerAngles.y + 90f, 90f); // Only face the camera on the y-axis
+                            pickupRB.MoveRotation(lookRot);
+                        }
+                        if (currentlyPickedUpObject.CompareTag("CovidTest"))
+                        {
+                            // Apply specific rotation
+                            pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
+                            lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
+                            lookRot = Quaternion.Euler(-100f, lookRot.eulerAngles.y, 90f); // Only face the camera on the y-axis
+                            pickupRB.MoveRotation(lookRot);
+                        }
+                        if (currentlyPickedUpObject.CompareTag("Charger"))
+                        {
+                            // Apply specific rotation
+                            pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
+                            lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
+                            lookRot = Quaternion.Euler(200f, lookRot.eulerAngles.y, 0f); // Only face the camera on the y-axis
+                            pickupRB.MoveRotation(lookRot);
+                        }
+                        if (currentlyPickedUpObject.CompareTag("Flashlight"))
+                        {
+                            // Apply specific rotation
+                            pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
+                            lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
+                            lookRot = Quaternion.Euler(-90f, lookRot.eulerAngles.y - 90f, 0f); // Only face the camera on the y-axis
+                            pickupRB.MoveRotation(lookRot);
+                        }
+                    }
                 }
             }
         }
 
-        //#region Inspection
-
-
-        //if (physicsObject != null && physicsObject.isGrabbed)
-        //{
-
-        //    if (CompareTag("Inspect") || CompareTag("Inspect retrievable") || CompareTag("Radio"))
-        //    {
-        //        if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
-        //        {
-        //            StartInspecting();
-        //            LockCameraRotation(physicsObject.isGrabbed);
-        //            Debug.Log("Inspecting");
-        //        }
-
-        //        if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
-        //        {
-        //            StopInspecting();
-        //            LockCameraRotation(!physicsObject.isGrabbed);
-        //            Debug.Log("Not inspecting");
-        //        }
-        //    }
-
-        //    if (isInspecting && currentlyPickedUpObject != null)
-        //    {
-        //        float mouseX = 0f;
-        //        float mouseY = 0f;
-
-        //        mouseX += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        //        mouseY -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
-        //        mouseY = Mathf.Clamp(mouseY, -90f, 90f);
-
-        //        currentlyPickedUpObject.transform.rotation = Quaternion.Euler(mouseY, mouseX, 0f);
-        //    }
-
-
-        //    if (CompareTag("Object") || CompareTag("Phone") || CompareTag("Charger"))
-        //    {
-        //        if (Input.GetMouseButtonDown(1)) // Check for right mouse button down
-        //        {
-        //            LockCameraRotation(physicsObject.isGrabbed);
-        //            Cursor.visible = true; // Cursor is visible while inspecting
-        //            Cursor.lockState = CursorLockMode.None; // Unlock cursor while inspecting
-        //        }
-
-        //        if (Input.GetMouseButtonUp(1)) // Check for right mouse button up
-        //        {
-        //            LockCameraRotation(!physicsObject.isGrabbed);
-        //            Cursor.visible = false; // Cursor is hidden when not inspecting
-        //            Cursor.lockState = CursorLockMode.Locked; // Lock cursor when not inspecting
-        //        }
-        //    }
-        //}
-        //#endregion
 
     }
 

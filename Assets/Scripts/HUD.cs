@@ -6,10 +6,12 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using FMOD.Studio;
+using System.Linq;
 
 
 public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public PlayerInteractions playerInteractions;
     public Winscreen winscreen;
     public List<PhysicsObject> physicsObjects;
     public MenuManager menuManager;
@@ -54,6 +56,8 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         messageText = MessagePanel.GetComponentInChildren<TextMeshProUGUI>();
         LockCameraRotation(!isDead);
         originalTimeScale = Time.timeScale; // Store the original time scale
+
+        physicsObjects = FindObjectsOfType<PhysicsObject>().ToList();
     }
 
     private void PlayCough()
@@ -127,6 +131,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             OnPointerExit(new PointerEventData(EventSystem.current)); // Pass a new PointerEventData
         }
 
+        Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * showUpDistance, Color.red);
     }
 
     private float originalTimeScale;
@@ -174,6 +179,12 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         float forceMagnitude = 1f; // You can adjust the force magnitude as needed
         playerRigidbody.AddForce(Vector3.left * forceMagnitude, ForceMode.Impulse);
 
+        if (playerInteractions.currentlyPickedUpObject != null)
+        {
+            playerInteractions.BreakConnection();
+        }
+
+
 
         LockCameraRotation(isDead);
         StartCoroutine(RestartLevel());
@@ -209,19 +220,13 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        foreach (PhysicsObject grabbable in physicsObjects)
+        foreach (PhysicsObject physicsObject in physicsObjects)
         {
-            //if (grabbable == null)
-            //{
-            //    Debug.LogError("A grabbable object in the list is not assigned.");
-            //    continue;
-            //}
-
-            if (currentHit.transform != null)
+            if (currentHit.transform != null && currentHit.collider != null && currentHit.collider.gameObject != null) // Check if currentHit.collider.gameObject is not null
             {
+                currentHitItemName = currentHit.collider.gameObject.name;
                 if (currentHit.transform.CompareTag("Object"))
                 {
-                    currentHitItemName = currentHit.transform.name;
                     OpenMessagePanel("stlaË [LMB] vziaù / [E] chytiù " + currentHitItemName);
                     //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
@@ -229,78 +234,72 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
                 if (currentHit.transform.CompareTag("Phone"))
                 {
-                    currentHitItemName = currentHit.transform.name;
                     OpenMessagePanel("stlaË [E] chytiù " + currentHitItemName);
                     //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
-                    if (grabbable.isGrabbed == true)
+                    if (physicsObject.isGrabbed == true)
                     {
-                        OpenMessagePanel("pripoj nabÌjaËku k nabitiu mobilu");
+                        OpenMessagePanel("pripoj adaptÈr do telefÛnu k nabitiu");
                         //OpenMessagePanel("connect charger to charge the phone");
                     }
                 }
 
                 else if (currentHit.transform.CompareTag("Charger"))
                 {
-                    currentHitItemName = currentHit.transform.name;
                     OpenMessagePanel("stlaË [E] chytiù " + currentHitItemName);
                     //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
-                    if (grabbable.isGrabbed == true)
+                    if (physicsObject.isGrabbed == true)
                     {
-                        OpenMessagePanel("pripoj k telefÛnu na nabitie");
+                        OpenMessagePanel("pripoj z·strËku do z·suvky k nabitiu telefÛna");
                         //OpenMessagePanel("connect phone to charge it");
                     }
                 }
-                else if (currentHit.transform.CompareTag("Inspect"))
+                else if (currentHit.transform.CompareTag("CovidTest"))
                 {
-                    currentHitItemName = currentHit.transform.name;
                     OpenMessagePanel("stlaË [E] chytiù " + currentHitItemName);
                     //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
-                    if (grabbable.isGrabbed == true)
+                    if (physicsObject.isGrabbed == true)
                     {
-                        OpenMessagePanel("podrû [RMB] prezrieù si " + currentHitItemName);
-                        //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                        OpenMessagePanel("otestovaù vzorku soplÌka [LMB] " + currentHitItemName);
+                        //OpenMessagePanel("test a sample of snotty [LMB] " + currentHitItemName);
                     }
                 }
                 else if (currentHit.transform.CompareTag("Radio"))
                 {
-                    currentHitItemName = currentHit.transform.name;
                     OpenMessagePanel("stlaË [E] chytiù / [F] zapn˙ù/vypn˙ù " + currentHitItemName);
                     ///OpenMessagePanel("press [E] to grab / [F] to turn on/off " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
-                    if (grabbable.isGrabbed == true)
+                    if (physicsObject.isGrabbed == true)
                     {
-                        OpenMessagePanel("podrû [RMB] prezrieù si " + currentHitItemName);
+                        OpenMessagePanel("podrû [MMB] prezrieù si " + currentHitItemName);
                         //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
                     }
                 }
                 else if (currentHit.transform.CompareTag("Inspect retrievable"))
                 {
-                    currentHitItemName = currentHit.transform.name;
                     OpenMessagePanel("stlaË [LMB] vziaù / [E] chytiù " + currentHitItemName);
                     //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
-                    if (grabbable.isGrabbed == true)
+                    if (physicsObject.isGrabbed == true)
                     {
-                        OpenMessagePanel("podrû [RMB] prezrieù si " + currentHitItemName);
+                        OpenMessagePanel("podrû [MMB] prezrieù si " + currentHitItemName);
                         //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
                     }
                 }
                 else if (currentHit.transform.CompareTag("Flashlight"))
                 {
-                    currentHitItemName = currentHit.transform.name;
                     OpenMessagePanel("stlaË [E] chytiù " + currentHitItemName);
                     //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                     Debug.Log(currentHitItemName);
 
-                    if (grabbable.isGrabbed == true)
+                    if (physicsObject.isGrabbed == true)
                     {
                         OpenMessagePanel("stlaË [F] zapn˙ù/vypn˙ù " + currentHitItemName);
                         //OpenMessagePanel("press [F] to turn on/off " + currentHitItemName);

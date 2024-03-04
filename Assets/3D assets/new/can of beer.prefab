@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.6275253
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.014
+      value: 1.1069999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 16.590776
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       propertyPath: m_LocalRotation.w
@@ -91,10 +91,10 @@ PrefabInstance:
       addedObject: {fileID: 1162704271295059159}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2394788734648924061}
+      addedObject: {fileID: 465338472801592149}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 465338472801592149}
+      addedObject: {fileID: 4004509873038899446}
   m_SourcePrefab: {fileID: 100100000, guid: 5b33152d2dda56f48858a96ac8741137, type: 3}
 --- !u!1 &5859297414499963012 stripped
 GameObject:
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 59e1f31d2142b264b9c19a29a9cae736, type: 2}
   isRedKey: 0
+  Facemask: 0
   playerCameraTransform: {fileID: 0}
   objectGrabPointTransform: {fileID: 0}
   pickUpLayerMask:
@@ -172,21 +173,6 @@ MonoBehaviour:
     m_Bits: 51
   Pickposition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 0, y: 0, z: 0}
---- !u!114 &2394788734648924061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5859297414499963012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f0dc58620453419d05aad0bc4ced2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  specificRotation: {x: 0, y: 0, z: 0}
-  isGrabbed: 0
-  playerObject: {fileID: 0}
 --- !u!65 &465338472801592149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -208,3 +194,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: 0, y: 0, z: -0.013}
+--- !u!114 &4004509873038899446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859297414499963012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1ca1b5c9e8863499852454f0f3a9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitOnPickup: 0.2
+  breakForce: 5
+  playerInteractions: {fileID: 0}
+  specificRotation: {x: 0, y: 0, z: 0}
+  isGrabbed: 0
