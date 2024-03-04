@@ -22,6 +22,7 @@ public class CovidTestScript : MonoBehaviour
     void Start()
     {
         testButton.onClick.AddListener(StartTest);
+        isPositive = false;
     }
 
     void Update()
@@ -35,6 +36,7 @@ public class CovidTestScript : MonoBehaviour
             {
                 fadingOut = true;
                 FadeOutSlider();
+                isPositive = false;
             }
         }
 
@@ -68,6 +70,7 @@ public class CovidTestScript : MonoBehaviour
     public void StartTest()
     {
         isTesting = true;
+        isPositive = false;
     }
 
     void FadeOutSlider()
