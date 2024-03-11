@@ -8,7 +8,6 @@ public class FMODEvents : MonoBehaviour
     [field: Header("SFX")]
     [field: SerializeField] public EventReference PickupSound { get; private set; }
     [field: SerializeField] public EventReference UseSound { get; private set; }
-    [field: SerializeField] public EventReference Dog { get; private set; }
     [field: SerializeField] public EventReference FlashlightON { get; private set; }
     [field: SerializeField] public EventReference FlashlightOFF { get; private set; }
     [field: SerializeField] public EventReference DoorOpen { get; private set; }
@@ -18,14 +17,16 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference KeypadCorrect { get; private set; }
     [field: SerializeField] public EventReference KeypadWrong { get; private set; }
     [field: SerializeField] public EventReference KeypadBtn { get; private set; }
+    [field: SerializeField] public EventReference DropItemSound { get; private set; }
     [field: Header("Player SFX")]
     [field: SerializeField] public EventReference playerFootsteps { get; private set; }
     [field: SerializeField] public EventReference playerVoice { get; private set; }
     [field: SerializeField] public EventReference playerCough { get; private set; }
     [field: Header("Ambience")]
     [field: SerializeField] public EventReference Radio { get; private set; }
-    [field: SerializeField] public EventReference Traffic { get; private set; }
     [field: SerializeField] public EventReference ambience { get; private set; }
+    [field: SerializeField] public EventReference Dog { get; private set; }
+    [field: SerializeField] public EventReference Traffic { get; private set; }
 
 
     public static FMODEvents instance {  get; private set; }

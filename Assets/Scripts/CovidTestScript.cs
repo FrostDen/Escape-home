@@ -19,6 +19,10 @@ public class CovidTestScript : MonoBehaviour
     private float textAppearTimer = 0f;
     public bool isPositive = false;
 
+    public GameObject testMat; // Reference to the GameObject containing Material Element 2
+    public Material newMaterial; // New material for Material Element 2 when fading out starts
+
+
     void Start()
     {
         testButton.onClick.AddListener(StartTest);
@@ -45,26 +49,28 @@ public class CovidTestScript : MonoBehaviour
             fadeTimer += Time.deltaTime;
             float alpha = Mathf.Lerp(1f, 0f, fadeTimer / fadeDuration);
             SetSliderAlpha(alpha);
+            ChangeMaterial();
 
-            if (fadeTimer >= fadeDuration && !textAppearing)
+            //if (fadeTimer >= fadeDuration && !textAppearing)
+            if (fadeTimer >= fadeDuration)
             {
-                textAppearing = true;
-                AppearText();
+                //textAppearing = true;
+                //AppearText();
                 isPositive = true;
-}
-        }
-
-        if (textAppearing)
-        {
-            textAppearTimer += Time.deltaTime;
-            float alpha = Mathf.Lerp(0f, 1f, textAppearTimer / textAppearDuration);
-            SetTextAlpha(alpha);
-
-            if (textAppearTimer >= textAppearDuration)
-            {
-                textAppearing = false;
             }
         }
+
+        //if (textAppearing)
+        //{
+        //    textAppearTimer += Time.deltaTime;
+        //    float alpha = Mathf.Lerp(0f, 1f, textAppearTimer / textAppearDuration);
+        //    SetTextAlpha(alpha);
+
+        //    if (textAppearTimer >= textAppearDuration)
+        //    {
+        //        textAppearing = false;
+        //    }
+        //}
     }
 
     public void StartTest()
@@ -79,10 +85,25 @@ public class CovidTestScript : MonoBehaviour
         fadeTimer = 0f;
     }
 
-    void AppearText()
+    void ChangeMaterial()
     {
-        resultText.gameObject.SetActive(true);
+        // Change the second material of the object with multiple materials
+        if (testMat != null)
+        {
+            Renderer renderer = testMat.GetComponent<Renderer>();
+            if (renderer != null && renderer.materials.Length > 1 && newMaterial != null)
+            {
+                Material[] materials = renderer.materials;
+                materials[1] = newMaterial; // Assuming the second material is at index 1
+                renderer.materials = materials;
+            }
+        }
     }
+
+    //void AppearText()
+    //{
+    //    resultText.gameObject.SetActive(true);
+    //}
 
     void SetSliderAlpha(float alpha)
     {
@@ -93,11 +114,11 @@ public class CovidTestScript : MonoBehaviour
         fillImage.color = color;
     }
 
-    void SetTextAlpha(float alpha)
-    {
-        // Set the alpha value of the result text
-        Color color = resultText.color;
-        color.a = alpha;
-        resultText.color = color;
-    }
+    //void SetTextAlpha(float alpha)
+    //{
+    //    // Set the alpha value of the result text
+    //    Color color = resultText.color;
+    //    color.a = alpha;
+    //    resultText.color = color;
+    //}
 }

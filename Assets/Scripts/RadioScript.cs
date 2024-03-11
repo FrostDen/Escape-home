@@ -8,6 +8,12 @@ public class RadioScript : MonoBehaviour
     [SerializeField] private LayerMask pickUpLayerMask;
     [SerializeField] private Renderer emissionRenderer;
     [SerializeField] private string parameterName = "toggle_Radio";
+    [SerializeField] public float maxDistance = 2f;
+    public int interactableLayerIndex;
+    public float sphereCastRadius = 0.5f;
+    private Vector3 raycastPos;
+    public Camera mainCamera;
+    public GameObject lookObject;
 
     private StudioEventEmitter emitter;
     private Color originalEmissionColor;
@@ -46,28 +52,40 @@ public class RadioScript : MonoBehaviour
 
     private void PlayRadio()
     {
-        emitter.Play();
+        //emitter.Play();
         SetEmission(originalEmissionColor, true);
-        AudioManager.instance.SetRadioParameter(parameterName, 1);
+        AudioManager.instance.SetParameter(parameterName, 1);
     }
 
     private void StopRadio()
     {
-        emitter.Stop();
+        //emitter.Stop();
         SetEmission(originalEmissionColor, false);
-        AudioManager.instance.SetRadioParameter(parameterName, 0);
+        AudioManager.instance.SetParameter(parameterName, 0);
     }
 
     private void ToggleRadio()
     {
-        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, 2f, pickUpLayerMask))
+        // Update the raycast position with the current position of the camera
+        raycastPos = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+        // Perform a sphere cast to check for nearby interactable objects
+        RaycastHit hit;
+        if (Physics.SphereCast(raycastPos, sphereCastRadius, mainCamera.transform.forward, out hit, maxDistance, 1 << interactableLayerIndex))
         {
+            lookObject = hit.collider.transform.root.gameObject;
+
+            //Toggle the radio state based on whether it's currently playing or not
             if (isRadioPlaying)
                 StopRadio();
             else
                 PlayRadio();
 
             isRadioPlaying = !isRadioPlaying;
+        }
+        else
+        {
+            lookObject = null;
         }
     }
 

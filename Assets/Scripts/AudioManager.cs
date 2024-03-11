@@ -33,6 +33,7 @@ public class AudioManager : MonoBehaviour
 
     private EventInstance ambienceEventInstance;
     private EventInstance radioEventInstance;
+    private EventInstance trafficEventInstance;
 
     private void Awake()
     {
@@ -77,9 +78,10 @@ public class AudioManager : MonoBehaviour
         return eventInstance;
     }
 
-    public void SetRadioParameter(string parameterName, float parameterValue) 
+    public void SetParameter(string parameterName, float parameterValue) 
     {
         radioEventInstance.setParameterByName(parameterName, parameterValue);
+        trafficEventInstance.setParameterByName(parameterName, parameterValue);
     }
 
     public StudioEventEmitter InitializeEventEmitter(EventReference eventReference, GameObject emitterGameObject)

@@ -18,7 +18,7 @@ public class PlayerInteractions : MonoBehaviour
     private Rigidbody pickupRB;
 
     [Header("ObjectFollow")]
-    [SerializeField] private float minSpeed = 1f;
+    [SerializeField] private float minSpeed = 10f;
     [SerializeField] private float maxSpeed = 2500f;
     [SerializeField] public float maxDistance = 2f;
     private float currentSpeed = 0f;
@@ -60,8 +60,8 @@ public class PlayerInteractions : MonoBehaviour
         else
         {
             lookObject = null;
-            
         }
+
 
         //if we press the button of choice
         if (Input.GetButtonDown("Interact"))
@@ -159,20 +159,29 @@ public class PlayerInteractions : MonoBehaviour
 
             if (currentlyPickedUpObject.CompareTag("Hinges"))
             {
-                // Not final
-                float moveSpeed = 5f;
-                Vector3 targetPosition = pickupParent.position;
-                pickupRB.position = Vector3.Lerp(pickupRB.position, targetPosition, Time.deltaTime * moveSpeed);
+                sensitivity = 5f;
+                // Calculate mouse movement only on the Y-axis
+                float mouseX = -Input.GetAxis("Mouse X") * sensitivity;
+                float mouseY = 0f;
+
+                // Apply rotation based on mouse movement
+                Quaternion rotationDelta = Quaternion.Euler(mouseX, 0f, 0f);
+                pickupRB.MoveRotation(pickupRB.rotation * rotationDelta);
             }
 
-            if (currentlyPickedUpObject.CompareTag("Heavy") && currentlyPickedUpObject.CompareTag("Box"))
+            if (currentlyPickedUpObject.CompareTag("Heavy") || currentlyPickedUpObject.CompareTag("Box"))
             {
                 maxSpeed = 150f;
                 currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
             }
 
+            if (currentlyPickedUpObject.CompareTag("Inspect"))
+            {
+                maxSpeed = 2500f;
+                currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
+            }
 
-            if (!currentlyPickedUpObject.CompareTag("Heavy"))
+            if (!currentlyPickedUpObject.CompareTag("Heavy") || !currentlyPickedUpObject.CompareTag("Hinges"))
             {
                 // Check if inspecting 
                 if (isInspecting)
@@ -188,12 +197,13 @@ public class PlayerInteractions : MonoBehaviour
                 }
                 else
                 {
-                    if (!currentlyPickedUpObject.CompareTag("Heavy") && !currentlyPickedUpObject.CompareTag("Box") && !currentlyPickedUpObject.CompareTag("Hinges") && !currentlyPickedUpObject.CompareTag("Inspect"))
+                    if (!currentlyPickedUpObject.CompareTag("Hinges") && !currentlyPickedUpObject.CompareTag("Box") && !currentlyPickedUpObject.CompareTag("Inspect"))
                     {
                         //Rotation
                         lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
                         lookRot = Quaternion.Slerp(mainCamera.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
                         pickupRB.MoveRotation(lookRot);
+                        maxSpeed = 2500f;
 
                         if (currentlyPickedUpObject.CompareTag("Phone"))
                         {
@@ -203,6 +213,7 @@ public class PlayerInteractions : MonoBehaviour
                             lookRot = Quaternion.Euler(-100f, lookRot.eulerAngles.y, 90f); // Only face the camera on the y-axis
                             pickupRB.MoveRotation(lookRot);
                         }
+
                         if (currentlyPickedUpObject.CompareTag("Radio"))
                         {
                             // Apply specific rotation
@@ -276,6 +287,7 @@ public class PlayerInteractions : MonoBehaviour
         currentlyPickedUpObject = null;
         physicsObject.isGrabbed = false;
         currentDist = 0;
+        pickupRB.useGravity = true; // Enable gravity when connection is broken
     }
 
     public void PickUpObject()
@@ -289,6 +301,8 @@ public class PlayerInteractions : MonoBehaviour
         pickupRB.constraints = RigidbodyConstraints.FreezeRotation;
         physicsObject.playerInteractions = this;
         StartCoroutine(physicsObject.PickUp());
+        //pickupRB.useGravity = false; // Disable gravity when picking up
+
     }
 
     public void LockCameraRotation(bool isLocked)
