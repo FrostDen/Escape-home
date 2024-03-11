@@ -52,14 +52,14 @@ public class RadioScript : MonoBehaviour
 
     private void PlayRadio()
     {
-        //emitter.Play();
+        emitter.Play();
         SetEmission(originalEmissionColor, true);
         AudioManager.instance.SetParameter(parameterName, 1);
     }
 
     private void StopRadio()
     {
-        //emitter.Stop();
+        emitter.Stop();
         SetEmission(originalEmissionColor, false);
         AudioManager.instance.SetParameter(parameterName, 0);
     }
