@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FMODUnity;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class ItemController : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class ItemController : MonoBehaviour
 
     public bool isRedKey = true, Facemask = false;
 
-    InventoryItemController inventoryItemController;
+    public InventoryItemController inventoryItemController;
 
     [SerializeField] public Transform playerCameraTransform;
     [SerializeField] public Transform objectGrabPointTransform;
@@ -25,6 +27,14 @@ public class ItemController : MonoBehaviour
     {
         inventoryItemController = FindObjectOfType<InventoryItemController>(); // key will get up and it will saved in "inventary"
         playerCameraTransform = Camera.main.transform;
+
+        //volumeProfile = globalVolume.profile;
+
+        //if (volumeProfile.TryGet(out bloomComponent))
+        //{
+        //    // Save the original intensity value
+        //    originalBloomIntensity = bloomComponent.intensity.value;
+        //}
     }
 
     void Pickup()
@@ -42,21 +52,131 @@ public class ItemController : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown("Interact") && item.itemName == "rúško")
             {
                 Pickup();
+            }
+
+            if (Input.GetButtonDown("Interact") && (item.itemName == "pivo" || item.itemName == "plechovica piva"))
+            {
+                DrinkBeer();
+            }
+            if (Input.GetButtonDown("Interact") && item.itemName == "tabletky")
+            {
+                EatPills();
             }
         }
     }
 
-    public Vector3 Pickposition;
-    public Vector3 PickRotation;
-
-    public void UseItem()
+    public void DrinkBeer()
     {
-        transform.localPosition = Pickposition;
-        transform.localEulerAngles = PickRotation;
+        HUD hud = FindObjectOfType<HUD>();
+        float timeToAdd = 30f;
+
+        if (item != null && (item.itemName == "pivo" || item.itemName == "plechovica piva") && item.itemType == ItemType.Consumable)
+        {
+            if (hud != null)
+            {
+                hud.AddTimeToTimer(timeToAdd);
+                //InventoryManager.Instance.Remove(item);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.UseSound, objectGrabPointTransform.transform.position);
+                Destroy(gameObject);
+                Debug.Log("Drink");
+            }
+        }
     }
+
+    public Volume globalVolume;
+    public VolumeProfile volumeProfile;
+
+    private Bloom bloomComponent; // Reference to the Bloom effect
+    private float originalBloomIntensity = 1f; // Store the original Bloom intensity
+
+    public void EatPills()
+    {
+        HUD hud = FindObjectOfType<HUD>();
+        float timeToAdd = 20f;
+        float bloomIntensityIncrease = 250f;
+        float bloomEffectDuration = 20f;
+
+        // Ensure globalVolume and volumeProfile are not null
+        if (globalVolume != null && volumeProfile != null)
+        {
+            if (item != null && item.itemName == "tabletky" && item.itemType == ItemType.Consumable)
+            {
+                hud.AddTimeToTimer(timeToAdd);
+                hud.TimeController();
+
+                // Declare and initialize bloomComponent and originalBloomIntensity
+                Bloom bloomComponent;
+                float originalBloomIntensity = 1f;
+
+                // Adjust Bloom intensity when eating pills
+                if (volumeProfile.TryGet(out bloomComponent))
+                {
+                    // Calculate the target intensity
+                    float targetIntensity = originalBloomIntensity + bloomIntensityIncrease;
+
+                    StartCoroutine(ChangeBloomIntensity(originalBloomIntensity, targetIntensity, bloomEffectDuration, bloomComponent));
+                }
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.UseSound, objectGrabPointTransform.transform.position);
+                //InventoryManager.Instance.Remove(item);
+                Destroy(gameObject);
+                Debug.Log("Bloom intensity increased gradually");
+            }
+        }
+        else
+        {
+            Debug.LogError("globalVolume or volumeProfile is not assigned in the Inspector!");
+        }
+    }
+
+    public IEnumerator ChangeBloomIntensity(float startIntensity, float targetIntensity, float duration, Bloom bloomComponent)
+    {
+        float elapsedTime = 0f;
+        float currentIntensity = startIntensity;
+
+        while (elapsedTime < duration)
+        {
+            // Adjust intensity smoothly
+            currentIntensity = Mathf.Lerp(startIntensity, targetIntensity, elapsedTime / duration);
+            bloomComponent.intensity.value = currentIntensity;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the intensity is set to the target value
+        bloomComponent.intensity.value = targetIntensity;
+
+        yield return new WaitForSeconds(1f); // Wait for a moment at the increased intensity
+
+        // Gradual decrease
+        elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            // Adjust intensity smoothly
+            currentIntensity = Mathf.Lerp(targetIntensity, startIntensity, elapsedTime / duration);
+            bloomComponent.intensity.value = currentIntensity;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the intensity is set to the original value
+        bloomComponent.intensity.value = startIntensity;
+        Debug.Log("Bloom intensity increased and decreased gradually");
+    }
+
+    //public Vector3 Pickposition;
+    //public Vector3 PickRotation;
+
+    //public void UseItem()
+    //{
+    //    transform.localPosition = Pickposition;
+    //    transform.localEulerAngles = PickRotation;
+    //}
 
     float NearView() // it is true if you are near an interactive object
     {

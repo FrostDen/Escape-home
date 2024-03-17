@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteractions : MonoBehaviour
 {
     [Header("InteractableInfo")]
-    public float sphereCastRadius = 0.5f;
+    public float sphereCastRadius = 0.1f;
     public int interactableLayerIndex;
     private Vector3 raycastPos;
     public GameObject lookObject;
@@ -27,7 +27,7 @@ public class PlayerInteractions : MonoBehaviour
     [Header("Rotation")]
     public float rotationSpeed = 100f;
     Quaternion lookRot;
-    [SerializeField] private float sensitivity = 100f;
+    [SerializeField] private float sensitivity = 2f;
 
     private bool isInspecting = false;
 
@@ -45,16 +45,23 @@ public class PlayerInteractions : MonoBehaviour
     //    Gizmos.DrawSphere(pickupParent.position, 0.5f);
     //}
 
+    public bool isRightMouseButtonPressed = false;
+
+
     //Interactable Object detections and distance check
     void Update()
     {
         //Here we check if we're currently looking at an interactable object
         raycastPos = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));       
         RaycastHit hit;
-        if (Physics.SphereCast(raycastPos, sphereCastRadius, mainCamera.transform.forward, out hit, maxDistance, 1 << interactableLayerIndex))
+        if (Physics.SphereCast(raycastPos, sphereCastRadius, mainCamera.transform.forward, out hit, maxDistance, 1 << interactableLayerIndex, QueryTriggerInteraction.Ignore))
         {
 
            lookObject = hit.collider.transform.root.gameObject;
+
+            // Draw a visual representation of the sphere cast
+            Debug.DrawRay(raycastPos, mainCamera.transform.forward * hit.distance, Color.green);
+            Debug.DrawRay(hit.point, hit.normal * 0.1f, Color.red);
 
         }
         else
@@ -64,7 +71,7 @@ public class PlayerInteractions : MonoBehaviour
 
 
         //if we press the button of choice
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("Fire1"))
         {
             //and we're not holding anything
             if (currentlyPickedUpObject == null)
@@ -79,11 +86,13 @@ public class PlayerInteractions : MonoBehaviour
 
             }
             //if we press the pickup button and have something, we drop it
-            else 
+            else if (!isRightMouseButtonPressed)
             {
                 BreakConnection();
             }
         }
+
+        isRightMouseButtonPressed = Input.GetMouseButton(1);
 
         if (physicsObject != null && physicsObject.isGrabbed)
         {
@@ -122,15 +131,29 @@ public class PlayerInteractions : MonoBehaviour
             // Check if the right mouse button is pressed
             if (Input.GetMouseButtonDown(1))
             {
+                isRightMouseButtonPressed = true;
                 StartCoroutine(DelayedLockCameraRotation(physicsObject.isGrabbed));
             }
 
             // Check if the right mouse button is released
             if (Input.GetMouseButtonUp(1))
             {
+                isRightMouseButtonPressed = false;
                 StartCoroutine(DelayedLockCameraRotation(!physicsObject.isGrabbed));
             }
         }
+
+        // Check if the object is grabbed and the right mouse button is pressed
+        if (physicsObject != null && physicsObject.isGrabbed && isRightMouseButtonPressed)
+        {
+            // Disable grabbing/dropping object functionality
+            if (Input.GetMouseButtonDown(0))
+            {
+                return;
+            }
+        }
+
+
 
         // Check if the distance between the player and grabbed object is greater than 2f
         if (currentlyPickedUpObject != null && Vector3.Distance(pickupParent.transform.position, currentlyPickedUpObject.transform.position) > maxDistance)
@@ -157,9 +180,8 @@ public class PlayerInteractions : MonoBehaviour
                 currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
             }
 
-            if (currentlyPickedUpObject.CompareTag("Hinges"))
+            if (currentlyPickedUpObject.CompareTag("Hinges") || currentlyPickedUpObject.CompareTag("Safe Door"))
             {
-                sensitivity = 5f;
                 // Calculate mouse movement only on the Y-axis
                 float mouseX = -Input.GetAxis("Mouse X") * sensitivity;
                 float mouseY = 0f;
@@ -181,7 +203,7 @@ public class PlayerInteractions : MonoBehaviour
                 currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
             }
 
-            if (!currentlyPickedUpObject.CompareTag("Heavy") || !currentlyPickedUpObject.CompareTag("Hinges"))
+            if (!currentlyPickedUpObject.CompareTag("Heavy") && !currentlyPickedUpObject.CompareTag("Hinges") && !currentlyPickedUpObject.CompareTag("Safe Door"))
             {
                 // Check if inspecting 
                 if (isInspecting)
@@ -197,7 +219,7 @@ public class PlayerInteractions : MonoBehaviour
                 }
                 else
                 {
-                    if (!currentlyPickedUpObject.CompareTag("Hinges") && !currentlyPickedUpObject.CompareTag("Box") && !currentlyPickedUpObject.CompareTag("Inspect"))
+                    if (!currentlyPickedUpObject.CompareTag("Hinges") && !currentlyPickedUpObject.CompareTag("Safe Door") && !currentlyPickedUpObject.CompareTag("Heavy") && !currentlyPickedUpObject.CompareTag("Box") && !currentlyPickedUpObject.CompareTag("Inspect"))
                     {
                         //Rotation
                         lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
@@ -283,6 +305,12 @@ public class PlayerInteractions : MonoBehaviour
     //Release the object
     public void BreakConnection()
     {
+        // Check if the right mouse button is pressed
+        if (isRightMouseButtonPressed)
+        {
+            return; // Return early if the right mouse button is pressed
+        }
+
         pickupRB.constraints = RigidbodyConstraints.None;
         currentlyPickedUpObject = null;
         physicsObject.isGrabbed = false;
@@ -295,7 +323,6 @@ public class PlayerInteractions : MonoBehaviour
 
         physicsObject = lookObject.GetComponentInChildren<PhysicsObject>();
         currentlyPickedUpObject = lookObject;
-        //currentlyPickedUpObject.transform.Rotate(physicsObject.specificRotation);
         pickupRB = currentlyPickedUpObject.GetComponent<Rigidbody>();
         physicsObject.specificRotation = pickupRB.rotation.eulerAngles;
         pickupRB.constraints = RigidbodyConstraints.FreezeRotation;

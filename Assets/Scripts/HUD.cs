@@ -34,8 +34,10 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private string currentHitItemName;
 
-    private float showUpDistance = 2f;
+    private float showUpDistance = 10f;
     private RaycastHit currentHit;
+    private bool isObjectVisible;
+
 
     public bool isDead;
 
@@ -121,17 +123,35 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         #endregion
 
-        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit hit, showUpDistance, pickUpLayerMask))
+        // Create an array to store raycast hits
+        RaycastHit[] hits = new RaycastHit[10]; // Adjust the size as needed
+
+        // Perform the raycast and store the number of hits
+        int numHits = Physics.RaycastNonAlloc(playerCameraTransform.position, playerCameraTransform.forward, hits, showUpDistance, pickUpLayerMask, QueryTriggerInteraction.Ignore);
+
+        // Loop through all hits and process them
+        for (int i = 0; i < numHits; i++)
         {
-            currentHit = hit;
-            OnPointerEnter(new PointerEventData(EventSystem.current)); // Pass a new PointerEventData
+            RaycastHit hit = hits[i];
+
+            // Check if the hit object is visible and within range
+            if (hit.collider != null && Vector3.Distance(hit.transform.position, playerCameraTransform.position) <= showUpDistance)
+            {
+                currentHit = hit;
+                isObjectVisible = true;
+                OnPointerEnter(new PointerEventData(EventSystem.current)); // Pass a new PointerEventData
+                break; // Exit the loop after processing the first valid hit
+            }
         }
-        else
+
+        // If no valid hits were found, consider the object not visible
+        if (numHits == 0 || !isObjectVisible)
         {
+            isObjectVisible = false;
             OnPointerExit(new PointerEventData(EventSystem.current)); // Pass a new PointerEventData
         }
 
-        Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * showUpDistance, Color.red);
+        Debug.DrawRay(playerCameraTransform.position, playerCameraTransform.forward * showUpDistance, Color.green);
     }
 
     private float originalTimeScale;
@@ -220,93 +240,117 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        foreach (PhysicsObject physicsObject in physicsObjects)
+        if (isObjectVisible)
         {
-            if (currentHit.transform != null && currentHit.collider != null && currentHit.collider.gameObject != null) // Check if currentHit.collider.gameObject is not null
+            bool isMessageSet = false; // Flag to check if a message has been set
+
+            foreach (PhysicsObject physicsObject in physicsObjects)
             {
-                currentHitItemName = currentHit.collider.gameObject.name;
-                if (currentHit.transform.CompareTag("Object"))
+                if (currentHit.transform != null && currentHit.collider != null && currentHit.collider.gameObject != null) // Check if currentHit.collider.gameObject is not null
                 {
-                    OpenMessagePanel("stlaè [LMB] vzia / [E] chyti " + currentHitItemName);
-                    //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
-                    Debug.Log(currentHitItemName);
-                }
+                    currentHitItemName = currentHit.collider.gameObject.name;
+                    if (currentHit.transform.CompareTag("Object"))
+                    {
+                        OpenMessagePanel("stlaè [LMB] vzia / [E] chyti " + currentHitItemName);
+                        //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
+                        Debug.Log(currentHitItemName);
+                        isMessageSet = true; // Set the flag to true
+                    }
 
                 if (currentHit.transform.CompareTag("Phone"))
-                {
-                    OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
-                    //OpenMessagePanel("press [E] to grab " + currentHitItemName);
-                    Debug.Log(currentHitItemName);
-
-                    if (physicsObject.isGrabbed == true)
                     {
-                        OpenMessagePanel("pripoj adaptér do telefónu k nabitiu");
-                        //OpenMessagePanel("connect charger to charge the phone");
+                        OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
+                        //OpenMessagePanel("press [E] to grab " + currentHitItemName);
+                        Debug.Log(currentHitItemName);
+                        isMessageSet = true; // Set the flag to true
+
+                        if (physicsObject.isGrabbed == true)
+                        {
+                            OpenMessagePanel("pripoj adaptér do telefónu k nabitiu");
+                            //OpenMessagePanel("connect charger to charge the phone");
+                        }
                     }
-                }
 
-                else if (currentHit.transform.CompareTag("Charger"))
-                {
-                    OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
-                    //OpenMessagePanel("press [E] to grab " + currentHitItemName);
-                    Debug.Log(currentHitItemName);
-
-                    if (physicsObject.isGrabbed == true)
+                    else if (currentHit.transform.CompareTag("Charger"))
                     {
-                        OpenMessagePanel("pripoj zástrèku do zásuvky k nabitiu telefóna");
-                        //OpenMessagePanel("connect phone to charge it");
-                    }
-                }
-                else if (currentHit.transform.CompareTag("CovidTest"))
-                {
-                    OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
-                    //OpenMessagePanel("press [E] to grab " + currentHitItemName);
-                    Debug.Log(currentHitItemName);
+                        OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
+                        //OpenMessagePanel("press [E] to grab " + currentHitItemName);
+                        Debug.Log(currentHitItemName);
+                        isMessageSet = true; // Set the flag to true
 
-                    if (physicsObject.isGrabbed == true)
-                    {
-                        OpenMessagePanel("otestova vzorku soplíka [LMB] " + currentHitItemName);
-                        //OpenMessagePanel("test a sample of snotty [LMB] " + currentHitItemName);
+                        if (physicsObject.isGrabbed == true)
+                        {
+                            OpenMessagePanel("pripoj zástrèku do zásuvky k nabitiu telefóna");
+                            //OpenMessagePanel("connect phone to charge it");
+                        }
                     }
-                }
-                else if (currentHit.transform.CompareTag("Radio"))
-                {
-                    OpenMessagePanel("stlaè [E] chyti / [F] zapnú/vypnú " + currentHitItemName);
-                    ///OpenMessagePanel("press [E] to grab / [F] to turn on/off " + currentHitItemName);
-                    Debug.Log(currentHitItemName);
+                    else if (currentHit.transform.CompareTag("CovidTest"))
+                    {
+                        OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
+                        //OpenMessagePanel("press [E] to grab " + currentHitItemName);
+                        Debug.Log(currentHitItemName);
+                        isMessageSet = true; // Set the flag to true
 
-                    if (physicsObject.isGrabbed == true)
-                    {
-                        OpenMessagePanel("podrž [MMB] prezrie si " + currentHitItemName);
-                        //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                        if (physicsObject.isGrabbed == true)
+                        {
+                            OpenMessagePanel("otestova vzorku soplíka [LMB] " + currentHitItemName);
+                            //OpenMessagePanel("test a sample of snotty [LMB] " + currentHitItemName);
+                        }
                     }
-                }
-                else if (currentHit.transform.CompareTag("Inspect retrievable"))
-                {
-                    OpenMessagePanel("stlaè [LMB] vzia / [E] chyti " + currentHitItemName);
-                    //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
-                    Debug.Log(currentHitItemName);
+                    else if (currentHit.transform.CompareTag("Radio"))
+                    {
+                        OpenMessagePanel("stlaè [E] chyti / [F] zapnú/vypnú " + currentHitItemName);
+                        ///OpenMessagePanel("press [E] to grab / [F] to turn on/off " + currentHitItemName);
+                        Debug.Log(currentHitItemName);
+                        isMessageSet = true; // Set the flag to true
 
-                    if (physicsObject.isGrabbed == true)
-                    {
-                        OpenMessagePanel("podrž [MMB] prezrie si " + currentHitItemName);
-                        //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                        if (physicsObject.isGrabbed == true)
+                        {
+                            OpenMessagePanel("podrž [MMB] prezrie si " + currentHitItemName);
+                            //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                        }
                     }
-                }
-                else if (currentHit.transform.CompareTag("Flashlight"))
-                {
-                    OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
-                    //OpenMessagePanel("press [E] to grab " + currentHitItemName);
-                    Debug.Log(currentHitItemName);
+                    else if (currentHit.transform.CompareTag("Inspect retrievable"))
+                    {
+                        OpenMessagePanel("stlaè [LMB] vzia / [E] chyti " + currentHitItemName);
+                        //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
+                        Debug.Log(currentHitItemName);
+                        isMessageSet = true; // Set the flag to true
 
-                    if (physicsObject.isGrabbed == true)
-                    {
-                        OpenMessagePanel("stlaè [F] zapnú/vypnú " + currentHitItemName);
-                        //OpenMessagePanel("press [F] to turn on/off " + currentHitItemName);
+                        if (physicsObject.isGrabbed == true)
+                        {
+                            OpenMessagePanel("podrž [MMB] prezrie si " + currentHitItemName);
+                            //OpenMessagePanel("hold [RMB] to inspect " + currentHitItemName);
+                        }
                     }
+                    else if (currentHit.transform.CompareTag("Flashlight"))
+                    {
+                        OpenMessagePanel("stlaè [E] chyti " + currentHitItemName);
+                        //OpenMessagePanel("press [E] to grab " + currentHitItemName);
+                        Debug.Log(currentHitItemName);
+                        isMessageSet = true; // Set the flag to true
+
+                        if (physicsObject.isGrabbed == true)
+                        {
+                            OpenMessagePanel("stlaè [F] zapnú/vypnú " + currentHitItemName);
+                            //OpenMessagePanel("press [F] to turn on/off " + currentHitItemName);
+                        }
+                    }
+                    if (isMessageSet) break; // Exit the loop if a message has been set
                 }
             }
+
+            // If no message has been set, close the message panel
+            if (!isMessageSet)
+            {
+                CloseMessagePanel();
+            }
         }
+        else
+        {
+            CloseMessagePanel();
+        }
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)

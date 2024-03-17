@@ -79,14 +79,14 @@ public class InventoryItemController : MonoBehaviour
         if (item != null && item.IsStackable && item.itemName == newItem.itemName)
         {
             itemQuantity++;
-            UpdateItemQuantityText();
+            //UpdateItemQuantityText();
         }
         else
         {
             item = newItem;
             itemQuantity = 1;
             itemQuantityText.gameObject.SetActive(false);
-            UpdateItemQuantityText();
+            //UpdateItemQuantityText();
             if (item != null && item.itemName == "k¾úè" && item.itemType == ItemType.Key)
             {
                 RedKey = true;
@@ -98,95 +98,96 @@ public class InventoryItemController : MonoBehaviour
         }
     }
 
-    public FirstPersonController playerController;
+    //public FirstPersonController playerController;
 
-    public void DrinkBeer()
-    {
-        HUD hud = FindObjectOfType<HUD>();
-        float timeToAdd = 30f;
+    //public void DrinkBeer()
+    //{
+    //    HUD hud = FindObjectOfType<HUD>();
+    //    float timeToAdd = 30f;
 
-        if (item != null && (item.itemName == "pivo" || item.itemName == "plechovica piva") && item.itemType == ItemType.Consumable)
-        {
-            if (hud != null)
-            {
-                hud.AddTimeToTimer(timeToAdd);
-                InventoryManager.Instance.Remove(item);
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.UseSound, ObjectGrabPoint.transform.position);
-                Destroy(gameObject);
-            }
-        }
-    }
+    //    if (item != null && (item.itemName == "pivo" || item.itemName == "plechovica piva") && item.itemType == ItemType.Consumable)
+    //    {
+    //        if (hud != null)
+    //        {
+    //            hud.AddTimeToTimer(timeToAdd);
+    //            //InventoryManager.Instance.Remove(item);
+    //            AudioManager.instance.PlayOneShot(FMODEvents.instance.UseSound, ObjectGrabPoint.transform.position);
+    //            Destroy(gameObject);
+    //            Debug.Log("Drink");
+    //        }
+    //    }
+    //}
 
-    public void EatPills()
-    {
-        HUD hud = FindObjectOfType<HUD>();
-        float timeToAdd = 20f;
-        float bloomIntensityIncrease = 1.5f;
-        float bloomEffectDuration = 20f;
+    //public void EatPills()
+    //{
+    //    HUD hud = FindObjectOfType<HUD>();
+    //    float timeToAdd = 20f;
+    //    float bloomIntensityIncrease = 1.5f;
+    //    float bloomEffectDuration = 20f;
 
-        if (item != null && item.itemName == "tabletky" && item.itemType == ItemType.Consumable)
-        {
-            hud.AddTimeToTimer(timeToAdd);
-            hud.TimeController();
+    //    if (item != null && item.itemName == "tabletky" && item.itemType == ItemType.Consumable)
+    //    {
+    //        hud.AddTimeToTimer(timeToAdd);
+    //        hud.TimeController();
 
-            // Adjust Bloom intensity when eating pills
-            if (volumeProfile.TryGet(out bloomComponent))
-            {
-                // Calculate the target intensity
-                float targetIntensity = originalBloomIntensity + bloomIntensityIncrease;
+    //        // Adjust Bloom intensity when eating pills
+    //        if (volumeProfile.TryGet(out bloomComponent))
+    //        {
+    //            // Calculate the target intensity
+    //            float targetIntensity = originalBloomIntensity + bloomIntensityIncrease;
 
-                StartCoroutine(ChangeBloomIntensity(originalBloomIntensity, targetIntensity, bloomEffectDuration));
-            }
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.UseSound, ObjectGrabPoint.transform.position);
-            InventoryManager.Instance.Remove(item);
-            Destroy(gameObject);
-            Debug.Log("Bloom intensity increased gradually");
-        }
-    }
+    //            StartCoroutine(ChangeBloomIntensity(originalBloomIntensity, targetIntensity, bloomEffectDuration));
+    //        }
+    //        AudioManager.instance.PlayOneShot(FMODEvents.instance.UseSound, ObjectGrabPoint.transform.position);
+    //        InventoryManager.Instance.Remove(item);
+    //        Destroy(gameObject);
+    //        Debug.Log("Bloom intensity increased gradually");
+    //    }
+    //}
 
-    public IEnumerator ChangeBloomIntensity(float startIntensity, float targetIntensity, float duration)
-    {
-        float elapsedTime = 0f;
-        float currentIntensity = startIntensity;
+    //public IEnumerator ChangeBloomIntensity(float startIntensity, float targetIntensity, float duration)
+    //{
+    //    float elapsedTime = 0f;
+    //    float currentIntensity = startIntensity;
 
-        while (elapsedTime < duration)
-        {
-            // Adjust intensity smoothly
-            currentIntensity = Mathf.Lerp(startIntensity, targetIntensity, elapsedTime / duration);
-            bloomComponent.intensity.value = currentIntensity;
+    //    while (elapsedTime < duration)
+    //    {
+    //        // Adjust intensity smoothly
+    //        currentIntensity = Mathf.Lerp(startIntensity, targetIntensity, elapsedTime / duration);
+    //        bloomComponent.intensity.value = currentIntensity;
 
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+    //        elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
 
-        // Ensure the intensity is set to the target value
-        bloomComponent.intensity.value = targetIntensity;
+    //    // Ensure the intensity is set to the target value
+    //    bloomComponent.intensity.value = targetIntensity;
 
-        yield return new WaitForSeconds(1f); // Wait for a moment at the increased intensity
+    //    yield return new WaitForSeconds(1f); // Wait for a moment at the increased intensity
 
-        // Gradual decrease
-        elapsedTime = 0f;
+    //    // Gradual decrease
+    //    elapsedTime = 0f;
 
-        while (elapsedTime < duration)
-        {
-            // Adjust intensity smoothly
-            currentIntensity = Mathf.Lerp(targetIntensity, startIntensity, elapsedTime / duration);
-            bloomComponent.intensity.value = currentIntensity;
+    //    while (elapsedTime < duration)
+    //    {
+    //        // Adjust intensity smoothly
+    //        currentIntensity = Mathf.Lerp(targetIntensity, startIntensity, elapsedTime / duration);
+    //        bloomComponent.intensity.value = currentIntensity;
 
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+    //        elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
 
-        // Ensure the intensity is set to the original value
-        bloomComponent.intensity.value = startIntensity;
-        Debug.Log("Bloom intensity increased and decreased gradually");
-    }
+    //    // Ensure the intensity is set to the original value
+    //    bloomComponent.intensity.value = startIntensity;
+    //    Debug.Log("Bloom intensity increased and decreased gradually");
+    //}
 
-    private void UpdateItemQuantityText()
-    {
-        if (itemQuantityText != null)
-        {
-            itemQuantityText.text = itemQuantity.ToString();
-        }
-    }
+    //private void UpdateItemQuantityText()
+    //{
+    //    if (itemQuantityText != null)
+    //    {
+    //        itemQuantityText.text = itemQuantity.ToString();
+    //    }
+    //}
 }

@@ -20,56 +20,56 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
 
     public bool isInventoryOpen = false;
 
-    private Vector3 hiddenPosition;
-    private bool hasInitialized = false; // Flag to track initialization
+    ////private Vector3 hiddenPosition;
+    //private bool hasInitialized = false; // Flag to track initialization
 
 
-    private void Start()
-    {
-        if (!hasInitialized)
-        {
-            InitializeInventory();
-            hasInitialized = true;
-        }
-    }
+    //private void Start()
+    //{
+    //    if (!hasInitialized)
+    //    {
+    //        InitializeInventory();
+    //        hasInitialized = true;
+    //    }
+    //}
 
-    private void InitializeInventory()
-    {
-        hiddenPosition = new Vector3(Screen.width * 2, 0, 0); // Calculate off-screen position
-        ItemContent.localPosition = hiddenPosition; // Initialize inventory panel off-screen
+    //private void InitializeInventory()
+    //{
+    //    hiddenPosition = new Vector3(Screen.width * 2, 0, 0); // Calculate off-screen position
+    //    ItemContent.localPosition = hiddenPosition; // Initialize inventory panel off-screen
 
-        // Other initialization logic
-        // ...
-    }
+    //    // Other initialization logic
+    //    // ...
+    //}
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) && isInventoryOpen)
-        {
-            isInventoryOpen = !isInventoryOpen;
-            ToggleInventoryPanel();
-        //Item3DViewer.gameObject.SetActive(isInventoryOpen);
+        //if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) && isInventoryOpen)
+        //{
+        //    isInventoryOpen = !isInventoryOpen;
+        //    ToggleInventoryPanel();
+        ////Item3DViewer.gameObject.SetActive(isInventoryOpen);
 
-            Cursor.visible = isInventoryOpen;
-            Cursor.lockState = isInventoryOpen ? CursorLockMode.None : CursorLockMode.Locked;
+        //    Cursor.visible = isInventoryOpen;
+        //    Cursor.lockState = isInventoryOpen ? CursorLockMode.None : CursorLockMode.Locked;
 
-            LockCameraRotation(isInventoryOpen);
+        //    LockCameraRotation(isInventoryOpen);
 
             ListItems();
-        }
+        //}
     }
 
-    public void ToggleInventoryPanel()
-    {
-        ItemContent.localPosition = isInventoryOpen ? Vector3.zero : hiddenPosition;
-    }
+    //public void ToggleInventoryPanel()
+    //{
+    //    ItemContent.localPosition = isInventoryOpen ? Vector3.zero : hiddenPosition;
+    //}
 
     private void Awake()
     {
-        hiddenPosition = new Vector3(Screen.width * 2, 0, 0); // Calculate off-screen position
+        //    hiddenPosition = new Vector3(Screen.width * 2, 0, 0); // Calculate off-screen position
 
-        ItemContent.localPosition = hiddenPosition; // Initialize inventory panel off-screen
+        //    ItemContent.localPosition = hiddenPosition; // Initialize inventory panel off-screen
 
         itemTransformDic = new Dictionary<Item, Transform>();
 
@@ -107,28 +107,66 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
 
     public void ListItems()
     {
-        RemoveItem();
-        foreach (Item item in Items)
+        if (ItemContent != null) // Check if ItemContent is not null
         {
-            GameObject obj = Instantiate(InventoryItem, ItemContent);
-            InventoryItemController itemController = obj.GetComponent<InventoryItemController>();
-            itemController.AddItem(item);
-            TextMeshProUGUI itemName = obj.transform.Find("itemName")?.GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI itemQuantity = obj.transform.Find("itemQuantityText")?.GetComponent<TextMeshProUGUI>();
+            RemoveItem();
+            foreach (Item item in Items)
+            {
+                GameObject obj = Instantiate(InventoryItem, ItemContent);
+                if (obj != null)
+                {
+                    InventoryItemController itemController = obj.GetComponent<InventoryItemController>();
+                    itemController.AddItem(item);
+                    TextMeshProUGUI itemName = obj.transform.Find("itemName")?.GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI itemQuantity = obj.transform.Find("itemQuantityText")?.GetComponent<TextMeshProUGUI>();
+                    var itemIcon = obj.transform.Find("itemIcon").GetComponent<Image>();
 
-            var itemIcon = obj.transform.Find("itemIcon").GetComponent<Image>();
-            
-            if (itemName != null)
-            {
-                itemName.text = item.itemName;
+                    if (itemName != null)
+                    {
+                        itemName.text = item.itemName;
+                    }
+                    if (itemIcon != null)
+                    {
+                        itemIcon.sprite = item.icon;
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Failed to instantiate InventoryItem.");
+                }
             }
-            if (itemIcon != null)
-            {
-                itemIcon.sprite = item.icon;
-            }
-            //SetInventoryItems();
+        }
+        else
+        {
+            Debug.LogError("ItemContent is null. Ensure it is assigned in the Inspector.");
         }
     }
+
+
+    //public void ListItems()
+    //{
+    //    RemoveItem();
+    //    foreach (Item item in Items)
+    //    {
+    //        GameObject obj = Instantiate(InventoryItem, ItemContent);
+    //        InventoryItemController itemController = obj.GetComponent<InventoryItemController>();
+    //        itemController.AddItem(item);
+    //        TextMeshProUGUI itemName = obj.transform.Find("itemName")?.GetComponent<TextMeshProUGUI>();
+    //        TextMeshProUGUI itemQuantity = obj.transform.Find("itemQuantityText")?.GetComponent<TextMeshProUGUI>();
+
+    //        var itemIcon = obj.transform.Find("itemIcon").GetComponent<Image>();
+
+    //        if (itemName != null)
+    //        {
+    //            itemName.text = item.itemName;
+    //        }
+    //        if (itemIcon != null)
+    //        {
+    //            itemIcon.sprite = item.icon;
+    //        }
+    //        //SetInventoryItems();
+    //    }
+    //}
 
     public void SetInventoryItems()
     {

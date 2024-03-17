@@ -35,7 +35,7 @@ public class FlashlightMobileScript : MonoBehaviour
     void Update()
     {
         // Toggle flashlight on/off when the 'F' key is pressed
-        if (Input.GetKeyDown(KeyCode.F) && physicsObject.isGrabbed)
+        if (Input.GetKeyDown(KeyCode.F) && physicsObject.isGrabbed && CompareTag("Phone"))
         {
             ToggleFlashlight();
         }

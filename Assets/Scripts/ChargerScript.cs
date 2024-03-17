@@ -52,7 +52,7 @@ public class ChargerScript : MonoBehaviour
                 Disconnect();
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
+            if (Input.GetButtonDown("Fire1") && Vector3.Distance(transform.position, Camera.main.transform.position) <= NearView())
             {
                 isConnected = false;
                 connectedSocket = null;

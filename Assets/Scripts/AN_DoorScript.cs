@@ -27,6 +27,8 @@ public class AN_DoorScript : MonoBehaviour
     [Tooltip("Speed for door opening, degrees per sec")]
     public float OpenSpeed = 3f;
 
+
+
     // NearView()
     float distance;
     float angleView;
@@ -105,6 +107,21 @@ public class AN_DoorScript : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    public void AdjustHingeJointLimits(GameObject obj, float minLimit, float maxLimit)
+    {
+        // Get all the hinge joint components attached to the GameObject
+        HingeJoint[] hingeJoints = obj.GetComponentsInChildren<HingeJoint>();
+
+        // Loop through each hinge joint and adjust its limits
+        foreach (HingeJoint hingeJoint in hingeJoints)
+        {
+            JointLimits limits = hingeJoint.limits;
+            limits.min = minLimit;
+            limits.max = maxLimit;
+            hingeJoint.limits = limits;
         }
     }
 

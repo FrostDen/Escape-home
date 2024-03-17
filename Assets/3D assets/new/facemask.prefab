@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0988723
+      value: -6.122
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.028
+      value: 0.9563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.332777
+      value: -0.0224
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b025affae2fba540a926dbf6c27d82e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -166,8 +166,8 @@ MonoBehaviour:
   pickUpLayerMask:
     serializedVersion: 2
     m_Bits: 51
-  Pickposition: {x: 0, y: 0, z: 0}
-  PickRotation: {x: 0, y: 0, z: 0}
+  globalVolume: {fileID: 0}
+  volumeProfile: {fileID: 11400000, guid: e7b76ff3d7c350444bb3b17cf8cafda7, type: 2}
 --- !u!114 &873156282263316444
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,14 +35,19 @@ public class MenuManager : MonoBehaviour
             ToggleMenu();
         }
 
-        // Check if menu is open and disable inventory key if applicable
-        if (isVisible && Input.GetKeyDown(KeyCode.I))
-        {
-            inventoryManager.ToggleInventoryPanel(); // Set parameter to false to prevent actual opening
-        }
+        //// Check if menu is open and disable inventory key if applicable
+        //if (isVisible && Input.GetKeyDown(KeyCode.I))
+        //{
+        //    inventoryManager.ToggleInventoryPanel(); // Set parameter to false to prevent actual opening
+        //}
     }
 
     public void PlayGame()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void IntroScene()
     {
         SceneManager.LoadScene(1);
     }
@@ -54,8 +59,8 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleMenu()
     {
-        if (inventoryManager.isInventoryOpen == false) // Ensure inventory isn't already open
-        {
+        //if (inventoryManager.isInventoryOpen == false) // Ensure inventory isn't already open
+        //{
             // Toggle the menu's position
             isVisible = !isVisible;
             menuPanel.localPosition = isVisible ? Vector3.zero : hiddenPosition;
@@ -69,7 +74,7 @@ public class MenuManager : MonoBehaviour
             // Set Cursor.visible based on isVisible
             Cursor.visible = isVisible;
             inventoryManager.LockCameraRotation(isVisible);
-        }
+        //}
     }
 
     public void BackToMenu()

@@ -12,6 +12,8 @@ public class KeypadController : MonoBehaviour
     public TMP_Text displayText;
     public Transform keypadTransform;
 
+    public GameObject safeLock;
+
     private void Start()
     {
         doorScript.Locked = true;
@@ -52,6 +54,8 @@ public class KeypadController : MonoBehaviour
             AudioManager.instance.PlayOneShot(FMODEvents.instance.KeypadCorrect, keypadTransform.position);
             displayText.text = "Access granted";
             displayText.color = Color.green;
+            safeLock.gameObject.layer = LayerMask.NameToLayer("Object");
+            doorScript.enabled = false;
 
             // Unlock the door if the password is correct
             if (doorScript != null)
@@ -59,7 +63,11 @@ public class KeypadController : MonoBehaviour
                 doorScript.Locked = false;
                 doorScript.OpenSpeed = 0f;
                 doorScript.CanOpen = true; // Allow opening the door
+
+                // Adjust hinge joint limits of safeLock GameObject
+                doorScript.AdjustHingeJointLimits(safeLock, -110f, -10f);
             }
+
         }
         else
         {
