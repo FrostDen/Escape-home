@@ -36,7 +36,10 @@ public class BatteryScript : MonoBehaviour
     public float currentCapacity = 0.0f; // Current battery capacity
     public float chargeRate = 5.0f; // Rate at which the battery charges per second
     public float dischargeRate = 2.0f; // Rate at which the battery discharges per second
-    
+
+    public HUD hud; // Reference to the HUD script
+    public bool isPhoneCharging = false; // Flag to track if the phone is currently charging
+
     void Start()
     {
         originalPosition = batteryIndicationScreen.localPosition;
@@ -45,6 +48,20 @@ public class BatteryScript : MonoBehaviour
 
     void Update()
     {
+        // Check if both adapter and charger are connected
+        if (adapterScript.isConnected && chargerScript.isConnected)
+        {
+            if (!isPhoneCharging)
+            {
+                // Set the flag to true indicating the phone is charging
+                isPhoneCharging = true;
+
+                // Complete the quest for charging the phone
+                hud.mobilePhoneCharged = true;
+                hud.NextQuest();
+            }
+        }
+
         TurnOnBtn.SetActive(false);
         if (adapterScript.isConnected && chargerScript.isConnected)
         {

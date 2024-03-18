@@ -19,6 +19,7 @@ TagManager:
   - Box
   - CovidTest
   - Hinges
+  - Facemask
   layers:
   - Default
   - TransparentFX

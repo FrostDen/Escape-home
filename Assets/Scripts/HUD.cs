@@ -47,6 +47,37 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private float timeSinceLastCough = 1f;
     public float coughCooldown = 1f; // Adjust this value to set the minimum time between coughs
 
+
+    public GameObject questPanel; // Reference to the quest panel in the UI
+    public TextMeshProUGUI questText; // Reference to the text element displaying the current quest/task
+
+    private int currentQuestIndex = 0; // Index of the current quest/task
+    private string[] quests = {
+        //"Find the mobile phone",
+        "N·jdi mobil",
+        //"Find the charger for mobile phone",
+        "N·jdi nabÌjaËku od mobilu",
+        //"You must charge the grandma's mobile phone",
+        "MusÌö nabiù babkin mobil",
+        //"Find correct pincode",
+        "N·jdi spr·vny pin kÛd",
+        //"Find key from the front door",
+        "N·jdi kæ˙Ë od vchodov˝ch dverÌ",
+        //"You must wear a facemask",
+        "MusÌö maù na sebe r˙öko",
+        //"Find the test",
+        "N·jdi test",
+        //"You need to get tested"
+        "Potrebujeö sa otestovaù"
+    }; // Array of tasks
+
+    private bool mobilePhoneFound = false;
+    public bool mobilePhoneCharged = false;
+    private bool frontDoorKeyFound = false;
+    private bool facemaskWorn = false;
+    private bool testedForDisease = false;
+
+
     //void Awake()
     //{
     //    MessagePanel = GameObject.Find("MessagePanel");
@@ -60,6 +91,33 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         originalTimeScale = Time.timeScale; // Store the original time scale
 
         physicsObjects = FindObjectsOfType<PhysicsObject>().ToList();
+
+        if (questPanel != null && questText != null)
+        {
+            questPanel.SetActive(true); // Ensure the quest panel is active
+            UpdateQuest(); // Update the quest/task text
+        }
+    }
+
+    void UpdateQuest()
+    {
+        if (currentQuestIndex < quests.Length)
+        {
+            //questText.text = "Task: " + quests[currentQuestIndex];
+            questText.text = "⁄loha: " + quests[currentQuestIndex];
+        }
+        else
+        {
+            //questText.text = "All quests completed";
+            questText.text = "Vöetky ˙lohy splnenÈ";
+            //questPanel.SetActive(false); // Hide the quest panel if all quests are completed
+        }
+    }
+
+    public void NextQuest()
+    {
+        currentQuestIndex++;
+        UpdateQuest();
     }
 
     private void PlayCough()
@@ -122,6 +180,24 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         int seconds = Mathf.FloorToInt(remainingTime % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         #endregion
+
+        // Check conditions to complete tasks
+        if (!mobilePhoneFound && physicsObjects.Any(obj => obj.gameObject.CompareTag("Phone") && obj.isGrabbed))
+        {
+            mobilePhoneFound = true;
+            NextQuest();
+        }
+        if (!mobilePhoneCharged && physicsObjects.Any(obj => obj.gameObject.CompareTag("Charger") && obj.isGrabbed))
+        {
+            mobilePhoneCharged = true;
+            NextQuest();
+        }
+
+        if (!mobilePhoneCharged && physicsObjects.Any(obj => obj.gameObject.CompareTag("Charger") && obj.isGrabbed))
+        {
+            mobilePhoneCharged = true;
+            NextQuest();
+        }
 
         // Create an array to store raycast hits
         RaycastHit[] hits = new RaycastHit[10]; // Adjust the size as needed
@@ -249,9 +325,9 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (currentHit.transform != null && currentHit.collider != null && currentHit.collider.gameObject != null) // Check if currentHit.collider.gameObject is not null
                 {
                     currentHitItemName = currentHit.collider.gameObject.name;
-                    if (currentHit.transform.CompareTag("Object"))
+                    if (currentHit.transform.CompareTag("Facemask"))
                     {
-                        OpenMessagePanel("stlaË [LMB] vziaù / [E] chytiù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chytiù / [E] nasadiù " + currentHitItemName);
                         //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true
@@ -259,7 +335,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
                 if (currentHit.transform.CompareTag("Phone"))
                     {
-                        OpenMessagePanel("stlaË [E] chytiù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chytiù " + currentHitItemName);
                         //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true
@@ -273,7 +349,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
                     else if (currentHit.transform.CompareTag("Charger"))
                     {
-                        OpenMessagePanel("stlaË [E] chytiù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chytiù " + currentHitItemName);
                         //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true
@@ -286,7 +362,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     }
                     else if (currentHit.transform.CompareTag("CovidTest"))
                     {
-                        OpenMessagePanel("stlaË [E] chytiù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chytiù " + currentHitItemName);
                         //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true
@@ -299,7 +375,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     }
                     else if (currentHit.transform.CompareTag("Radio"))
                     {
-                        OpenMessagePanel("stlaË [E] chytiù / [F] zapn˙ù/vypn˙ù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chytiù / [F] zapn˙ù/vypn˙ù " + currentHitItemName);
                         ///OpenMessagePanel("press [E] to grab / [F] to turn on/off " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true
@@ -312,7 +388,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     }
                     else if (currentHit.transform.CompareTag("Inspect retrievable"))
                     {
-                        OpenMessagePanel("stlaË [LMB] vziaù / [E] chytiù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chatiù / [E] vypiù " + currentHitItemName);
                         //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true
@@ -325,7 +401,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     }
                     else if (currentHit.transform.CompareTag("Flashlight"))
                     {
-                        OpenMessagePanel("stlaË [E] chytiù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chytiù " + currentHitItemName);
                         //OpenMessagePanel("press [E] to grab " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true
