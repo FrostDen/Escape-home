@@ -7,6 +7,7 @@ using TMPro;
 public class PincodeScript : MonoBehaviour
 {
     public MobileScript mobileScript;
+
     public HUD hud; // Reference to the HUD script
 
     public RectTransform MobileDesktop;
@@ -78,6 +79,8 @@ public class PincodeScript : MonoBehaviour
                 hiddenPosition = new Vector3(Screen.width * 40, 0, 0);
                 // Move the menu off-screen initially
                 PinKeypad.localPosition = hiddenPosition;
+                hud.SetNextQuest(5);
+                resetPinCoroutine = StartCoroutine(ClearPinAfterDelay(1.5f));
             }
 
             // Reset the PIN after 5 seconds if the PIN was entered correctly

@@ -5098,10 +5098,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3323247179244775796}
   - {fileID: 3867450600124484901}
   - {fileID: 6312267747771050427}
   - {fileID: 6417245079591692662}
+  - {fileID: 3323247179244775796}
   - {fileID: 5154793695851649401}
   - {fileID: 9112120716106452911}
   - {fileID: 5149001928234656971}
@@ -7950,11 +7950,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobileScript: {fileID: 1507107799667027516}
+  hud: {fileID: 0}
   MobileDesktop: {fileID: 691476326205522726}
   PinKeypad: {fileID: 2973367053603871662}
   hiddenPosition: {x: 0, y: 0, z: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   correctPin: 1234
+  pinSlider: {fileID: 0}
+  correctColor: {r: 0, g: 1, b: 0, a: 1}
+  wrongColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &6926739261355523020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8791,6 +8795,7 @@ MonoBehaviour:
   hiddenPosition: {x: 0, y: 0, z: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   SMSPanel: {fileID: 7827910504599987687}
+  hud: {fileID: 0}
 --- !u!114 &4125194241599629070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8804,7 +8809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobileScript: {fileID: 1507107799667027516}
-  flashlightScript: {fileID: 722754481758706438}
+  flashlightMobileScript: {fileID: 0}
   adapterScript: {fileID: 0}
   chargerScript: {fileID: 0}
   batteryIndicator: {fileID: 1643970989869331870}
@@ -8829,6 +8834,8 @@ MonoBehaviour:
   currentCapacity: 0
   chargeRate: 5
   dischargeRate: 2
+  hud: {fileID: 0}
+  isPhoneCharging: 0
 --- !u!114 &4517177128410565390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8857,8 +8864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d0a85033b4aea4a8c3fa14bfde1e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryScript: {fileID: 4125194241599629070}
-  objectGrabbable: {fileID: 5916842606093155395}
+  physicsObject: {fileID: 0}
   flashlight: {fileID: 6796819225518061337}
   emissionRenderer: {fileID: 0}
 --- !u!114 &5916842606093155395
@@ -8876,10 +8882,6 @@ MonoBehaviour:
   specificRotation: {x: -100, y: 0, z: 90}
   isGrabbed: 0
   playerObject: {fileID: 0}
-  OneTime: 0
-  Places: []
-  isConnected: 0
-  youCan: 1
 --- !u!1 &7786699440200990732
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,7 +71,7 @@ public class RadioScript : MonoBehaviour
 
         // Perform a sphere cast to check for nearby interactable objects
         RaycastHit hit;
-        if (Physics.SphereCast(raycastPos, sphereCastRadius, mainCamera.transform.forward, out hit, maxDistance, 1 << interactableLayerIndex))
+        if (Physics.SphereCast(raycastPos, sphereCastRadius, mainCamera.transform.forward, out hit, maxDistance, 1 << interactableLayerIndex) && hit.distance <= maxDistance && hit.collider.CompareTag("Radio"))
         {
             lookObject = hit.collider.transform.root.gameObject;
 
@@ -91,7 +91,7 @@ public class RadioScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && maxDistance <= 2 && CompareTag("Radio"))
+        if (Input.GetKeyDown(KeyCode.E) && maxDistance <= 2 && CompareTag("Radio"))
         {
             ToggleRadio();
         }

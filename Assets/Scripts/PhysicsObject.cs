@@ -10,10 +10,22 @@ public class PhysicsObject : MonoBehaviour
     [SerializeField] public Vector3 specificRotation;
     public bool isGrabbed = false;
 
+    OutlineSelection outlineSelection; // Reference to the Outline component
+
+    private void Start()
+    {
+        // Get the Outline component attached to the object
+        outlineSelection = GetComponent<OutlineSelection>();
+        if (outlineSelection == null)
+        {
+            // If Outline component is not found, try to find it in children
+            outlineSelection = GetComponentInChildren<OutlineSelection>();
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (playerInteractions != null && isGrabbed == true)
+        if (playerInteractions != null && isGrabbed)
         {
             if (collision.relativeVelocity.magnitude > breakForce)
             {
@@ -22,7 +34,6 @@ public class PhysicsObject : MonoBehaviour
         }
     }
 
-
     // This is used to prevent the connection from breaking when you just picked up the object
     public IEnumerator PickUp()
     {
@@ -30,6 +41,12 @@ public class PhysicsObject : MonoBehaviour
         if (playerInteractions != null)
         {
             isGrabbed = true;
+
+            // Disable the Outline component when the object is picked up
+            if (outlineSelection != null)
+            {
+                outlineSelection.enabled = false;
+            }
         }
     }
 }

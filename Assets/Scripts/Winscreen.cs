@@ -27,15 +27,7 @@ public class Winscreen : MonoBehaviour
             Debug.Log("No facemask!");
             hintText.text = "Kam si myslÌö, ûe ideö? Najprv si nasaÔ r˙öko na tv·r.";
             //hintText.text = "Where do you think you're going? You need to wear a facemask first.";
-        }
-
-
-        if (inventoryItemController.Facemask == false)
-        {
-            HintPanel.SetActive(true);
-            Debug.Log("No facemask!");
-            hintText.text = "Kam si myslÌö, ûe ideö? Najprv si nasaÔ r˙öko na tv·r.";
-            //hintText.text = "Where do you think you're going? You need to wear a facemask first.";
+            hud.SetNextQuest(8);
         }
 
         if (collider.CompareTag("CovidTest") && covidTestScript.isPositive == false)
@@ -43,6 +35,7 @@ public class Winscreen : MonoBehaviour
             //hintText.text = "Have you already tested yourself? No?! So what are you waiting for!";
             hintText.text = "Uû si sa otestoval? Nie?! Tak na Ëo tu Ëak·ö!";
             Debug.Log("Facemask is present");
+            hud.SetNextQuest(8);
         }
 
         if (inventoryItemController.Facemask == false && collider.CompareTag("CovidTest") && covidTestScript.isPositive == false)
@@ -51,6 +44,7 @@ public class Winscreen : MonoBehaviour
             Debug.Log("No facemask!");
             hintText.text = "Kam si myslÌö ûe ideö bez r˙öka a bez otestovania sa?! Vieö ak· je toto z·kern· choroba!";
             //hintText.text = "Where do you think you're going without a cloak and without testing yourself?! You know what an insidious disease this is!";
+            hud.SetNextQuest(8);
         }
 
         if (collider.CompareTag("CovidTest") && covidTestScript.isPositive == true)
@@ -58,6 +52,8 @@ public class Winscreen : MonoBehaviour
             //hintText.text = "Make another one now and let's see and find a facemask over your mouth and nose! You can't go out without it.";
             hintText.text = "Sprav si eöte teraz jeden a uvidÌme a n·jdi si r˙öko na ˙sta a nos! Bez neho nemÙûeö Ìsù von.";
             Debug.Log("Facemask is present");
+            hud.SetNextQuest(8);
+
         }
 
         if (collider.CompareTag("CovidTest") && covidTestScript.isPositive == true && inventoryItemController.Facemask == false)
@@ -65,6 +61,7 @@ public class Winscreen : MonoBehaviour
             //hintText.text = "Make another one now and let's see and find a facemask over your mouth and nose! You can't go out without it.";
             hintText.text = "Sprav si eöte teraz jeden a uvidÌme a n·jdi si r˙öko na ˙sta a nos! Bez neho nemÙûeö Ìsù von.";
             Debug.Log("Facemask is present");
+            hud.SetNextQuest(8);
         }
 
         if (inventoryItemController.Facemask == true)
@@ -72,6 +69,7 @@ public class Winscreen : MonoBehaviour
             //hintText.text = "You have to have a test with negative result in order to go outside.";
             hintText.text = "Na to aby si mohol Ìsù von, musÌö maù test s negatÌvnym v˝sledkom. R˙öko nestaËÌ!";
             Debug.Log("Facemask is present");
+            hud.SetNextQuest(9);
         }
 
         if (inventoryItemController.Facemask == true && collider.CompareTag("CovidTest") && covidTestScript.isPositive == false)
@@ -80,6 +78,7 @@ public class Winscreen : MonoBehaviour
             Debug.Log("No facemask!");
             hintText.text = "R˙öko m·ö ale st·le nevidÌm ten test negatÌvny...";
             //hintText.text = "You have a facemask but I still don't see the test negative...";
+            hud.SetNextQuest(10);
         }
 
         if (collider.CompareTag("CovidTest") && covidTestScript.isPositive == true && inventoryItemController.Facemask == true)//|| inventoryItemController.CovidTest == true)
@@ -88,6 +87,7 @@ public class Winscreen : MonoBehaviour
             //hintText.text = "Sorry buddy... but i can't let you go outside with positive test. Get cured and come back in two weeks with a negative test.";
             Debug.Log("Facemask is present");
             //hud.WinGame();
+            hud.SetNextQuest(11);
         }
     }
 

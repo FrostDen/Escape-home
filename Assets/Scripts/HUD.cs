@@ -34,7 +34,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private string currentHitItemName;
 
-    private float showUpDistance = 10f;
+    private float showUpDistance = 2f;
     private RaycastHit currentHit;
     private bool isObjectVisible;
 
@@ -54,21 +54,33 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private int currentQuestIndex = 0; // Index of the current quest/task
     private string[] quests = {
         //"Find the mobile phone",
-        "N·jdi mobil",
+        "N·jdi mobil.", //0 HUD
         //"Find the charger for mobile phone",
-        "N·jdi nabÌjaËku od mobilu",
+        "N·jdi nabÌjaËku od mobilu.", //1 HUD 
         //"You must charge the grandma's mobile phone",
-        "MusÌö nabiù babkin mobil",
-        //"Find correct pincode",
-        "N·jdi spr·vny pin kÛd",
+        "MusÌö nabiù babkin mobil.", //2 batteryScript
+        //"Turn on the mobile.",
+        "Zapni mobil.", //3 mobileScript
+        //"Hit the correct pin code.",
+        "Traf spr·vny pin kÛd.", //4 pincodeScript
         //"Find key from the front door",
-        "N·jdi kæ˙Ë od vchodov˝ch dverÌ",
+        "Prezri nov˙ spr·vu v mobile.", //5 mobileScript
+        //"Look at new message in the phone",
+        "N·jdi kæ˙Ë od vchodov˝ch dverÌ.", //6 HUD
+        //"Open the door and go to the elevator.",
+        "Otvor dvere a choÔ k v˝ùahu.", //7 HUD
         //"You must wear a facemask",
-        "MusÌö maù na sebe r˙öko",
-        //"Find the test",
-        "N·jdi test",
-        //"You need to get tested"
-        "Potrebujeö sa otestovaù"
+        "MusÌö maù na sebe r˙öko.", //8 HUD
+        //"Find the test.",
+        "N·jdi test.", //9 HUD
+        //"You need to get tested."
+        "Potrebujeö sa otestovaù.", //10 CovidTestScript
+        //"Unfortunately, you're positive. You're not getting out...",
+        "Bohuûiaæ, si pozitÌvny. Von sa nedostaneö...", //11 CovidTestScript
+        //"You need to get tested."
+            "ChoÔ k v˝ùahu.", //12 HUD
+            //"Wait for the test result."
+            "PoËkaj na v˝sledok testu." //13 HUD
     }; // Array of tasks
 
     private bool mobilePhoneFound = false;
@@ -106,18 +118,15 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             //questText.text = "Task: " + quests[currentQuestIndex];
             questText.text = "⁄loha: " + quests[currentQuestIndex];
         }
-        else
-        {
-            //questText.text = "All quests completed";
-            questText.text = "Vöetky ˙lohy splnenÈ";
-            //questPanel.SetActive(false); // Hide the quest panel if all quests are completed
-        }
     }
 
-    public void NextQuest()
+    public void SetNextQuest(int questIndex)
     {
-        currentQuestIndex++;
-        UpdateQuest();
+        if (questIndex >= 0 && questIndex < quests.Length)
+        {
+            currentQuestIndex = questIndex;
+            UpdateQuest();
+        }
     }
 
     private void PlayCough()
@@ -182,21 +191,27 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         #endregion
 
         // Check conditions to complete tasks
-        if (!mobilePhoneFound && physicsObjects.Any(obj => obj.gameObject.CompareTag("Phone") && obj.isGrabbed))
+        if (!mobilePhoneFound && physicsObjects != null && physicsObjects.Any(obj => obj != null && obj.gameObject.CompareTag("Phone") && obj.isGrabbed))
         {
             mobilePhoneFound = true;
-            NextQuest();
+            SetNextQuest(1);
         }
-        if (!mobilePhoneCharged && physicsObjects.Any(obj => obj.gameObject.CompareTag("Charger") && obj.isGrabbed))
+        if (!mobilePhoneCharged && physicsObjects != null && physicsObjects.Any(obj => obj != null && obj.gameObject.CompareTag("Charger") && obj.isGrabbed))
         {
             mobilePhoneCharged = true;
-            NextQuest();
+            SetNextQuest(2);
         }
 
-        if (!mobilePhoneCharged && physicsObjects.Any(obj => obj.gameObject.CompareTag("Charger") && obj.isGrabbed))
+        if (!frontDoorKeyFound && physicsObjects != null && physicsObjects.Any(obj => obj != null && obj.gameObject.CompareTag("Object") && obj.isGrabbed))
         {
-            mobilePhoneCharged = true;
-            NextQuest();
+            frontDoorKeyFound = true;
+            SetNextQuest(7);
+        }
+
+        if (!frontDoorKeyFound && physicsObjects != null && physicsObjects.Any(obj => obj != null && obj.gameObject.CompareTag("CovidTest") && obj.isGrabbed))
+        {
+            frontDoorKeyFound = true;
+            SetNextQuest(10);
         }
 
         // Create an array to store raycast hits
@@ -333,7 +348,15 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                         isMessageSet = true; // Set the flag to true
                     }
 
-                if (currentHit.transform.CompareTag("Phone"))
+                    if (currentHit.transform.CompareTag("Object"))
+                    {
+                        OpenMessagePanel("stlaË [LMB] chytiù " + currentHitItemName);
+                        //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
+                        Debug.Log(currentHitItemName);
+                        isMessageSet = true; // Set the flag to true
+                    }
+
+                    if (currentHit.transform.CompareTag("Phone"))
                     {
                         OpenMessagePanel("stlaË [LMB] chytiù " + currentHitItemName);
                         //OpenMessagePanel("press [E] to grab " + currentHitItemName);
@@ -375,7 +398,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     }
                     else if (currentHit.transform.CompareTag("Radio"))
                     {
-                        OpenMessagePanel("stlaË [LMB] chytiù / [F] zapn˙ù/vypn˙ù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chytiù / [E] zapn˙ù/vypn˙ù " + currentHitItemName);
                         ///OpenMessagePanel("press [E] to grab / [F] to turn on/off " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true
@@ -388,7 +411,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     }
                     else if (currentHit.transform.CompareTag("Inspect retrievable"))
                     {
-                        OpenMessagePanel("stlaË [LMB] chatiù / [E] vypiù " + currentHitItemName);
+                        OpenMessagePanel("stlaË [LMB] chytiù / [E] vypiù " + currentHitItemName);
                         //OpenMessagePanel("press [LMB] to take / [E] to grab " + currentHitItemName);
                         Debug.Log(currentHitItemName);
                         isMessageSet = true; // Set the flag to true

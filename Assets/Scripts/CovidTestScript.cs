@@ -22,6 +22,7 @@ public class CovidTestScript : MonoBehaviour
     public GameObject testMat; // Reference to the GameObject containing Material Element 2
     public Material newMaterial; // New material for Material Element 2 when fading out starts
 
+    public HUD hud;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class CovidTestScript : MonoBehaviour
                 fadingOut = true;
                 FadeOutSlider();
                 isPositive = false;
+                hud.SetNextQuest(13);
             }
         }
 
@@ -57,6 +59,7 @@ public class CovidTestScript : MonoBehaviour
                 //textAppearing = true;
                 //AppearText();
                 isPositive = true;
+                hud.SetNextQuest(12);
             }
         }
 

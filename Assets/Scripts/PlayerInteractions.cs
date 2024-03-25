@@ -33,6 +33,8 @@ public class PlayerInteractions : MonoBehaviour
 
     public GameObject playerObject;
 
+    public Transform flashlightPoint;
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -46,6 +48,7 @@ public class PlayerInteractions : MonoBehaviour
     //}
 
     public bool isRightMouseButtonPressed = false;
+    public bool isMiddleMouseButtonPressed = false;
 
 
     //Interactable Object detections and distance check
@@ -86,19 +89,21 @@ public class PlayerInteractions : MonoBehaviour
 
             }
             //if we press the pickup button and have something, we drop it
-            else if (!isRightMouseButtonPressed)
+            else if (!isRightMouseButtonPressed || !isMiddleMouseButtonPressed)
             {
                 BreakConnection();
             }
         }
 
         isRightMouseButtonPressed = Input.GetMouseButton(1);
+        isMiddleMouseButtonPressed = Input.GetMouseButton(2);
 
         if (physicsObject != null && physicsObject.isGrabbed)
         {
             // Check if the right mouse button is pressed
             if (Input.GetMouseButtonDown(2))
             {
+                isMiddleMouseButtonPressed = true;
                 StartInspecting();
                 LockCameraRotation(physicsObject.isGrabbed);
             }
@@ -106,6 +111,7 @@ public class PlayerInteractions : MonoBehaviour
             // Check if the right mouse button is released
             if (Input.GetMouseButtonUp(2))
             {
+                isMiddleMouseButtonPressed = false;
                 StopInspecting();
                 LockCameraRotation(!physicsObject.isGrabbed);
             }
@@ -180,7 +186,7 @@ public class PlayerInteractions : MonoBehaviour
                 currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
             }
 
-            if (currentlyPickedUpObject.CompareTag("Hinges") || currentlyPickedUpObject.CompareTag("Safe Door"))
+            if (currentlyPickedUpObject.CompareTag("Hinges") || currentlyPickedUpObject.CompareTag("Safe Door") || currentlyPickedUpObject.CompareTag("OpenedDoor") || currentlyPickedUpObject.CompareTag("Pantry Door"))
             {
                 // Calculate mouse movement only on the Y-axis
                 float mouseX = -Input.GetAxis("Mouse X") * sensitivity;
@@ -203,7 +209,11 @@ public class PlayerInteractions : MonoBehaviour
                 currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
             }
 
-            if (!currentlyPickedUpObject.CompareTag("Heavy") && !currentlyPickedUpObject.CompareTag("Hinges") && !currentlyPickedUpObject.CompareTag("Safe Door"))
+            if (!currentlyPickedUpObject.CompareTag("Heavy") 
+                && !currentlyPickedUpObject.CompareTag("Hinges") 
+                && !currentlyPickedUpObject.CompareTag("Safe Door") 
+                && !currentlyPickedUpObject.CompareTag("Pantry Door") 
+                && !currentlyPickedUpObject.CompareTag("OpenedDoor"))
             {
                 // Check if inspecting 
                 if (isInspecting)
@@ -219,7 +229,13 @@ public class PlayerInteractions : MonoBehaviour
                 }
                 else
                 {
-                    if (!currentlyPickedUpObject.CompareTag("Hinges") && !currentlyPickedUpObject.CompareTag("Safe Door") && !currentlyPickedUpObject.CompareTag("Heavy") && !currentlyPickedUpObject.CompareTag("Box") && !currentlyPickedUpObject.CompareTag("Inspect"))
+                    if (!currentlyPickedUpObject.CompareTag("Hinges") 
+                        && !currentlyPickedUpObject.CompareTag("Safe Door") 
+                        && !currentlyPickedUpObject.CompareTag("OpenedDoor") 
+                        && !currentlyPickedUpObject.CompareTag("Pantry Door") 
+                        && !currentlyPickedUpObject.CompareTag("Heavy") 
+                        && !currentlyPickedUpObject.CompareTag("Box") 
+                        && !currentlyPickedUpObject.CompareTag("Inspect"))
                     {
                         //Rotation
                         lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
@@ -270,12 +286,58 @@ public class PlayerInteractions : MonoBehaviour
                         }
                         if (currentlyPickedUpObject.CompareTag("Flashlight"))
                         {
-                            // Apply specific rotation
+                            // Apply specific rotation (if necessary)
                             pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
-                            lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
-                            lookRot = Quaternion.Euler(-90f, lookRot.eulerAngles.y - 90f, 0f); // Only face the camera on the y-axis
-                            pickupRB.MoveRotation(lookRot);
+
+                            // Calculate the direction to the flashlight point
+                            Vector3 directionToFlashlightPoint = flashlightPoint.position - pickupRB.position;
+
+                            // Calculate the rotation to face the flashlight point
+                            Quaternion lookRotation = Quaternion.LookRotation(directionToFlashlightPoint);
+
+                            // Adjust the x-axis rotation to -90 degrees
+                            lookRotation *= Quaternion.Euler(-90f, 0f, 0f);
+
+                            // Get the mouse input on the y-axis
+                            float mouseY = Input.GetAxis("Mouse Y");
+
+                            // Calculate the rotation angle based on mouse input and sensitivity
+                            float rotationAngle = mouseY * sensitivity * Time.deltaTime;
+
+                            // Apply the rotation angle to the current rotation on the y-axis
+                            Quaternion rotationDelta = Quaternion.Euler(rotationAngle, 0f, 0f);
+                            lookRotation *= rotationDelta;
+
+                            // Apply the rotation
+                            pickupRB.MoveRotation(lookRotation);
                         }
+
+                        // Crazy flashlight
+                        //if (currentlyPickedUpObject.CompareTag("Flashlight"))
+                        //{
+                        //    // Apply specific rotation (if necessary)
+                        //    pickupRB.MoveRotation(Quaternion.Euler(physicsObject.specificRotation));
+
+                        //    // Calculate the direction to the flashlight point
+                        //    Vector3 directionToFlashlightPoint = flashlightPoint.position - pickupRB.position;
+
+                        //    // Calculate the rotation to face the flashlight point
+                        //    Quaternion lookRotation = Quaternion.LookRotation(directionToFlashlightPoint);
+
+                        //    // Adjust the x-axis rotation to -90 degrees
+                        //    lookRotation *= Quaternion.Euler(-90f, 0f, 0f);
+
+                        //    // Calculate the angle between the flashlight's forward direction and the direction to the flashlight point
+                        //    float angle = Vector3.SignedAngle(pickupRB.transform.forward, directionToFlashlightPoint, pickupRB.transform.right);
+
+                        //    // Apply the rotation around the flashlight's forward axis based on the angle
+                        //    Quaternion zRotation = Quaternion.AngleAxis(angle, pickupRB.transform.forward);
+                        //    lookRotation *= zRotation;
+
+                        //    // Apply the rotation
+                        //    pickupRB.MoveRotation(lookRotation);
+                        //}
+
                     }
                 }
             }
@@ -306,7 +368,7 @@ public class PlayerInteractions : MonoBehaviour
     public void BreakConnection()
     {
         // Check if the right mouse button is pressed
-        if (isRightMouseButtonPressed)
+        if (isRightMouseButtonPressed || isMiddleMouseButtonPressed)
         {
             return; // Return early if the right mouse button is pressed
         }

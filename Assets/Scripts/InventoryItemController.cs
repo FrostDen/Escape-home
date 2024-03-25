@@ -23,6 +23,8 @@ public class InventoryItemController : MonoBehaviour
     private Bloom bloomComponent; // Reference to the Bloom effect
     private float originalBloomIntensity; // Store the original Bloom intensity
 
+    public HUD hud;
+
 
 
     void Start()
@@ -38,9 +40,11 @@ public class InventoryItemController : MonoBehaviour
 
     public void RemoveItem()
     {
+        hud.SetNextQuest(8);
         InventoryManager.Instance.Remove(item);
         SpawnDroppedItem();
-        Destroy(gameObject);
+        Facemask = false;
+        //Destroy(gameObject);
     }
 
     private void SpawnDroppedItem()
@@ -52,6 +56,8 @@ public class InventoryItemController : MonoBehaviour
             {
                 Debug.Log("Prefab found. Spawning...");
                 GameObject spawnedItem = Instantiate(item.prefab.gameObject, GetSpawnPosition(), Quaternion.identity);
+                // Set the name of the spawned item to match the original item's name
+                spawnedItem.name = item.itemName;
                 Debug.Log("Spawned item at " + spawnedItem.transform.position);
             }
             else
@@ -94,6 +100,7 @@ public class InventoryItemController : MonoBehaviour
             if (item != null && item.itemName == "rúško")
             {
                 Facemask = true;
+                hud.SetNextQuest(12);
             }
         }
     }

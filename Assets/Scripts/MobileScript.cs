@@ -24,6 +24,10 @@ public class MobileScript : MonoBehaviour
 
     public GameObject SMSPanel;
 
+    public HUD hud; // Reference to the HUD script
+
+
+
     private void Start()
     {
         // Get the RectTransform and GraphicRaycaster components
@@ -95,6 +99,7 @@ public class MobileScript : MonoBehaviour
         }
         PinKeypad.localPosition = originalPosition;
         MobileDesktop.localPosition = originalPosition;
+        hud.SetNextQuest(4);
     }
 
     public void TogglePopupSMS()
@@ -103,6 +108,7 @@ public class MobileScript : MonoBehaviour
         {
             // Toggle the active state of the pop-up panel
             SMSPanel.SetActive(!SMSPanel.activeSelf);
+            hud.SetNextQuest(6);
         }
     }
 

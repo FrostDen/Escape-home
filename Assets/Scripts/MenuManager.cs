@@ -49,6 +49,8 @@ public class MenuManager : MonoBehaviour
 
     public void IntroScene()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(1);
     }
 

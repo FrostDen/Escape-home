@@ -15,6 +15,7 @@ public class FlashlightScript : MonoBehaviour
     private Color originalEmissionColor;
     [SerializeField] private Renderer emissionRenderer; // Reference to the renderer with the emission texture
 
+
     void Start()
     {
         // Ensure the flashlight starts in the off state

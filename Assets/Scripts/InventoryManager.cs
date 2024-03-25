@@ -20,6 +20,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
 
     public bool isInventoryOpen = false;
 
+
     ////private Vector3 hiddenPosition;
     //private bool hasInitialized = false; // Flag to track initialization
 
@@ -113,6 +114,7 @@ public class InventoryManager : MonoBehaviour//, IPointerEnterHandler, IPointerE
             foreach (Item item in Items)
             {
                 GameObject obj = Instantiate(InventoryItem, ItemContent);
+
                 if (obj != null)
                 {
                     InventoryItemController itemController = obj.GetComponent<InventoryItemController>();

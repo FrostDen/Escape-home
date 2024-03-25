@@ -58,7 +58,7 @@ public class BatteryScript : MonoBehaviour
 
                 // Complete the quest for charging the phone
                 hud.mobilePhoneCharged = true;
-                hud.NextQuest();
+                hud.SetNextQuest(3);
             }
         }
 
