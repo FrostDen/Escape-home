@@ -45,7 +45,7 @@ public class FirstPersonController : MonoBehaviour
 
     // Crosshair
     public bool lockCursor = true;
-    public bool crosshair = true;
+    public bool crosshair = false;
     public Sprite crosshairImage;
     public Color crosshairColor = Color.white;
 
@@ -180,20 +180,22 @@ public class FirstPersonController : MonoBehaviour
             AudioManager.instance.PlayOneShot(FMODEvents.instance.playerVoice, playerCameraTransform.transform.position);
         }
 
+        Cursor.visible = true;
+
         if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        if(crosshair)
-        {
-            crosshairObject.sprite = crosshairImage;
-            crosshairObject.color = crosshairColor;
-        }
-        else
-        {
-            crosshairObject.gameObject.SetActive(false);
-        }
+        //if(crosshair)
+        //{
+        //    crosshairObject.sprite = crosshairImage;
+        //    crosshairObject.color = crosshairColor;
+        //}
+        //else
+        //{
+        //    crosshairObject.gameObject.SetActive(false);
+        //}
 
         #region Sprint Bar
 
@@ -288,7 +290,7 @@ public class FirstPersonController : MonoBehaviour
                 else
                 {
                     isZoomed = false;
-                    Cursor.visible = false; // Set cursor invisible when zoomed out
+                    Cursor.visible = true; // Set cursor invisible when zoomed out
                 }
             }
 
@@ -305,7 +307,7 @@ public class FirstPersonController : MonoBehaviour
                 else if(Input.GetKeyUp(zoomKey))
                 {
                     isZoomed = false;
-                    Cursor.visible = false;
+                    Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.Locked;
                 }
             }

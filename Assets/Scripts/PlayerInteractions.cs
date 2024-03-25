@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerInteractions : MonoBehaviour
 {
@@ -35,9 +37,19 @@ public class PlayerInteractions : MonoBehaviour
 
     public Transform flashlightPoint;
 
+    public Texture2D defaultCursor;
+    public Texture2D lookCursor;
+    public Texture2D grabCursor;
+    public Texture2D inspectCursor;
+    public Texture2D pointCursor;
+
+
     private void Start()
     {
         mainCamera = Camera.main;
+
+        Cursor.visible = true;
+        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
 
     //A simple visualization of the point we're following in the scene view
@@ -66,9 +78,26 @@ public class PlayerInteractions : MonoBehaviour
             Debug.DrawRay(raycastPos, mainCamera.transform.forward * hit.distance, Color.green);
             Debug.DrawRay(hit.point, hit.normal * 0.1f, Color.red);
 
+            Cursor.visible = true;
+            Cursor.SetCursor(lookCursor, Vector2.zero, CursorMode.Auto);
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (lookObject != null)
+                {
+                    Cursor.SetCursor(grabCursor, Vector2.zero, CursorMode.Auto);
+                    if (Input.GetMouseButtonDown(1))
+                        Cursor.SetCursor(pointCursor, Vector2.zero, CursorMode.Auto);
+                    else if (Input.GetMouseButtonDown(2))
+                        Cursor.SetCursor(inspectCursor, Vector2.zero, CursorMode.Auto);
+                }
+            }
+
         }
         else
         {
+            Cursor.visible = true;
+            Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
             lookObject = null;
         }
 

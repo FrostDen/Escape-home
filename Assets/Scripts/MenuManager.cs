@@ -17,6 +17,12 @@ public class MenuManager : MonoBehaviour
 
     public bool canPressEscape = true; // Flag to allow pressing Escape
 
+    public Texture2D defaultCursor;
+    public Texture2D lookCursor;
+    public Texture2D grabCursor;
+    public Texture2D inspectCursor;
+    public Texture2D pointCursor;
+
     public void Start()
     {
         if (menuPanel != null)
@@ -25,6 +31,8 @@ public class MenuManager : MonoBehaviour
             hiddenPosition = new Vector3(Screen.width * 2, 0, 0);
             // Move the menu off-screen initially
             menuPanel.localPosition = hiddenPosition;
+            Cursor.visible = true;
+            Cursor.SetCursor(pointCursor, Vector2.zero, CursorMode.Auto);
         }
     }
 

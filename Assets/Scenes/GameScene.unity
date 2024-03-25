@@ -307,6 +307,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.011502404, y: 0.018477589, z: 0.018477589}
   m_Center: {x: 4.656613e-10, y: -0.00000023981556, z: 0.0000000144355}
+--- !u!1 &4342169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3214242536120999233, guid: 7dee675959744684cadbffe02e4b0bdd, type: 3}
+  m_PrefabInstance: {fileID: 1008849435087144995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4342176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &5450338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1180645880090680151, guid: f82d065fcaa1a4d4b8cc37257cae0c1d, type: 3}
@@ -672,6 +708,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &28081600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 309466288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &28081608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28081600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &35734376 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7554208378520183124, guid: 23881f7e09e8f1049a266e63ca1d130e, type: 3}
@@ -3439,6 +3511,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2099995658483838040, guid: 565b08134c2131a419d07c5ba9268aa3, type: 3}
   m_PrefabInstance: {fileID: 3444453054652365299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &239945026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4328374874230166429, guid: 7c6204580d9402943ab2838eb6ca5732, type: 3}
+  m_PrefabInstance: {fileID: 4580124014921407334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &239945035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239945026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &241164583 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 893426026677755967, guid: 5e0702cf7b293a8458aace4eebf1271f, type: 3}
@@ -3779,6 +3887,42 @@ Transform:
   - {fileID: 369634720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &279465685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 1289249841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &279465693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279465685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &279662009 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3092937725344939443, guid: 5fb1b52fb7c96ee4e96f9f6bbd5fed5a, type: 3}
@@ -4105,7 +4249,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 28081608}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1 &313690877 stripped
 GameObject:
@@ -4133,6 +4280,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.002468453, y: 0.018477593, z: 0.018477596}
   m_Center: {x: -0.00037576206, y: -0.0000000018626451, z: 0.000000013504175}
+--- !u!1 &314462167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+  m_PrefabInstance: {fileID: 1398271362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &314462176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314462167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &315324817
 GameObject:
   m_ObjectHideFlags: 0
@@ -4380,7 +4563,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 884397136}
   m_SourcePrefab: {fileID: 100100000, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
 --- !u!1 &322370364 stripped
 GameObject:
@@ -5038,6 +5224,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5146120519019414408, guid: fe3573edf1969b0428d504a7f4f9c571, type: 3}
       insertIndex: -1
       addedObject: {fileID: 369091737}
+    - targetCorrespondingSourceObject: {fileID: 5146120519019414408, guid: fe3573edf1969b0428d504a7f4f9c571, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 369091743}
   m_SourcePrefab: {fileID: 100100000, guid: fe3573edf1969b0428d504a7f4f9c571, type: 3}
 --- !u!4 &369091734 stripped
 Transform:
@@ -5066,6 +5255,37 @@ MonoBehaviour:
   playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
+--- !u!114 &369091743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369091735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &369181139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6110,7 +6330,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1139033302}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1001 &420115965
 PrefabInstance:
@@ -6946,6 +7169,42 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &446985592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3770726535549499545, guid: bc42efafd6b1f214da5887203d1e8a92, type: 3}
+  m_PrefabInstance: {fileID: 8842129871763394358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &446985601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446985592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &448958161 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7938439421344765551, guid: 7b3a14b18c537c3408e9b3eb97429b6e, type: 3}
@@ -7555,6 +7814,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorScript: {fileID: 8822122232169883658}
   keyCollider: {fileID: 2125849456}
+--- !u!114 &486476138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486476122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &488838753
 GameObject:
   m_ObjectHideFlags: 0
@@ -7643,6 +7933,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7006528952768199983, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
   m_PrefabInstance: {fileID: 8851085875834589792}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &490300433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490300427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &511056972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3878489919830160357, guid: 7b3a14b18c537c3408e9b3eb97429b6e, type: 3}
@@ -7775,6 +8096,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4313810675622155142, guid: 994edcd4b9947b64485b1865d178a3a6, type: 3}
   m_PrefabInstance: {fileID: 518716396}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &522051625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1512754550244114540, guid: 6da0348e156d40a46a8acb21dfe03d45, type: 3}
+  m_PrefabInstance: {fileID: 8626344336488656373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &522051632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522051625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &522943015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9568,7 +9925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.799988, y: -44.71}
+  m_AnchoredPosition: {x: -15.800049, y: -44.710022}
   m_SizeDelta: {x: 320, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &629963971
@@ -9678,6 +10035,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.002468453, y: 0.018477593, z: 0.018477589}
   m_Center: {x: -0.0003756035, y: -0.0000000037252903, z: 0.000000014901161}
+--- !u!1 &634590739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 665157044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &634590747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634590739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &634994050
 GameObject:
   m_ObjectHideFlags: 0
@@ -10114,6 +10507,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.011502412, y: 0.02962917, z: 0.18605098}
   m_Center: {x: 0.00015547294, y: 0.000000003259629, z: -0.00022849809}
+--- !u!1 &662559380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 1381089698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &662559388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662559380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &665157044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10177,7 +10606,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 634590747}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1001 &669745213
 PrefabInstance:
@@ -10242,7 +10674,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2062571073}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1 &670762110 stripped
 GameObject:
@@ -10377,7 +10812,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1350525207}
   m_SourcePrefab: {fileID: 100100000, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
 --- !u!1 &723975636 stripped
 GameObject:
@@ -11447,6 +11885,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809681417}
   m_CullTransparentMesh: 1
+--- !u!1 &811551777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+  m_PrefabInstance: {fileID: 946531509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &811551786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811551777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &813353072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12662,6 +13136,42 @@ MonoBehaviour:
   playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
+--- !u!1 &884397127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+  m_PrefabInstance: {fileID: 322282564}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &884397136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884397127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &886878730
 GameObject:
   m_ObjectHideFlags: 0
@@ -13391,8 +13901,47 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 811551786}
   m_SourcePrefab: {fileID: 100100000, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+--- !u!1 &947990046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 1297959113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &947990054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947990046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &957872789
 GameObject:
   m_ObjectHideFlags: 0
@@ -14023,6 +14572,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.011502419, y: 0.029629165, z: 0.18605098}
   m_Center: {x: 0.00015547872, y: -0.00000023515895, z: -0.00022850554}
+--- !u!1 &1055742010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3770726535549499545, guid: bc42efafd6b1f214da5887203d1e8a92, type: 3}
+  m_PrefabInstance: {fileID: 1339735363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1055742019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055742010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1061727134 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2002235234768134619, guid: 23881f7e09e8f1049a266e63ca1d130e, type: 3}
@@ -14076,6 +14661,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6309130282623864828, guid: cb830e90fcff9864a9c16d8e5b461bdb, type: 3}
   m_PrefabInstance: {fileID: 7486105740458069892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1073225827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073225820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1077476001
 GameObject:
   m_ObjectHideFlags: 0
@@ -14747,6 +15363,42 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3329902420748629119, guid: 909e8085421833e47a3044569df723e5, type: 3}
+--- !u!1 &1139033294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 419049248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1139033302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139033294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1139084123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7536616237508036099, guid: f82d065fcaa1a4d4b8cc37257cae0c1d, type: 3}
@@ -15182,6 +15834,42 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7075542003553058726, guid: bf0504696e441a247bd6754b3af5769e, type: 3}
+--- !u!1 &1169152659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 6956384562079268727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1169152667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169152659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1169357843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6974997831957655613, guid: 10fa1b420d3dbd54ab6490daa36e4439, type: 3}
@@ -17106,7 +17794,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 279465693}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1 &1292031149 stripped
 GameObject:
@@ -17427,7 +18118,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 947990054}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1 &1298398674
 GameObject:
@@ -17645,7 +18339,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1539298524}
   m_SourcePrefab: {fileID: 100100000, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
 --- !u!1001 &1306606694
 PrefabInstance:
@@ -17710,7 +18407,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1822487925}
   m_SourcePrefab: {fileID: 100100000, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
 --- !u!1001 &1308477908
 PrefabInstance:
@@ -18143,7 +18843,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3770726535549499545, guid: bc42efafd6b1f214da5887203d1e8a92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1055742019}
   m_SourcePrefab: {fileID: 100100000, guid: bc42efafd6b1f214da5887203d1e8a92, type: 3}
 --- !u!65 &1350501274
 BoxCollider:
@@ -18166,6 +18869,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.022996444, y: 0.034755923, z: 0.0007427547}
   m_Center: {x: 0.0000000018626451, y: -9.3132235e-10, z: -3.4924597e-10}
+--- !u!1 &1350525198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+  m_PrefabInstance: {fileID: 710538599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1350525207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350525198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!65 &1352908933
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18324,7 +19063,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1562641586}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1 &1378505023 stripped
 GameObject:
@@ -18415,7 +19157,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 662559388}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!4 &1382038465 stripped
 Transform:
@@ -18485,7 +19230,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1430316558}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1 &1385953587 stripped
 GameObject:
@@ -18682,7 +19430,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 314462176}
   m_SourcePrefab: {fileID: 100100000, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
 --- !u!1 &1404368547 stripped
 GameObject:
@@ -18715,6 +19466,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2050477644304020082, guid: a80b63d127c9e194cae4aa2f5db83546, type: 3}
   m_PrefabInstance: {fileID: 4593222282933312780}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1430316550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 1385193322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1430316558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430316550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1436205639 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6899765356893831833, guid: 23881f7e09e8f1049a266e63ca1d130e, type: 3}
@@ -19235,6 +20022,42 @@ MonoBehaviour:
   playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
+--- !u!1 &1495873295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+  m_PrefabInstance: {fileID: 2013925259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1495873304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495873295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1497770812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5648117959614852656, guid: f82d065fcaa1a4d4b8cc37257cae0c1d, type: 3}
@@ -20058,6 +20881,42 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 480280907}
   m_SourcePrefab: {fileID: 100100000, guid: c555487a5795c6e438e229d206572843, type: 3}
+--- !u!1 &1539298515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+  m_PrefabInstance: {fileID: 1302320877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1539298524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539298515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1550471105 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 551914883475563891, guid: 7b3a14b18c537c3408e9b3eb97429b6e, type: 3}
@@ -20192,6 +21051,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.11167478, y: 0.17594717, z: 0.02587211}
   m_Center: {x: -0.48967156, y: 4.856409, z: 0.91967523}
+--- !u!1 &1562641578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 1377020594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1562641586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562641578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1566703151
 GameObject:
   m_ObjectHideFlags: 0
@@ -20243,6 +21138,11 @@ MonoBehaviour:
   menuBtn: {fileID: 248218633}
   menuPanel: {fileID: 83335572}
   canPressEscape: 1
+  defaultCursor: {fileID: 2800000, guid: be4ce60e2c9768c44b9b10b9c5258045, type: 3}
+  lookCursor: {fileID: 2800000, guid: 5231fb4a17813c94599643403e823629, type: 3}
+  grabCursor: {fileID: 2800000, guid: 74ca024bafe72694990e38c87c8f5d6b, type: 3}
+  inspectCursor: {fileID: 2800000, guid: cd5f34874be89e641a4782338904aef0, type: 3}
+  pointCursor: {fileID: 2800000, guid: d4f993508790e64469c459c1b7f8c5f3, type: 3}
 --- !u!1001 &1568771159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20466,11 +21366,25 @@ MonoBehaviour:
     Path: event:/SFX/KeypadBtn
   <DropItemSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  <DropGlassSound>k__BackingField:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  <DropCanSound>k__BackingField:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
   <playerFootsteps>k__BackingField:
     Guid:
       Data1: 1429929980
@@ -23009,7 +23923,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1887208564}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!1 &1739871588 stripped
 GameObject:
@@ -24173,6 +25090,42 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1822487916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+  m_PrefabInstance: {fileID: 1306606694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1822487925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822487916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1825786843
 GameObject:
   m_ObjectHideFlags: 0
@@ -25390,6 +26343,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SineWaveShader: {fileID: 4800000, guid: 16ca3aa75b0734d6fb078f7348a8c774, type: 3}
+--- !u!1 &1887208556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 1736762098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1887208564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887208556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1897989671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5858949706469797126, guid: 23881f7e09e8f1049a266e63ca1d130e, type: 3}
@@ -25526,6 +26515,42 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8552134717624371188, guid: 909e8085421833e47a3044569df723e5, type: 3}
+--- !u!1 &1909657065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3768925897965260195, guid: 37b38b575edec9e41b03ac16390cbca5, type: 3}
+  m_PrefabInstance: {fileID: 7945167370375274009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1909657072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909657065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &1913000165 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6822615451288141977, guid: 9df7e4b9ce9ac094a9c998459b3c1e48, type: 3}
@@ -25664,6 +26689,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2107903193}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &1920293429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+  m_PrefabInstance: {fileID: 4841589612290223569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920293438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920293429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 70298083
+      Data2: 1196863302
+      Data3: 534826389
+      Data4: -1955285448
+    Path: event:/SFX/DropCanSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1922234923 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8206460925476963742, guid: 5fb1b52fb7c96ee4e96f9f6bbd5fed5a, type: 3}
@@ -26529,7 +27590,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1495873304}
   m_SourcePrefab: {fileID: 100100000, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
 --- !u!1 &2014373761
 GameObject:
@@ -27320,6 +28384,42 @@ MonoBehaviour:
   playerInteractions: {fileID: 0}
   specificRotation: {x: 0, y: 0, z: 0}
   isGrabbed: 0
+--- !u!1 &2046320854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1910125653432001996, guid: 5423c436faf07cc4dbfbd83d534fb4c0, type: 3}
+  m_PrefabInstance: {fileID: 2551782670939557219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2046320861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046320854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2050277430
 GameObject:
   m_ObjectHideFlags: 0
@@ -27681,6 +28781,42 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &2062571065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+  m_PrefabInstance: {fileID: 669745213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2062571073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062571065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 938014045
+      Data2: 1108080660
+      Data3: 1416764853
+      Data4: -1027741219
+    Path: event:/SFX/DropGlassSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &2065648516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28030,15 +29166,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce0d860639adce243890642ea1ffd7e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.668
+      value: -0.977
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce0d860639adce243890642ea1ffd7e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.652
+      value: 0.9844
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce0d860639adce243890642ea1ffd7e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.524
+      value: 16.625
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce0d860639adce243890642ea1ffd7e1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34878,7 +36014,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3214242536120999233, guid: 7dee675959744684cadbffe02e4b0bdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4342176}
   m_SourcePrefab: {fileID: 100100000, guid: 7dee675959744684cadbffe02e4b0bdd, type: 3}
 --- !u!4 &1013246356846068588
 Transform:
@@ -40906,7 +42045,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1910125653432001996, guid: 5423c436faf07cc4dbfbd83d534fb4c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2046320861}
   m_SourcePrefab: {fileID: 100100000, guid: 5423c436faf07cc4dbfbd83d534fb4c0, type: 3}
 --- !u!4 &2554542468852923779
 Transform:
@@ -43178,6 +44320,7 @@ GameObject:
   - component: {fileID: 1658871693158786187}
   - component: {fileID: 6720976636867295063}
   - component: {fileID: 1953351603}
+  - component: {fileID: 6720976636867295064}
   m_Layer: 6
   m_Name: box (4)
   m_TagString: Box
@@ -44999,6 +46142,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7712066729994430690, guid: 3456016eeac29e149aa7e4eab4b5c9c6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4549528006508311845}
+    - targetCorrespondingSourceObject: {fileID: 7712066729994430690, guid: 3456016eeac29e149aa7e4eab4b5c9c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4549528006508311861}
   m_SourcePrefab: {fileID: 100100000, guid: 3456016eeac29e149aa7e4eab4b5c9c6, type: 3}
 --- !u!1 &3496614212850927207 stripped
 GameObject:
@@ -49794,6 +50940,37 @@ MonoBehaviour:
   originalEmissionColorMobile: {r: 0, g: 0, b: 0, a: 0}
   emissionRendererMobile: {fileID: 1743551957}
   isFlashlightOn: 0
+--- !u!114 &4549528006508311861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496614212850927207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!33 &4551217962797141873
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -49987,7 +51164,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4328374874230166429, guid: 7c6204580d9402943ab2838eb6ca5732, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 239945035}
   m_SourcePrefab: {fileID: 100100000, guid: 7c6204580d9402943ab2838eb6ca5732, type: 3}
 --- !u!4 &4587965703963802415
 Transform:
@@ -51418,7 +52598,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5859297414499963012, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920293438}
   m_SourcePrefab: {fileID: 100100000, guid: 942ee8336b6252a4a87ecfe862a4eede, type: 3}
 --- !u!33 &4841912394994008672
 MeshFilter:
@@ -55867,12 +57050,60 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: grabbed
+      value: 
+      objectReference: {fileID: 21300000, guid: 74ca024bafe72694990e38c87c8f5d6b, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: pointing
+      value: 
+      objectReference: {fileID: 21300000, guid: d4f993508790e64469c459c1b7f8c5f3, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: lookingAt
+      value: 
+      objectReference: {fileID: 21300000, guid: 5231fb4a17813c94599643403e823629, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: grabCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 74ca024bafe72694990e38c87c8f5d6b, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: inspecting
+      value: 
+      objectReference: {fileID: 21300000, guid: cd5f34874be89e641a4782338904aef0, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: lookCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 5231fb4a17813c94599643403e823629, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: pointCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: d4f993508790e64469c459c1b7f8c5f3, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: defaultCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: be4ce60e2c9768c44b9b10b9c5258045, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: inspectCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: cd5f34874be89e641a4782338904aef0, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: reticleObject
+      value: 
+      objectReference: {fileID: 5859601271862297363}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: defaultReticle
+      value: 
+      objectReference: {fileID: 21300000, guid: 5231fb4a17813c94599643403e823629, type: 3}
+    - target: {fileID: 3022329145015750060, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
       propertyPath: flashlightPoint
       value: 
       objectReference: {fileID: 851807714}
     - target: {fileID: 7111137244552097265, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567304699021042329, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+      propertyPath: crosshair
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8656999613211269193, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
@@ -55886,6 +57117,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1884101695}
   m_SourcePrefab: {fileID: 100100000, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+--- !u!1 &5859601271862297363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7567304698851757228, guid: 321a4026110c78647a8c8bbfdda8a1f9, type: 3}
+  m_PrefabInstance: {fileID: 5859601271862297362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &5866456042338934068
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -59325,6 +60561,37 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &6720976636867295064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273279062698694299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &6730117487201348861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60347,7 +61614,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557988653062089522, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1169152667}
   m_SourcePrefab: {fileID: 100100000, guid: 65bdd07450d3f6e46a082e2a05ec7847, type: 3}
 --- !u!23 &6956713254558962877
 MeshRenderer:
@@ -63042,7 +64312,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6309130282623864828, guid: cb830e90fcff9864a9c16d8e5b461bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1073225827}
   m_SourcePrefab: {fileID: 100100000, guid: cb830e90fcff9864a9c16d8e5b461bdb, type: 3}
 --- !u!1 &7487070438446015932
 GameObject:
@@ -64869,7 +66142,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3768925897965260195, guid: 37b38b575edec9e41b03ac16390cbca5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1909657072}
   m_SourcePrefab: {fileID: 100100000, guid: 37b38b575edec9e41b03ac16390cbca5, type: 3}
 --- !u!114 &7948492440726540180
 MonoBehaviour:
@@ -66811,6 +68087,7 @@ GameObject:
   - component: {fileID: 1592330656}
   - component: {fileID: 1592330645}
   - component: {fileID: 1592330653}
+  - component: {fileID: 8544783547035807305}
   m_Layer: 6
   m_Name: "lek\xE1rni\u010Dka"
   m_TagString: Box
@@ -67206,6 +68483,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8544783547035807305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416272007229589600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!23 &8544783547189808623
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -67786,7 +69094,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1512754550244114540, guid: 6da0348e156d40a46a8acb21dfe03d45, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 522051632}
   m_SourcePrefab: {fileID: 100100000, guid: 6da0348e156d40a46a8acb21dfe03d45, type: 3}
 --- !u!1001 &8648992332531324181
 PrefabInstance:
@@ -68083,6 +69394,7 @@ GameObject:
   - component: {fileID: 1813909067}
   - component: {fileID: 1813909072}
   - component: {fileID: 1813909073}
+  - component: {fileID: 8707273951773870486}
   m_Layer: 6
   m_Name: "lek\xE1rni\u010Dka"
   m_TagString: Hinges
@@ -68090,6 +69402,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8707273951773870486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8707273951773870485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461785630
+      Data2: 1278008130
+      Data3: -179799928
+      Data4: -751032129
+    Path: event:/SFX/DropItemSound
+  Event: 
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8707273952104584485
 GameObject:
   m_ObjectHideFlags: 0
@@ -69008,7 +70351,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3770726535549499545, guid: bc42efafd6b1f214da5887203d1e8a92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 446985601}
   m_SourcePrefab: {fileID: 100100000, guid: bc42efafd6b1f214da5887203d1e8a92, type: 3}
 --- !u!65 &8846260358566802262
 BoxCollider:
@@ -69318,7 +70664,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7006528952768199983, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 490300433}
   m_SourcePrefab: {fileID: 100100000, guid: 64d4f7b862e7c0148b097b4e8ab07039, type: 3}
 --- !u!23 &8853926584213935221
 MeshRenderer:
@@ -69748,6 +71097,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5840945782478283159, guid: edb0ac55cbe63b345891432dad8364cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 486476130}
+    - targetCorrespondingSourceObject: {fileID: 5840945782478283159, guid: edb0ac55cbe63b345891432dad8364cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 486476138}
   m_SourcePrefab: {fileID: 100100000, guid: edb0ac55cbe63b345891432dad8364cc, type: 3}
 --- !u!4 &8973593955493151667
 Transform:

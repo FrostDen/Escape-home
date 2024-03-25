@@ -101,6 +101,7 @@ public class HUD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         messageText = MessagePanel.GetComponentInChildren<TextMeshProUGUI>();
         LockCameraRotation(!isDead);
         originalTimeScale = Time.timeScale; // Store the original time scale
+        Cursor.visible = true;
 
         physicsObjects = FindObjectsOfType<PhysicsObject>().ToList();
 

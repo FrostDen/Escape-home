@@ -421,6 +421,11 @@ MonoBehaviour:
   menuBtn: {fileID: 841399693}
   menuPanel: {fileID: 0}
   canPressEscape: 1
+  defaultCursor: {fileID: 0}
+  lookCursor: {fileID: 0}
+  grabCursor: {fileID: 0}
+  inspectCursor: {fileID: 0}
+  pointCursor: {fileID: 0}
 --- !u!114 &620520455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,7 +1287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Verzia 0.3.1 Beta
+  m_text: Verzia 0.3.3 Beta
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
